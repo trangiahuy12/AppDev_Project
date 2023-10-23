@@ -8,15 +8,15 @@ package GUI;
  *
  * @author 84335
  */
-public class DangNhap_GUI extends javax.swing.JFrame {
+public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
 
     /**
      * Creates new form DangNhap_GUI
      */
-    public DangNhap_GUI() {
+    public LamMoiDangNhap_GUI() {
         initComponents();
         String a = "<HTML><u>Quên mật khẩu?</u></HTML>";
-        jlb_QuanMatKhau.setText(a);
+        jlb_DangNhap.setText(a);
     }
 
     /**
@@ -30,13 +30,13 @@ public class DangNhap_GUI extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jlb_DangNhap = new javax.swing.JLabel();
-        jlb_MatKhau = new javax.swing.JLabel();
+        jlf_LamMoiMatKhau = new javax.swing.JLabel();
+        jlb_Email = new javax.swing.JLabel();
         jlb_TenTaiKhoan = new javax.swing.JLabel();
         jtf_TenTaiKhoan = new javax.swing.JTextField();
-        jpf_MatKhau = new javax.swing.JPasswordField();
-        btn_DangNhap = new javax.swing.JButton();
-        jlb_QuanMatKhau = new javax.swing.JLabel();
+        jpf_Email = new javax.swing.JPasswordField();
+        btn_LamMoi = new javax.swing.JButton();
+        jlb_DangNhap = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -53,16 +53,16 @@ public class DangNhap_GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jlb_DangNhap.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
-        jlb_DangNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlb_DangNhap.setText("Đăng Nhập");
-        jlb_DangNhap.setToolTipText("");
-        jlb_DangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlb_DangNhap.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jlb_DangNhap.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        jlf_LamMoiMatKhau.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
+        jlf_LamMoiMatKhau.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlf_LamMoiMatKhau.setText("Làm Mới Mật Khẩu");
+        jlf_LamMoiMatKhau.setToolTipText("");
+        jlf_LamMoiMatKhau.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlf_LamMoiMatKhau.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jlf_LamMoiMatKhau.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        jlb_MatKhau.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jlb_MatKhau.setText("Mật khẩu");
+        jlb_Email.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jlb_Email.setText("Email");
 
         jlb_TenTaiKhoan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jlb_TenTaiKhoan.setText("Tên tài khoản");
@@ -75,71 +75,71 @@ public class DangNhap_GUI extends javax.swing.JFrame {
             }
         });
 
-        jpf_MatKhau.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jpf_MatKhau.setToolTipText("");
+        jpf_Email.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jpf_Email.setToolTipText("");
 
-        btn_DangNhap.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btn_DangNhap.setText("Đăng nhập");
-        btn_DangNhap.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_DangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_DangNhap.addActionListener(new java.awt.event.ActionListener() {
+        btn_LamMoi.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btn_LamMoi.setText("Làm mới");
+        btn_LamMoi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_LamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_LamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_DangNhapActionPerformed(evt);
+                btn_LamMoiActionPerformed(evt);
             }
         });
 
-        jlb_QuanMatKhau.setDisplayedMnemonic(1);
-        jlb_QuanMatKhau.setFont(new java.awt.Font("Times New Roman", 2, 12)); // NOI18N
-        jlb_QuanMatKhau.setForeground(new java.awt.Color(51, 153, 255));
-        jlb_QuanMatKhau.setText("Quên mật khẩu?");
-        jlb_QuanMatKhau.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlb_DangNhap.setDisplayedMnemonic('\u0001');
+        jlb_DangNhap.setFont(new java.awt.Font("Times New Roman", 2, 12)); // NOI18N
+        jlb_DangNhap.setForeground(new java.awt.Color(51, 153, 255));
+        jlb_DangNhap.setText("Đăng Nhập?");
+        jlb_DangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlb_DangNhap)
-                .addGap(97, 97, 97))
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlb_MatKhau)
-                    .addComponent(jlb_TenTaiKhoan))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpf_MatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(btn_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlb_QuanMatKhau)
-                .addGap(72, 72, 72))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
+                        .addComponent(jlb_DangNhap))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlb_Email)
+                            .addComponent(jlb_TenTaiKhoan))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpf_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jlf_LamMoiMatKhau)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(jlb_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlf_LamMoiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_TenTaiKhoan)
                     .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlb_MatKhau)
-                    .addComponent(jpf_MatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlb_Email)
+                    .addComponent(jpf_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlb_QuanMatKhau))
+                    .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlb_DangNhap))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        jlb_DangNhap.getAccessibleContext().setAccessibleParent(jlb_DangNhap);
+        jlf_LamMoiMatKhau.getAccessibleContext().setAccessibleParent(jlf_LamMoiMatKhau);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,9 +148,9 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtf_TenTaiKhoanActionPerformed
 
-    private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
+    private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_DangNhapActionPerformed
+    }//GEN-LAST:event_btn_LamMoiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,33 +169,34 @@ public class DangNhap_GUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LamMoiDangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LamMoiDangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LamMoiDangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LamMoiDangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DangNhap_GUI().setVisible(true);
+                new LamMoiDangNhap_GUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_DangNhap;
+    private javax.swing.JButton btn_LamMoi;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlb_DangNhap;
-    private javax.swing.JLabel jlb_MatKhau;
-    private javax.swing.JLabel jlb_QuanMatKhau;
+    private javax.swing.JLabel jlb_Email;
     private javax.swing.JLabel jlb_TenTaiKhoan;
-    private javax.swing.JPasswordField jpf_MatKhau;
+    private javax.swing.JLabel jlf_LamMoiMatKhau;
+    private javax.swing.JPasswordField jpf_Email;
     private javax.swing.JTextField jtf_TenTaiKhoan;
     // End of variables declaration//GEN-END:variables
 }
