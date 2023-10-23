@@ -1,8 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package GUI;
+
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -15,7 +14,11 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
      */
     public KhuyenMai_JPanel() {
         initComponents();
-          setBounds(0, 0, 1020, 720);
+          setBounds(0, 0, 1020, 700);
+        
+          JPanel_ThongTinCTKM.setBorder(BorderFactory.createTitledBorder("Thông tin chương trình khuyến mãi"));
+          JPanel_ThaoTac.setBorder(BorderFactory.createTitledBorder("Các thao tác"));
+          JPanel_Table.setBorder(BorderFactory.createTitledBorder("Danh sách bảng"));
     }
 
     /**
@@ -27,30 +30,194 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        JPanel_ThongTinCTKM = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jLabel8 = new javax.swing.JLabel();
+        JPanel_ThaoTac = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        JPanel_Table = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
-        jLabel1.setText("Khuyến Mãi");
+        setBackground(new java.awt.Color(187, 205, 197));
+        setPreferredSize(new java.awt.Dimension(1020, 700));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(655, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(187, 205, 197));
+
+        jLabel2.setBackground(new java.awt.Color(187, 205, 197));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("QUẢN LÝ CHƯƠNG TRÌNH KHUYẾN MÃI");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(656, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 50));
+
+        JPanel_ThongTinCTKM.setBackground(new java.awt.Color(187, 205, 197));
+        JPanel_ThongTinCTKM.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel1.setText("Tên Chương Trình");
+        JPanel_ThongTinCTKM.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 55, 120, 30));
+        JPanel_ThongTinCTKM.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 55, 170, 35));
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel3.setText("Ngày Kết Thúc");
+        jLabel3.setPreferredSize(new java.awt.Dimension(109, 30));
+        JPanel_ThongTinCTKM.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 55, 100, 30));
+        JPanel_ThongTinCTKM.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 55, 170, 35));
+        JPanel_ThongTinCTKM.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 15, 170, 35));
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel5.setText("Giảm Giá");
+        jLabel5.setPreferredSize(new java.awt.Dimension(109, 30));
+        JPanel_ThongTinCTKM.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 55, 160, 30));
+        JPanel_ThongTinCTKM.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 55, 180, 30));
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel6.setText("Số Tiền Giảm Tối Thiểu");
+        jLabel6.setPreferredSize(new java.awt.Dimension(109, 30));
+        JPanel_ThongTinCTKM.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 15, 160, 30));
+        JPanel_ThongTinCTKM.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 15, 170, 35));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel7.setText("Ngày Bắt Đầu");
+        jLabel7.setPreferredSize(new java.awt.Dimension(109, 30));
+        JPanel_ThongTinCTKM.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 15, 100, 30));
+        JPanel_ThongTinCTKM.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 15, 180, 30));
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel8.setText("Mã Chương Trình");
+        jLabel8.setPreferredSize(new java.awt.Dimension(109, 30));
+        JPanel_ThongTinCTKM.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 15, 120, 30));
+
+        add(JPanel_ThongTinCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1020, 100));
+
+        JPanel_ThaoTac.setBackground(new java.awt.Color(187, 205, 197));
+        JPanel_ThaoTac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel4.setText("Mã Chương Trình");
+        jLabel4.setPreferredSize(new java.awt.Dimension(109, 30));
+        JPanel_ThaoTac.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 20, 120, 30));
+        JPanel_ThaoTac.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 200, 30));
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton1.setText("Xóa");
+        JPanel_ThaoTac.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 110, 30));
+
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton2.setText("Tìm Kiếm");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        JPanel_ThaoTac.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 110, 30));
+
+        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton3.setText("Làm Mới");
+        JPanel_ThaoTac.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 110, 30));
+
+        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton4.setText("Thêm");
+        JPanel_ThaoTac.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 110, 30));
+
+        jButton5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton5.setText("Cập Nhật");
+        JPanel_ThaoTac.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 110, 30));
+
+        add(JPanel_ThaoTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1020, 60));
+
+        JPanel_Table.setBackground(new java.awt.Color(187, 205, 197));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã Chương Trình", "Tên Chương Trình", "Số tiền tối thiểu", "Giảm Giá", "Ngày Bắt Đầu", "Ngày Kết Thúc"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout JPanel_TableLayout = new javax.swing.GroupLayout(JPanel_Table);
+        JPanel_Table.setLayout(JPanel_TableLayout);
+        JPanel_TableLayout.setHorizontalGroup(
+            JPanel_TableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanel_TableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        JPanel_TableLayout.setVerticalGroup(
+            JPanel_TableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanel_TableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        add(JPanel_Table, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 1020, 460));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPanel_Table;
+    private javax.swing.JPanel JPanel_ThaoTac;
+    private javax.swing.JPanel JPanel_ThongTinCTKM;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
