@@ -24,6 +24,10 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         Image scaled_btnXemChiTiet = img_btnXemChiTiet.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnXemChiTiet = new ImageIcon(scaled_btnXemChiTiet);
         btn_XemChiTiet.setIcon(img_btnXemChiTiet);
+        ImageIcon img_btnXoa = new ImageIcon("src//pic//buttonXoa.png");
+        Image scaled_btnXoa = img_btnXoa.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnXoa = new ImageIcon(scaled_btnXoa);
+        btn_Xoa.setIcon(img_btnXoa);
     }
 
     /**
@@ -97,7 +101,7 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         Jpanel_ThaoTac.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 120, 30));
 
         btn_Xoa.setBackground(new java.awt.Color(204, 0, 0));
-        btn_Xoa.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btn_Xoa.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         btn_Xoa.setForeground(new java.awt.Color(255, 255, 255));
         btn_Xoa.setText("Xóa");
         btn_Xoa.addActionListener(new java.awt.event.ActionListener() {
@@ -105,18 +109,19 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
                 btn_XoaActionPerformed(evt);
             }
         });
-        Jpanel_ThaoTac.add(btn_Xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 120, 30));
+        Jpanel_ThaoTac.add(btn_Xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 120, 30));
 
         btn_XemChiTiet.setBackground(new java.awt.Color(0, 51, 51));
         btn_XemChiTiet.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         btn_XemChiTiet.setForeground(java.awt.Color.white);
         btn_XemChiTiet.setText("Xem chi tiết");
+        btn_XemChiTiet.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btn_XemChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_XemChiTietActionPerformed(evt);
             }
         });
-        Jpanel_ThaoTac.add(btn_XemChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 150, 30));
+        Jpanel_ThaoTac.add(btn_XemChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 135, 30));
 
         add(Jpanel_ThaoTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1000, 100));
 
