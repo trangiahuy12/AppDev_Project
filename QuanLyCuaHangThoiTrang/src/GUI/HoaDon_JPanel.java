@@ -1,12 +1,11 @@
-
 package GUI;
 
-
+import java.awt.Image;
 import javax.swing.BorderFactory;
-
+import javax.swing.ImageIcon;
 
 public class HoaDon_JPanel extends javax.swing.JPanel {
-    
+
     private ChiTietHoaDon_GUI chitiethoadon;
 
     /**
@@ -14,9 +13,17 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
      */
     public HoaDon_JPanel() {
         initComponents();
-          setBounds(0, 0, 1020, 700);
-          Jpanel_ThaoTac.setBorder(BorderFactory.createTitledBorder("Thao tác"));
-        Jpanel_Table.setBorder(BorderFactory.createTitledBorder("Bảng danh sách"));
+        setBounds(0, 0, 1020, 700);
+//          Jpanel_ThaoTac.setBorder(BorderFactory.createTitledBorder("Thao tác"));
+//        Jpanel_Table.setBorder(BorderFactory.createTitledBorder("Bảng danh sách"));
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+        Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
+        btn_TimKiem.setIcon(img_btnTimKiem);
+        ImageIcon img_btnXemChiTiet = new ImageIcon("src//pic//buttonXemChiTiet.png");
+        Image scaled_btnXemChiTiet = img_btnXemChiTiet.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnXemChiTiet = new ImageIcon(scaled_btnXemChiTiet);
+        btn_XemChiTiet.setIcon(img_btnXemChiTiet);
     }
 
     /**
@@ -58,6 +65,7 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         add(Jpanel_TieuDeHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 50));
 
         Jpanel_ThaoTac.setBackground(new java.awt.Color(187, 205, 197));
+        Jpanel_ThaoTac.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         Jpanel_ThaoTac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_MaHoaDon.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -76,9 +84,11 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         Jpanel_ThaoTac.add(txt_MaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 200, 25));
         Jpanel_ThaoTac.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 200, 25));
 
-        btn_TimKiem.setBackground(new java.awt.Color(51, 255, 255));
-        btn_TimKiem.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btn_TimKiem.setText("Tìm Kiếm");
+        btn_TimKiem.setBackground(new java.awt.Color(0, 51, 51));
+        btn_TimKiem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_TimKiem.setForeground(new java.awt.Color(255, 255, 255));
+        btn_TimKiem.setText("Tìm kiếm");
+        btn_TimKiem.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btn_TimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_TimKiemActionPerformed(evt);
@@ -97,9 +107,10 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         });
         Jpanel_ThaoTac.add(btn_Xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 120, 30));
 
-        btn_XemChiTiet.setBackground(new java.awt.Color(0, 255, 255));
-        btn_XemChiTiet.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        btn_XemChiTiet.setText("Xem Chi Tiết");
+        btn_XemChiTiet.setBackground(new java.awt.Color(0, 51, 51));
+        btn_XemChiTiet.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_XemChiTiet.setForeground(java.awt.Color.white);
+        btn_XemChiTiet.setText("Xem chi tiết");
         btn_XemChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_XemChiTietActionPerformed(evt);
@@ -107,9 +118,10 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         });
         Jpanel_ThaoTac.add(btn_XemChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 150, 30));
 
-        add(Jpanel_ThaoTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1020, 100));
+        add(Jpanel_ThaoTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1000, 100));
 
         Jpanel_Table.setBackground(new java.awt.Color(187, 205, 197));
+        Jpanel_Table.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Danh sách hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         Jpanel_Table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Jpanel_Table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -123,9 +135,9 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        Jpanel_Table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 1000, 510));
+        Jpanel_Table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 980, 510));
 
-        add(Jpanel_Table, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 155, 1020, 550));
+        add(Jpanel_Table, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 155, 1000, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_MaHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_MaHoaDonActionPerformed
@@ -140,7 +152,7 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         chitiethoadon = new ChiTietHoaDon_GUI();
         chitiethoadon.setVisible(true);
-        
+
     }//GEN-LAST:event_btn_XemChiTietActionPerformed
 
     private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed

@@ -1,10 +1,10 @@
-
 package GUI;
 
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,6 +12,8 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
@@ -23,249 +25,245 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         setSize(1200, 720);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-     
+
         getContentPane().setLayout(null);
         setVisible(true);
 
-    TrangChu_Panel = new TrangChu_JPanel();
-    BanHang_Panel = new BanHang_JPanel();  
-   SanPham_Panel = new SanPham_JPanel();
-   HoaDon_Panel = new HoaDon_JPanel();
-   DoiTra_Panel = new DoiTra_JPanel();
-   ThongKe_Panel = new ThongKe_JPanel();
-   KhachHang_Panel = new KhachHang_JPanel();
-   NhanVien_Panel = new NhanVien_JPanel();
-   KhuyenMai_Panel = new KhuyenMai_JPanel();
-   PhieuNhap_Panel = new PhieuNhap_JPanel();
-   TaiKhoan_Panel = new TaiKhoan_JPanel();
-   NhaCungCap_Panel = new NhaCungCap_JPanel();
-    
-    
-    ImageIcon img_home = new ImageIcon("src\\pic\\home.png");
-    Image scaled_home = img_home.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_home = new ImageIcon(scaled_home);
-    lbl_IconTrangChu.setIcon(img_home);
-    
-    ImageIcon img_SanPham = new ImageIcon("src\\pic\\productbox.png");
-    Image scaled_SanPham = img_SanPham.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_SanPham = new ImageIcon(scaled_SanPham);
-    lbl_IconSanPham.setIcon(img_SanPham);
+        TrangChu_Panel = new TrangChu_JPanel();
+        BanHang_Panel = new BanHang_JPanel();
+        SanPham_Panel = new SanPham_JPanel();
+        HoaDon_Panel = new HoaDon_JPanel();
+        DoiTra_Panel = new DoiTra_JPanel();
+        ThongKe_Panel = new ThongKe_JPanel();
+        KhachHang_Panel = new KhachHang_JPanel();
+        NhanVien_Panel = new NhanVien_JPanel();
+        KhuyenMai_Panel = new KhuyenMai_JPanel();
+        PhieuNhap_Panel = new PhieuNhap_JPanel();
+        TaiKhoan_Panel = new TaiKhoan_JPanel();
+        NhaCungCap_Panel = new NhaCungCap_JPanel();
+
+        ImageIcon img_home = new ImageIcon("src\\pic\\home.png");
+        Image scaled_home = img_home.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_home = new ImageIcon(scaled_home);
+        lbl_IconTrangChu.setIcon(img_home);
+
+        ImageIcon img_SanPham = new ImageIcon("src\\pic\\productbox.png");
+        Image scaled_SanPham = img_SanPham.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_SanPham = new ImageIcon(scaled_SanPham);
+        lbl_IconSanPham.setIcon(img_SanPham);
 //    
-    ImageIcon img_BanHang = new ImageIcon("src\\pic\\clothers.png");
-    Image scaled_BanHang = img_BanHang.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_BanHang = new ImageIcon(scaled_BanHang);
-    lbl_IconBanHang.setIcon(img_BanHang);
+        ImageIcon img_BanHang = new ImageIcon("src\\pic\\clothers.png");
+        Image scaled_BanHang = img_BanHang.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_BanHang = new ImageIcon(scaled_BanHang);
+        lbl_IconBanHang.setIcon(img_BanHang);
 //    
 //     ImageIcon img_Exits = new ImageIcon("src\\pic\\close.png");
 //    Image scaled_Exits = img_Exits.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
 //    img_Exits = new ImageIcon(scaled_Exits);
 //    lbl_IconExit.setIcon(img_Exits);
 
-    ImageIcon img_User = new ImageIcon("src\\pic\\users.png");
-    Image scaled_Users = img_User.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_User = new ImageIcon(scaled_Users);
-    lbl_Users.setIcon(img_User);
-    
+        ImageIcon img_User = new ImageIcon("src\\pic\\user_nam.png");
+        Image scaled_Users = img_User.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_User = new ImageIcon(scaled_Users);
+        lbl_Users.setIcon(img_User);
+
 //    ImageIcon img_Settings = new ImageIcon("src\\pic\\settings.png");
 //    Image scaled_Settings = img_Settings.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
 //    img_Settings = new ImageIcon(scaled_Settings);
 //    lbl_Settings.setIcon(img_Settings);
-    
-     ImageIcon img_HoaDon = new ImageIcon("src\\pic\\hoadon.png");
-    Image scaled_HoaDon = img_HoaDon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_HoaDon = new ImageIcon(scaled_HoaDon);
-    lbl_IconHoaDon.setIcon(img_HoaDon);
-    
-     ImageIcon img_DoiTra = new ImageIcon("src\\pic\\return.png");
-    Image scaled_DoiTra = img_DoiTra.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_DoiTra = new ImageIcon(scaled_DoiTra);
-    lbl_IconDoiTra.setIcon(img_DoiTra);
-    
-    ImageIcon img_KhachHang = new ImageIcon("src\\pic\\customer.png");
-    Image scaled_KhachHang = img_KhachHang.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_KhachHang = new ImageIcon(scaled_KhachHang);
-    lbl_IconKhachHang.setIcon(img_KhachHang);
-    
-    ImageIcon img_NhanVien = new ImageIcon("src\\pic\\nhanvien.png");
-    Image scaled_NhanVien = img_NhanVien.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_NhanVien = new ImageIcon(scaled_NhanVien);
-    lbl_IconNhanVien.setIcon(img_NhanVien);
-    
-    ImageIcon img_ThongKe = new ImageIcon("src\\pic\\thongke.png");
-    Image scaled_ThongKe = img_ThongKe.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_ThongKe = new ImageIcon(scaled_ThongKe);
-    lbl_IconThongKe.setIcon(img_ThongKe);
-    
-    ImageIcon img_NhaCungCap = new ImageIcon("src\\pic\\nhacungcap.png");
-    Image scaled_NhaCungCap = img_NhaCungCap.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_NhaCungCap = new ImageIcon(scaled_NhaCungCap);
-    lbl_IconNhaCungCap.setIcon(img_NhaCungCap);
-    
-    ImageIcon img_PhieuNhap = new ImageIcon("src\\pic\\phieunhap.png");
-    Image scaled_PhieuNhap = img_PhieuNhap.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_PhieuNhap = new ImageIcon(scaled_PhieuNhap);
-    lbl_IconPhieuNhap.setIcon(img_PhieuNhap);
-    
-    ImageIcon img_KhuyenMai = new ImageIcon("src\\pic\\discount.png");
-    Image scaled_KhuyenMai = img_KhuyenMai.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_KhuyenMai = new ImageIcon(scaled_KhuyenMai);
-    lbl_IconKhuyenMai.setIcon(img_KhuyenMai);
-    
-     ImageIcon img_TaiKhoan = new ImageIcon("src\\pic\\taikhoan.png");
-    Image scaled_TaiKhoan = img_TaiKhoan.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-    img_TaiKhoan = new ImageIcon(scaled_TaiKhoan);
-    lbl_IconTaiKhoan.setIcon(img_TaiKhoan);
-    
-     ImageIcon img_DangXuat = new ImageIcon("src\\pic\\logout.png");
-    Image scaled_DangXuat = img_DangXuat.getImage().getScaledInstance (20, 20, Image.SCALE_SMOOTH);
-    img_DangXuat = new ImageIcon(scaled_DangXuat);
-    JMenu_DangXuat.setIcon(img_DangXuat);
-    
-    ImageIcon img_ThayMatKhau = new ImageIcon("src\\pic\\key.png");
-    Image scaled_ThayMatKhau = img_ThayMatKhau.getImage().getScaledInstance (20, 20, Image.SCALE_SMOOTH);
-    img_ThayMatKhau = new ImageIcon(scaled_ThayMatKhau);
-    JMenu_ThayMatKhau.setIcon(img_ThayMatKhau);
-    
-    ImageIcon img_GioiThieu = new ImageIcon("src\\pic\\gioithieu.png");
-    Image scaled_GioiThieu = img_GioiThieu.getImage().getScaledInstance (20, 20, Image.SCALE_SMOOTH);
-    img_GioiThieu = new ImageIcon(scaled_GioiThieu);
-    JMenu_GioiThieu.setIcon(img_GioiThieu);
-    
-    ImageIcon img_TroGiup = new ImageIcon("src\\pic\\trogiup.png");
-    Image scaled_TroGiup = img_TroGiup.getImage().getScaledInstance (20, 20, Image.SCALE_SMOOTH);
-    img_TroGiup = new ImageIcon(scaled_TroGiup);
-    JMenu_TroGiup.setIcon(img_TroGiup);
-    
+        ImageIcon img_HoaDon = new ImageIcon("src\\pic\\hoadon.png");
+        Image scaled_HoaDon = img_HoaDon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_HoaDon = new ImageIcon(scaled_HoaDon);
+        lbl_IconHoaDon.setIcon(img_HoaDon);
+
+        ImageIcon img_DoiTra = new ImageIcon("src\\pic\\return.png");
+        Image scaled_DoiTra = img_DoiTra.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_DoiTra = new ImageIcon(scaled_DoiTra);
+        lbl_IconDoiTra.setIcon(img_DoiTra);
+
+        ImageIcon img_KhachHang = new ImageIcon("src\\pic\\customer.png");
+        Image scaled_KhachHang = img_KhachHang.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_KhachHang = new ImageIcon(scaled_KhachHang);
+        lbl_IconKhachHang.setIcon(img_KhachHang);
+
+        ImageIcon img_NhanVien = new ImageIcon("src\\pic\\nhanvien.png");
+        Image scaled_NhanVien = img_NhanVien.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_NhanVien = new ImageIcon(scaled_NhanVien);
+        lbl_IconNhanVien.setIcon(img_NhanVien);
+
+        ImageIcon img_ThongKe = new ImageIcon("src\\pic\\thongke.png");
+        Image scaled_ThongKe = img_ThongKe.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_ThongKe = new ImageIcon(scaled_ThongKe);
+        lbl_IconThongKe.setIcon(img_ThongKe);
+
+        ImageIcon img_NhaCungCap = new ImageIcon("src\\pic\\nhacungcap.png");
+        Image scaled_NhaCungCap = img_NhaCungCap.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_NhaCungCap = new ImageIcon(scaled_NhaCungCap);
+        lbl_IconNhaCungCap.setIcon(img_NhaCungCap);
+
+        ImageIcon img_PhieuNhap = new ImageIcon("src\\pic\\phieunhap.png");
+        Image scaled_PhieuNhap = img_PhieuNhap.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_PhieuNhap = new ImageIcon(scaled_PhieuNhap);
+        lbl_IconPhieuNhap.setIcon(img_PhieuNhap);
+
+        ImageIcon img_KhuyenMai = new ImageIcon("src\\pic\\discount.png");
+        Image scaled_KhuyenMai = img_KhuyenMai.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_KhuyenMai = new ImageIcon(scaled_KhuyenMai);
+        lbl_IconKhuyenMai.setIcon(img_KhuyenMai);
+
+        ImageIcon img_TaiKhoan = new ImageIcon("src\\pic\\taikhoan.png");
+        Image scaled_TaiKhoan = img_TaiKhoan.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_TaiKhoan = new ImageIcon(scaled_TaiKhoan);
+        lbl_IconTaiKhoan.setIcon(img_TaiKhoan);
+
+        ImageIcon img_DangXuat = new ImageIcon("src\\pic\\logout.png");
+        Image scaled_DangXuat = img_DangXuat.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        img_DangXuat = new ImageIcon(scaled_DangXuat);
+         JMenu_DangXuat.setIcon(img_DangXuat);
+
+        ImageIcon img_ThayMatKhau = new ImageIcon("src\\pic\\key.png");
+        Image scaled_ThayMatKhau = img_ThayMatKhau.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        img_ThayMatKhau = new ImageIcon(scaled_ThayMatKhau);
+        JMenu_ThayMatKhau.setIcon(img_ThayMatKhau);
+
+        ImageIcon img_GioiThieu = new ImageIcon("src\\pic\\gioithieu.png");
+        Image scaled_GioiThieu = img_GioiThieu.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        img_GioiThieu = new ImageIcon(scaled_GioiThieu);
+        JMenu_GioiThieu.setIcon(img_GioiThieu);
+
+        ImageIcon img_TroGiup = new ImageIcon("src\\pic\\trogiup.png");
+        Image scaled_TroGiup = img_TroGiup.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        img_TroGiup = new ImageIcon(scaled_TroGiup);
+        JMenu_TroGiup.setIcon(img_TroGiup);
+
         // Thêm Panel và Main
-        
-    Jpanel_Main.add(TrangChu_Panel);
-    Jpanel_Main.add(BanHang_Panel);
-    Jpanel_Main.add(SanPham_Panel);
-    Jpanel_Main.add(HoaDon_Panel);
-    Jpanel_Main.add(DoiTra_Panel);
-    Jpanel_Main.add(ThongKe_Panel);
-    Jpanel_Main.add(KhachHang_Panel);
-    Jpanel_Main.add(NhanVien_Panel);
-    Jpanel_Main.add(NhaCungCap_Panel);
-    Jpanel_Main.add(PhieuNhap_Panel);
-    Jpanel_Main.add(KhuyenMai_Panel);
-    Jpanel_Main.add(TaiKhoan_Panel);
-    
-    
-    // Gán sự kiện click Jpanel
-    Jpanel_TrangChu.addMouseListener(new PanelButtonMouseAdapter(Jpanel_TrangChu){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(TrangChu_Panel);
-        }
-    });
-    
-    Jpanel_BanHang.addMouseListener(new PanelButtonMouseAdapter(Jpanel_BanHang){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(BanHang_Panel);
-        }
-    });
-    Jpanel_DoiTra.addMouseListener(new PanelButtonMouseAdapter(Jpanel_DoiTra){
-    @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(DoiTra_Panel);
-        }
-    });
-    Jpanel_KhachHang.addMouseListener(new PanelButtonMouseAdapter(Jpanel_KhachHang){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(KhachHang_Panel);
-        }
-    });
-    Jpanel_KhuyenMai.addMouseListener(new PanelButtonMouseAdapter(Jpanel_KhuyenMai){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(KhuyenMai_Panel);
-        }
-    });
-    Jpanel_NhaCungCap.addMouseListener(new PanelButtonMouseAdapter(Jpanel_NhaCungCap){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(NhaCungCap_Panel);
-        }
-    });
-    Jpanel_NhanVien.addMouseListener(new PanelButtonMouseAdapter(Jpanel_NhanVien){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(NhanVien_Panel);
-        }
-    });
-    Jpanel_PhieuNhap.addMouseListener(new PanelButtonMouseAdapter(Jpanel_PhieuNhap){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(PhieuNhap_Panel);
-        }
-    });
-    Jpanel_SanPham.addMouseListener(new PanelButtonMouseAdapter(Jpanel_SanPham){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(SanPham_Panel);
-        }
-     });
-    Jpanel_TaiKhoan.addMouseListener(new PanelButtonMouseAdapter(Jpanel_TaiKhoan){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(TaiKhoan_Panel);
-        }
-    });
-    Jpanel_ThongKe.addMouseListener(new PanelButtonMouseAdapter(Jpanel_ThongKe){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(ThongKe_Panel);
-        }
-    });
-    Jpanel_HoaDon.addMouseListener(new PanelButtonMouseAdapter(Jpanel_HoaDon){
-        @Override
-        public void mouseClicked(MouseEvent e){
-            menuClicked(HoaDon_Panel);
-        }
-    });
+        Jpanel_Main.add(TrangChu_Panel);
+        Jpanel_Main.add(BanHang_Panel);
+        Jpanel_Main.add(SanPham_Panel);
+        Jpanel_Main.add(HoaDon_Panel);
+        Jpanel_Main.add(DoiTra_Panel);
+        Jpanel_Main.add(ThongKe_Panel);
+        Jpanel_Main.add(KhachHang_Panel);
+        Jpanel_Main.add(NhanVien_Panel);
+        Jpanel_Main.add(NhaCungCap_Panel);
+        Jpanel_Main.add(PhieuNhap_Panel);
+        Jpanel_Main.add(KhuyenMai_Panel);
+        Jpanel_Main.add(TaiKhoan_Panel);
 
-    // MenuBar
-    jMenuBar1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        // Gán sự kiện click Jpanel
+        Jpanel_TrangChu.addMouseListener(new PanelButtonMouseAdapter(Jpanel_TrangChu) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(TrangChu_Panel);
+            }
+        });
 
-   // Tạo AcTion để xử lý sự kiện cho phím O
-        Action dangXuatAction = new AbstractAction("Đăng Xuất"){
-          @Override
-          public void actionPerformed(ActionEvent e){
-              System.exit(0);
-          }
+        Jpanel_BanHang.addMouseListener(new PanelButtonMouseAdapter(Jpanel_BanHang) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(BanHang_Panel);
+            }
+        });
+        Jpanel_DoiTra.addMouseListener(new PanelButtonMouseAdapter(Jpanel_DoiTra) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(DoiTra_Panel);
+            }
+        });
+        Jpanel_KhachHang.addMouseListener(new PanelButtonMouseAdapter(Jpanel_KhachHang) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(KhachHang_Panel);
+            }
+        });
+        Jpanel_KhuyenMai.addMouseListener(new PanelButtonMouseAdapter(Jpanel_KhuyenMai) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(KhuyenMai_Panel);
+            }
+        });
+        Jpanel_NhaCungCap.addMouseListener(new PanelButtonMouseAdapter(Jpanel_NhaCungCap) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(NhaCungCap_Panel);
+            }
+        });
+        Jpanel_NhanVien.addMouseListener(new PanelButtonMouseAdapter(Jpanel_NhanVien) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(NhanVien_Panel);
+            }
+        });
+        Jpanel_PhieuNhap.addMouseListener(new PanelButtonMouseAdapter(Jpanel_PhieuNhap) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(PhieuNhap_Panel);
+            }
+        });
+        Jpanel_SanPham.addMouseListener(new PanelButtonMouseAdapter(Jpanel_SanPham) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(SanPham_Panel);
+            }
+        });
+        Jpanel_TaiKhoan.addMouseListener(new PanelButtonMouseAdapter(Jpanel_TaiKhoan) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(TaiKhoan_Panel);
+            }
+        });
+        Jpanel_ThongKe.addMouseListener(new PanelButtonMouseAdapter(Jpanel_ThongKe) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(ThongKe_Panel);
+            }
+        });
+        Jpanel_HoaDon.addMouseListener(new PanelButtonMouseAdapter(Jpanel_HoaDon) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                menuClicked(HoaDon_Panel);
+            }
+        });
+
+        // MenuBar
+        jMenuBar1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+
+        // Tạo AcTion để xử lý sự kiện cho phím O
+        Action dangXuatAction = new AbstractAction("Đăng Xuất") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
         };
-        
-    // Gán Phím Crtl + O cho action này
-    dangXuatAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_O,KeyEvent.CTRL_MASK));
-    JMenu_DangXuat.setAction(dangXuatAction);
-    
-        menuClicked(TrangChu_Panel);
-        
-    
-    }
-    public void menuClicked(JPanel panel) {
-		
-		TrangChu_Panel.setVisible(false);
-		BanHang_Panel.setVisible(false);
-                SanPham_Panel.setVisible( false);
-                HoaDon_Panel.setVisible( false);
-                KhachHang_Panel.setVisible( false);
-                DoiTra_Panel.setVisible( false);
-                ThongKe_Panel.setVisible( false);
-                NhanVien_Panel.setVisible( false);
-                NhaCungCap_Panel.setVisible( false);
-                PhieuNhap_Panel.setVisible( false);
-                KhuyenMai_Panel.setVisible( false);
-                TaiKhoan_Panel.setVisible( false);
-		
-		
-		panel.setVisible(true);
-	}
-    
 
+        // Gán Phím Crtl + O cho action này
+        dangXuatAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_MASK));
+        JMenuItem_An.setAction(dangXuatAction);
+        JMenuItem_An.setPreferredSize(new java.awt.Dimension(0, 0));
+        JMenu_DangXuat.setToolTipText("Ctrl+0");
+        JMenu_DangXuat.setAccelerator(null);
+       
+        menuClicked(TrangChu_Panel);
+
+    }
+
+    public void menuClicked(JPanel panel) {
+
+        TrangChu_Panel.setVisible(false);
+        BanHang_Panel.setVisible(false);
+        SanPham_Panel.setVisible(false);
+        HoaDon_Panel.setVisible(false);
+        KhachHang_Panel.setVisible(false);
+        DoiTra_Panel.setVisible(false);
+        ThongKe_Panel.setVisible(false);
+        NhanVien_Panel.setVisible(false);
+        NhaCungCap_Panel.setVisible(false);
+        PhieuNhap_Panel.setVisible(false);
+        KhuyenMai_Panel.setVisible(false);
+        TaiKhoan_Panel.setVisible(false);
+
+        panel.setVisible(true);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -317,6 +315,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         JMenu_ThayMatKhau = new javax.swing.JMenuItem();
         JMenu_DangXuat = new javax.swing.JMenuItem();
+        JMenuItem_An = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         JMenu_GioiThieu = new javax.swing.JMenuItem();
         JMenu_TroGiup = new javax.swing.JMenuItem();
@@ -331,7 +330,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Jpanel_Users.setBackground(new java.awt.Color(0, 51, 51));
-        Jpanel_Users.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
+        Jpanel_Users.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         Jpanel_Users.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -518,6 +517,9 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         });
         jMenu1.add(JMenu_DangXuat);
 
+        JMenuItem_An.setText("jMenuItem1");
+        jMenu1.add(JMenuItem_An);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Trợ Giúp");
@@ -549,14 +551,13 @@ public class TrangChu_GUI extends javax.swing.JFrame {
 
     private void JMenu_DangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMenu_DangXuatMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_JMenu_DangXuatMouseClicked
 
     private void JMenu_GioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_GioiThieuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JMenu_GioiThieuActionPerformed
 
-    
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -567,31 +568,38 @@ public class TrangChu_GUI extends javax.swing.JFrame {
             }
         });
     }
-    	private class PanelButtonMouseAdapter extends MouseAdapter{
-		JPanel panel;
-		public PanelButtonMouseAdapter(JPanel panel) {
-			this.panel = panel;
-		}
-		@Override
-		public void mouseEntered(MouseEvent e) {
-//			panel.setBackground(new Color(112,128,144));
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-			panel.setBackground(new Color(0,51,51));
-		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-			panel.setBackground(new Color(60,179,113));
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			panel.setBackground(new Color(112,128,144));
-		}
-	}
-        //
 
-    private TrangChu_JPanel TrangChu_Panel ;
+    private class PanelButtonMouseAdapter extends MouseAdapter {
+
+        JPanel panel;
+
+        public PanelButtonMouseAdapter(JPanel panel) {
+            this.panel = panel;
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+//			panel.setBackground(new Color(112,128,144));
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            panel.setBackground(new Color(0, 51, 51));
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            panel.setBackground(new Color(60, 179, 113));
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            panel.setBackground(new Color(112, 128, 144));
+        }
+    }
+    //
+
+    private TrangChu_JPanel TrangChu_Panel;
     private BanHang_JPanel BanHang_Panel;
     private SanPham_JPanel SanPham_Panel;
     private HoaDon_JPanel HoaDon_Panel;
@@ -603,8 +611,9 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private KhuyenMai_JPanel KhuyenMai_Panel;
     private PhieuNhap_JPanel PhieuNhap_Panel;
     private TaiKhoan_JPanel TaiKhoan_Panel;
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JMenuItem_An;
     private javax.swing.JMenuItem JMenu_DangXuat;
     private javax.swing.JMenuItem JMenu_GioiThieu;
     private javax.swing.JMenuItem JMenu_ThayMatKhau;
