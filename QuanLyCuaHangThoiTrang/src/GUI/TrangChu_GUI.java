@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
+import javax.swing.Timer;
 
 public class TrangChu_GUI extends javax.swing.JFrame {
 
@@ -154,7 +157,9 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_TrangChu.addMouseListener(new PanelButtonMouseAdapter(Jpanel_TrangChu) {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 Jpanel_TrangChu.setBackground(Color.BLUE);
                 menuClicked(TrangChu_Panel);
+               
             }
         });
 
@@ -242,8 +247,27 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         JMenuItem_An.setPreferredSize(new java.awt.Dimension(0, 0));
         JMenu_DangXuat.setToolTipText("Ctrl+0");
         JMenu_DangXuat.setAccelerator(null);
+        
+          // Tạo và cấu hình timer
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lấy thời gian hiện tại
+                Date now = new Date();
+
+                // Định dạng thời gian
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                String formattedDate = dateFormat.format(now);
+
+                // Đặt thời gian đã định dạng vào JLabel
+                lbl_Time.setText(formattedDate);
+            }
+        });
+        timer.start();
        
         menuClicked(TrangChu_Panel);
+        
+        
 
     }
 
@@ -310,6 +334,8 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_KhachHang = new javax.swing.JPanel();
         lbl_IconKhachHang = new javax.swing.JLabel();
         lbl_KhachHang = new javax.swing.JLabel();
+        Jpanel_Time = new javax.swing.JPanel();
+        lbl_Time = new javax.swing.JLabel();
         Jpanel_Main = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -479,6 +505,31 @@ public class TrangChu_GUI extends javax.swing.JFrame {
 
         Jpanel_Menu.add(Jpanel_KhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 180, 50));
 
+        Jpanel_Time.setBackground(new java.awt.Color(0, 51, 51));
+
+        lbl_Time.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        lbl_Time.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_Time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_Time.setText("12:21:00");
+
+        javax.swing.GroupLayout Jpanel_TimeLayout = new javax.swing.GroupLayout(Jpanel_Time);
+        Jpanel_Time.setLayout(Jpanel_TimeLayout);
+        Jpanel_TimeLayout.setHorizontalGroup(
+            Jpanel_TimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jpanel_TimeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_Time, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        Jpanel_TimeLayout.setVerticalGroup(
+            Jpanel_TimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jpanel_TimeLayout.createSequentialGroup()
+                .addComponent(lbl_Time)
+                .addGap(0, 3, Short.MAX_VALUE))
+        );
+
+        Jpanel_Menu.add(Jpanel_Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 180, 18));
+
         getContentPane().add(Jpanel_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 700));
 
         Jpanel_Main.setBackground(new java.awt.Color(204, 204, 255));
@@ -517,7 +568,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         });
         jMenu1.add(JMenu_DangXuat);
 
-        JMenuItem_An.setText("jMenuItem1");
+        JMenuItem_An.setText("keyDangXuat");
         jMenu1.add(JMenuItem_An);
 
         jMenuBar1.add(jMenu1);
@@ -579,7 +630,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-//			panel.setBackground(new Color(112,128,144));
+			panel.setBackground(new Color(112,128,144));
         }
 
         @Override
@@ -594,7 +645,8 @@ public class TrangChu_GUI extends javax.swing.JFrame {
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            panel.setBackground(new Color(112, 128, 144));
+//            panel.setBackground(new Color(112, 128, 144));
+               panel.setBackground(new Color(60, 179, 113));
         }
     }
     //
@@ -631,6 +683,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel Jpanel_SanPham;
     private javax.swing.JPanel Jpanel_TaiKhoan;
     private javax.swing.JPanel Jpanel_ThongKe;
+    private javax.swing.JPanel Jpanel_Time;
     private javax.swing.JPanel Jpanel_TrangChu;
     private javax.swing.JPanel Jpanel_Users;
     private javax.swing.JLabel jLabel1;
@@ -661,6 +714,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_SanPham;
     private javax.swing.JLabel lbl_TaiKhoan;
     private javax.swing.JLabel lbl_ThongKe;
+    private javax.swing.JLabel lbl_Time;
     private javax.swing.JLabel lbl_TrangChu;
     private javax.swing.JLabel lbl_Users;
     // End of variables declaration//GEN-END:variables

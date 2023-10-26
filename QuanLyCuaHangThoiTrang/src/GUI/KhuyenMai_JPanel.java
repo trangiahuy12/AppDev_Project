@@ -1,7 +1,9 @@
 
 package GUI;
 
+import java.awt.Image;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -16,9 +18,31 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
         initComponents();
           setBounds(0, 0, 1020, 700);
         
-          JPanel_ThongTinCTKM.setBorder(BorderFactory.createTitledBorder("Thông tin chương trình khuyến mãi"));
-          JPanel_ThaoTac.setBorder(BorderFactory.createTitledBorder("Các thao tác"));
-          JPanel_Table.setBorder(BorderFactory.createTitledBorder("Danh sách bảng"));
+          ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+        Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
+        btn_TimKiem.setIcon(img_btnTimKiem);
+        
+        ImageIcon img_btnThem = new ImageIcon("src//pic//buttonThem.png");
+        Image scaled_btnThem = img_btnThem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnThem = new ImageIcon(scaled_btnThem);
+        btn_Them.setIcon(img_btnThem);
+        
+        ImageIcon img_btnLamMoi = new ImageIcon("src//pic//buttonLamMoi.png");
+        Image scaled_btnLamMoi = img_btnLamMoi.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnLamMoi = new ImageIcon(scaled_btnLamMoi);
+        btn_LamMoi.setIcon(img_btnLamMoi);
+        
+        ImageIcon img_btnCapNhat = new ImageIcon("src//pic//buttonCapNhat.png");
+        Image scaled_btnCapNhat = img_btnCapNhat.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnCapNhat = new ImageIcon(scaled_btnCapNhat);
+        btn_CapNhat.setIcon(img_btnCapNhat);
+        
+        ImageIcon img_btnXoa = new ImageIcon("src//pic//buttonXoa.png");
+        Image scaled_btnXoa = img_btnXoa.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnXoa = new ImageIcon(scaled_btnXoa);
+        btn_Xoa.setIcon(img_btnXoa);
+            
     }
 
     /**
@@ -48,11 +72,11 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
         JPanel_ThaoTac = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btn_Xoa = new javax.swing.JButton();
+        btn_TimKiem = new javax.swing.JButton();
+        btn_LamMoi = new javax.swing.JButton();
+        btn_Them = new javax.swing.JButton();
+        btn_CapNhat = new javax.swing.JButton();
         JPanel_Table = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -88,6 +112,7 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 50));
 
         JPanel_ThongTinCTKM.setBackground(new java.awt.Color(187, 205, 197));
+        JPanel_ThongTinCTKM.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Thông tin chương trình khuyến mãi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         JPanel_ThongTinCTKM.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -125,41 +150,58 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
         jLabel8.setPreferredSize(new java.awt.Dimension(109, 30));
         JPanel_ThongTinCTKM.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 15, 120, 30));
 
-        add(JPanel_ThongTinCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1020, 100));
+        add(JPanel_ThongTinCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1000, 100));
 
         JPanel_ThaoTac.setBackground(new java.awt.Color(187, 205, 197));
+        JPanel_ThaoTac.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         JPanel_ThaoTac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel4.setText("Mã Chương Trình");
         jLabel4.setPreferredSize(new java.awt.Dimension(109, 30));
         JPanel_ThaoTac.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 20, 120, 30));
-        JPanel_ThaoTac.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 200, 30));
+        JPanel_ThaoTac.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 170, 30));
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton1.setText("Xóa");
-        JPanel_ThaoTac.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 110, 30));
+        btn_Xoa.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Xoa.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_Xoa.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Xoa.setText("Xóa");
+        JPanel_ThaoTac.add(btn_Xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 110, 30));
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton2.setText("Tìm Kiếm");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        JPanel_ThaoTac.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 110, 30));
+        btn_TimKiem.setBackground(new java.awt.Color(0, 51, 51));
+        btn_TimKiem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_TimKiem.setForeground(new java.awt.Color(255, 255, 255));
+        btn_TimKiem.setText("Tìm Kiếm");
+        btn_TimKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        JPanel_ThaoTac.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 120, 30));
 
-        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton3.setText("Làm Mới");
-        JPanel_ThaoTac.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 110, 30));
+        btn_LamMoi.setBackground(new java.awt.Color(0, 51, 51));
+        btn_LamMoi.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_LamMoi.setForeground(new java.awt.Color(255, 255, 255));
+        btn_LamMoi.setText("Làm Mới");
+        btn_LamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LamMoiActionPerformed(evt);
+            }
+        });
+        JPanel_ThaoTac.add(btn_LamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 120, 30));
 
-        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton4.setText("Thêm");
-        JPanel_ThaoTac.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 110, 30));
+        btn_Them.setBackground(new java.awt.Color(0, 51, 51));
+        btn_Them.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_Them.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Them.setText("Thêm");
+        JPanel_ThaoTac.add(btn_Them, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 110, 30));
 
-        jButton5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton5.setText("Cập Nhật");
-        JPanel_ThaoTac.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 110, 30));
+        btn_CapNhat.setBackground(new java.awt.Color(0, 51, 51));
+        btn_CapNhat.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_CapNhat.setForeground(new java.awt.Color(255, 255, 255));
+        btn_CapNhat.setText("Cập Nhật");
+        JPanel_ThaoTac.add(btn_CapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 120, 30));
 
-        add(JPanel_ThaoTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1020, 60));
+        add(JPanel_ThaoTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 1000, 60));
 
         JPanel_Table.setBackground(new java.awt.Color(187, 205, 197));
+        JPanel_Table.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Danh sách bảng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,30 +219,34 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
             JPanel_TableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanel_TableLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)
                 .addContainerGap())
         );
         JPanel_TableLayout.setVerticalGroup(
             JPanel_TableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanel_TableLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        add(JPanel_Table, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 1020, 460));
+        add(JPanel_Table, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 1000, 460));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_LamMoiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel_Table;
     private javax.swing.JPanel JPanel_ThaoTac;
     private javax.swing.JPanel JPanel_ThongTinCTKM;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btn_CapNhat;
+    private javax.swing.JButton btn_LamMoi;
+    private javax.swing.JButton btn_Them;
+    private javax.swing.JButton btn_TimKiem;
+    private javax.swing.JButton btn_Xoa;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;

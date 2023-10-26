@@ -20,7 +20,7 @@ public class TrangChu_JPanel extends javax.swing.JPanel {
         initComponents();
         setVisible(true);
         setBounds(0, 0, 1020, 720);
-         ImageIcon img_TrangChu = new ImageIcon("src\\pic\\cuahangtc.png");
+         ImageIcon img_TrangChu = new ImageIcon("src\\pic\\hinhnenTrangChu.png");
     Image scaled_TrangChu = img_TrangChu.getImage().getScaledInstance(1020, 720, Image.SCALE_SMOOTH);
     img_TrangChu = new ImageIcon(scaled_TrangChu);
     lbl_IConTrangChu.setIcon(img_TrangChu);

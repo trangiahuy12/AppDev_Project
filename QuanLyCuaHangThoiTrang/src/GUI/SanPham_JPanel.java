@@ -292,9 +292,11 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         panel_ThaoTac.setBackground(new java.awt.Color(187, 205, 197));
         panel_ThaoTac.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Các thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         panel_ThaoTac.setPreferredSize(new java.awt.Dimension(932, 60));
+        panel_ThaoTac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_MaSanPham_Search.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_MaSanPham_Search.setText("Mã sản phẩm");
+        panel_ThaoTac.add(lbl_MaSanPham_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, -1, -1));
 
         btn_TimKiem.setBackground(new java.awt.Color(0, 51, 51));
         btn_TimKiem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -302,6 +304,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         btn_TimKiem.setText("Tìm kiếm");
         btn_TimKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_TimKiem.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        panel_ThaoTac.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 19, 120, 30));
 
         btn_LamMoi.setBackground(new java.awt.Color(0, 51, 51));
         btn_LamMoi.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -310,6 +313,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         btn_LamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_LamMoi.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btn_LamMoi.setPreferredSize(new java.awt.Dimension(90, 31));
+        panel_ThaoTac.add(btn_LamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 19, 120, 30));
 
         btn_Them.setBackground(new java.awt.Color(0, 51, 51));
         btn_Them.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -317,6 +321,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         btn_Them.setText("Thêm");
         btn_Them.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Them.setPreferredSize(new java.awt.Dimension(90, 31));
+        panel_ThaoTac.add(btn_Them, new org.netbeans.lib.awtextra.AbsoluteConstraints(557, 19, 120, 30));
 
         btn_CapNhat.setBackground(new java.awt.Color(0, 51, 51));
         btn_CapNhat.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -325,51 +330,17 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         btn_CapNhat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_CapNhat.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btn_CapNhat.setPreferredSize(new java.awt.Dimension(90, 31));
+        panel_ThaoTac.add(btn_CapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(683, 19, 120, 30));
 
         txt_MaSanPham_Search.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        panel_ThaoTac.add(txt_MaSanPham_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 21, 194, 25));
 
         btn_KiemTraTonKho.setBackground(new java.awt.Color(0, 51, 51));
         btn_KiemTraTonKho.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         btn_KiemTraTonKho.setForeground(java.awt.Color.white);
         btn_KiemTraTonKho.setText("Kiểm tra kho hàng");
         btn_KiemTraTonKho.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-
-        javax.swing.GroupLayout panel_ThaoTacLayout = new javax.swing.GroupLayout(panel_ThaoTac);
-        panel_ThaoTac.setLayout(panel_ThaoTacLayout);
-        panel_ThaoTacLayout.setHorizontalGroup(
-            panel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_ThaoTacLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_MaSanPham_Search)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_MaSanPham_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_KiemTraTonKho)
-                .addContainerGap())
-        );
-        panel_ThaoTacLayout.setVerticalGroup(
-            panel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_ThaoTacLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(panel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lbl_MaSanPham_Search)
-                    .addGroup(panel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_MaSanPham_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_KiemTraTonKho, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 6, Short.MAX_VALUE))
-        );
+        panel_ThaoTac.add(btn_KiemTraTonKho, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 19, -1, 30));
 
         panel_DanhSachSanPham.setBackground(new java.awt.Color(187, 205, 197));
         panel_DanhSachSanPham.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Bảng danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
