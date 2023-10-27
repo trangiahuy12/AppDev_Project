@@ -12,14 +12,16 @@ import javax.swing.ImageIcon;
  * @author 84335
  */
 public class DangNhap_GUI extends javax.swing.JFrame {
+    private LamMoiDangNhap_GUI lammoiDangNhap_GUI = new LamMoiDangNhap_GUI();
+//    private ThayDoiMatKhau_GUI thaydoimatkhau_gui = new ThayDoiMatKhau_GUI();
 
     /**
      * Creates new form DangNhap_GUI
      */
     public DangNhap_GUI() {
         initComponents();
-        String a = "<HTML><u>Quên mật khẩu?</u></HTML>";
-        jlb_QuanMatKhau.setText(a);
+        String b = "<HTML><u>Quên mật khẩu?</u></HTML>";
+        jlb_QuanMatKhau.setText(b);
         ImageIcon img_btnTimKiem = new ImageIcon("src//pic//stores.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(378, 304, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
@@ -78,6 +80,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         jlb_TenTaiKhoan.setText("Tên tài khoản");
 
         jtf_TenTaiKhoan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jtf_TenTaiKhoan.setText("NHANVIEN");
         jtf_TenTaiKhoan.setToolTipText("");
         jtf_TenTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,9 +89,12 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         });
 
         jpf_MatKhau.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jpf_MatKhau.setText("123456");
         jpf_MatKhau.setToolTipText("");
 
+        btn_DangNhap.setBackground(new java.awt.Color(0, 51, 51));
         btn_DangNhap.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        btn_DangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btn_DangNhap.setText("Đăng nhập");
         btn_DangNhap.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_DangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -103,6 +109,11 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         jlb_QuanMatKhau.setForeground(new java.awt.Color(51, 153, 255));
         jlb_QuanMatKhau.setText("Quên mật khẩu?");
         jlb_QuanMatKhau.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlb_QuanMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlb_QuanMatKhauMouseClicked(evt);
+            }
+        });
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 440));
@@ -116,7 +127,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(btn_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jlb_QuanMatKhau)
                         .addGap(47, 47, 47))
@@ -144,14 +155,14 @@ public class DangNhap_GUI extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_TenTaiKhoan)
-                    .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jpf_MatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpf_MatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlb_MatKhau))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlb_QuanMatKhau))
                 .addGap(76, 76, 76))
             .addGroup(layout.createSequentialGroup()
@@ -171,6 +182,15 @@ public class DangNhap_GUI extends javax.swing.JFrame {
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_DangNhapActionPerformed
+    private void jlb_QuanMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlb_QuanMatKhauMouseClicked
+
+             
+        lammoiDangNhap_GUI.setVisible(true);
+        this.setVisible(false);
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlb_QuanMatKhauMouseClicked
 
     /**
      * @param args the command line arguments

@@ -52,7 +52,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="btn_DangNhap1" min="-2" pref="115" max="-2" attributes="0"/>
+                              <Component id="btn_ThuyDoi" min="-2" pref="115" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btn_HuyBo" min="-2" pref="115" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -66,7 +66,7 @@
                               <EmptySpace pref="37" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jtf_TenTaiKhoan" alignment="1" min="-2" pref="227" max="-2" attributes="0"/>
-                                  <Component id="jpf_MatKhauHienTai" alignment="1" min="-2" pref="227" max="-2" attributes="0"/>
+                                  <Component id="jpf_MatKhauHienTai" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jpf_MatKhauMoi" alignment="1" min="-2" pref="227" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -89,21 +89,21 @@
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlb_TenTaiKhoan" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtf_TenTaiKhoan" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="jtf_TenTaiKhoan" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlb_MatKhauHienTai" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jpf_MatKhauHienTai" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jpf_MatKhauHienTai" alignment="3" pref="30" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jlb_MatKhauMoi" min="-2" max="-2" attributes="0"/>
-                  <Component id="jpf_MatKhauMoi" min="-2" max="-2" attributes="0"/>
+                  <Component id="jpf_MatKhauMoi" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="34" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btn_DangNhap1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="btn_ThuyDoi" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="btn_HuyBo" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -169,8 +169,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_HuyBo">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="0" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="H&#x1ee7;y b&#x1ecf;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -183,15 +189,22 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_HuyBoMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_HuyBoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_DangNhap1">
+    <Component class="javax.swing.JButton" name="btn_ThuyDoi">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="0" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng nh&#x1ead;p"/>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Thay &#x111;&#x1ed5;i"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
             <BevelBorder/>
@@ -202,7 +215,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_DangNhap1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ThuyDoiActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jlb_MatKhauMoi">

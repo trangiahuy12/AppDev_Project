@@ -16,7 +16,7 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
     public ThayDoiMatKhau_GUI() {
         initComponents();
         String a = "<HTML><u>Quên mật khẩu?</u></HTML>";
-      
+       setLocationRelativeTo(null);
     }
 
     /**
@@ -36,7 +36,7 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
         jtf_TenTaiKhoan = new javax.swing.JTextField();
         jpf_MatKhauHienTai = new javax.swing.JPasswordField();
         btn_HuyBo = new javax.swing.JButton();
-        btn_DangNhap1 = new javax.swing.JButton();
+        btn_ThuyDoi = new javax.swing.JButton();
         jlb_MatKhauMoi = new javax.swing.JLabel();
         jpf_MatKhauMoi = new javax.swing.JPasswordField();
 
@@ -80,23 +80,32 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
         jpf_MatKhauHienTai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jpf_MatKhauHienTai.setToolTipText("");
 
+        btn_HuyBo.setBackground(new java.awt.Color(0, 51, 51));
         btn_HuyBo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btn_HuyBo.setForeground(new java.awt.Color(255, 255, 255));
         btn_HuyBo.setText("Hủy bỏ");
         btn_HuyBo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_HuyBo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_HuyBo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_HuyBoMouseClicked(evt);
+            }
+        });
         btn_HuyBo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_HuyBoActionPerformed(evt);
             }
         });
 
-        btn_DangNhap1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btn_DangNhap1.setText("Đăng nhập");
-        btn_DangNhap1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_DangNhap1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_DangNhap1.addActionListener(new java.awt.event.ActionListener() {
+        btn_ThuyDoi.setBackground(new java.awt.Color(0, 51, 51));
+        btn_ThuyDoi.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btn_ThuyDoi.setForeground(new java.awt.Color(255, 255, 255));
+        btn_ThuyDoi.setText("Thay đổi");
+        btn_ThuyDoi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_ThuyDoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_ThuyDoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_DangNhap1ActionPerformed(evt);
+                btn_ThuyDoiActionPerformed(evt);
             }
         });
 
@@ -117,7 +126,7 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
-                                .addComponent(btn_DangNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_ThuyDoi, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_HuyBo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28))
@@ -129,7 +138,7 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jpf_MatKhauHienTai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jpf_MatKhauHienTai, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jpf_MatKhauMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -144,18 +153,18 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_TenTaiKhoan)
-                    .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_MatKhauHienTai)
-                    .addComponent(jpf_MatKhauHienTai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpf_MatKhauHienTai, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlb_MatKhauMoi)
-                    .addComponent(jpf_MatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpf_MatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_DangNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ThuyDoi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_HuyBo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
@@ -173,9 +182,14 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_HuyBoActionPerformed
 
-    private void btn_DangNhap1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhap1ActionPerformed
+    private void btn_ThuyDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThuyDoiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_DangNhap1ActionPerformed
+    }//GEN-LAST:event_btn_ThuyDoiActionPerformed
+
+    private void btn_HuyBoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_HuyBoMouseClicked
+        // TODO add your handling code here:
+       this.setVisible(false);
+    }//GEN-LAST:event_btn_HuyBoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -214,8 +228,8 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_DangNhap1;
     private javax.swing.JButton btn_HuyBo;
+    private javax.swing.JButton btn_ThuyDoi;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlb_MatKhauHienTai;
