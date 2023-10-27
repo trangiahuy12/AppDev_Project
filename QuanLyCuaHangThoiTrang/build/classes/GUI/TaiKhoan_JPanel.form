@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-<<<<<<< HEAD
+<<<<<<< HEAD:QuanLyCuaHangThoiTrang/src/gui/TaiKhoan_JPanel.form
 =======
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -11,7 +11,7 @@
       <Dimension value="[1020, 700]"/>
     </Property>
   </Properties>
->>>>>>> 0f81a987a36ea1cdfa6ee7991cc09e09e7ff679c
+>>>>>>> 0f81a987a36ea1cdfa6ee7991cc09e09e7ff679c:QuanLyCuaHangThoiTrang/src/GUI/TaiKhoan_JPanel.form
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>

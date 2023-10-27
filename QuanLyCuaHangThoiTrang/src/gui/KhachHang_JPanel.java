@@ -1,14 +1,9 @@
-<<<<<<< HEAD:QuanLyCuaHangThoiTrang/src/gui/KhachHang_JPanel.java
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package gui;
-=======
-
-package GUI;
->>>>>>> 0f81a987a36ea1cdfa6ee7991cc09e09e7ff679c:QuanLyCuaHangThoiTrang/src/GUI/KhachHang_JPanel.java
-
 import java.awt.Image;
 import javax.swing.ImageIcon;
 

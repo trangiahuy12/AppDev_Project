@@ -285,8 +285,6 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(table_DanhSachNV);
 
         panel_TableNhanVien.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 979, 350));
-
-<<<<<<< HEAD:QuanLyCuaHangThoiTrang/src/gui/NhanVien_JPanel.java
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -313,10 +311,9 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
                 .addComponent(panel_TableNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-=======
+
         add(panel_TableNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 1000, 380));
->>>>>>> 0f81a987a36ea1cdfa6ee7991cc09e09e7ff679c:QuanLyCuaHangThoiTrang/src/GUI/NhanVien_JPanel.java
-    }// </editor-fold>//GEN-END:initComponents
+   }// </editor-fold>//GEN-END:initComponents
 
     private void text_emailNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_emailNVActionPerformed
         // TODO add your handling code here:
