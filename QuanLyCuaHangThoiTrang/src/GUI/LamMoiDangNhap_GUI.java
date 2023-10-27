@@ -4,19 +4,22 @@
  */
 package GUI;
 
+import util.email;
+
 /**
  *
  * @author 84335
  */
 public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form DangNhap_GUI
      */
     public LamMoiDangNhap_GUI() {
         initComponents();
-        String a = "<HTML><u>Quên mật khẩu?</u></HTML>";
+        String a = "<HTML><u>Đăng nhập</u></HTML>";
         jlb_DangNhap.setText(a);
+         setLocationRelativeTo(null);
     }
 
     /**
@@ -34,9 +37,9 @@ public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
         jlb_Email = new javax.swing.JLabel();
         jlb_TenTaiKhoan = new javax.swing.JLabel();
         jtf_TenTaiKhoan = new javax.swing.JTextField();
-        jpf_Email = new javax.swing.JPasswordField();
         btn_LamMoi = new javax.swing.JButton();
         jlb_DangNhap = new javax.swing.JLabel();
+        jtf_email = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,13 +78,17 @@ public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
             }
         });
 
-        jpf_Email.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jpf_Email.setToolTipText("");
-
+        btn_LamMoi.setBackground(new java.awt.Color(0, 51, 51));
         btn_LamMoi.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btn_LamMoi.setForeground(new java.awt.Color(255, 255, 255));
         btn_LamMoi.setText("Làm mới");
         btn_LamMoi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_LamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_LamMoi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_LamMoiMouseClicked(evt);
+            }
+        });
         btn_LamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_LamMoiActionPerformed(evt);
@@ -93,6 +100,19 @@ public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
         jlb_DangNhap.setForeground(new java.awt.Color(51, 153, 255));
         jlb_DangNhap.setText("Đăng Nhập?");
         jlb_DangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlb_DangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlb_DangNhapMouseClicked(evt);
+            }
+        });
+
+        jtf_email.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jtf_email.setToolTipText("");
+        jtf_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf_emailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,8 +122,8 @@ public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
-                        .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
+                        .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
                         .addComponent(jlb_DangNhap))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -111,9 +131,9 @@ public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
                             .addComponent(jlb_Email)
                             .addComponent(jlb_TenTaiKhoan))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jpf_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jlf_LamMoiMatKhau)))
@@ -127,16 +147,16 @@ public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_TenTaiKhoan)
-                    .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtf_TenTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlb_Email)
-                    .addComponent(jpf_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlb_DangNhap))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jlf_LamMoiMatKhau.getAccessibleContext().setAccessibleParent(jlf_LamMoiMatKhau);
@@ -151,6 +171,26 @@ public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
     private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_LamMoiActionPerformed
+
+    private void jlb_DangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlb_DangNhapMouseClicked
+        DangNhap_GUI dn_gui = new DangNhap_GUI();
+        dn_gui.setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlb_DangNhapMouseClicked
+
+    private void btn_LamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_LamMoiMouseClicked
+        // TODO add your handling code here:
+        
+
+        String to = jtf_email.getText();
+        String text = "1234";
+        email.sendMess(to, text);
+    }//GEN-LAST:event_btn_LamMoiMouseClicked
+
+    private void jtf_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_emailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,7 +236,7 @@ public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jlb_Email;
     private javax.swing.JLabel jlb_TenTaiKhoan;
     private javax.swing.JLabel jlf_LamMoiMatKhau;
-    private javax.swing.JPasswordField jpf_Email;
     private javax.swing.JTextField jtf_TenTaiKhoan;
+    private javax.swing.JTextField jtf_email;
     // End of variables declaration//GEN-END:variables
 }
