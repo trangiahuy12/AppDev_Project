@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author 84335
@@ -16,6 +19,14 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
     public TaiKhoan_JPanel() {
         initComponents();
         setBounds(0, 0, 1020, 720);
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+        Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
+        btn_TimKiem.setIcon(img_btnTimKiem);
+        ImageIcon img_btnXoa = new ImageIcon("src//pic//buttonXoa.png");
+        Image scaled_btnXoa = img_btnXoa.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnXoa = new ImageIcon(scaled_btnXoa);
+        btn_Xoa.setIcon(img_btnXoa);
     }
 
     /**
@@ -32,87 +43,69 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
         panel_ThaoTacTK = new javax.swing.JPanel();
         lbl_NhapTenTK = new javax.swing.JLabel();
         txt_NhapTenTK = new javax.swing.JTextField();
-        btn_TimKiemTK = new javax.swing.JButton();
-        btn_XoaTK = new javax.swing.JButton();
+        btn_TimKiem = new javax.swing.JButton();
+        btn_Xoa = new javax.swing.JButton();
         panel_TableTaiKhoan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_DanhSachTK = new javax.swing.JTable();
 
-        panel_QuanLyTaiKhoan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        setBackground(new java.awt.Color(187, 205, 197));
+        setPreferredSize(new java.awt.Dimension(1020, 700));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel_QuanLyTaiKhoan.setBackground(new java.awt.Color(187, 205, 197));
+        panel_QuanLyTaiKhoan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_QuanLyTaiKhoan.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        lbl_QuanLyTaiKhoan.setText("Quản Lý Tài Khoản");
+        lbl_QuanLyTaiKhoan.setText("QUẢN LÝ TÀI KHOẢN");
+        lbl_QuanLyTaiKhoan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        panel_QuanLyTaiKhoan.add(lbl_QuanLyTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
-        javax.swing.GroupLayout panel_QuanLyTaiKhoanLayout = new javax.swing.GroupLayout(panel_QuanLyTaiKhoan);
-        panel_QuanLyTaiKhoan.setLayout(panel_QuanLyTaiKhoanLayout);
-        panel_QuanLyTaiKhoanLayout.setHorizontalGroup(
-            panel_QuanLyTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_QuanLyTaiKhoanLayout.createSequentialGroup()
-                .addGap(441, 441, 441)
-                .addComponent(lbl_QuanLyTaiKhoan)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panel_QuanLyTaiKhoanLayout.setVerticalGroup(
-            panel_QuanLyTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_QuanLyTaiKhoanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_QuanLyTaiKhoan)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(panel_QuanLyTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1010, 50));
 
-        panel_ThaoTacTK.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Các thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 18))); // NOI18N
+        panel_ThaoTacTK.setBackground(new java.awt.Color(187, 205, 197));
+        panel_ThaoTacTK.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Các thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        panel_ThaoTacTK.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_NhapTenTK.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_NhapTenTK.setText("Nhập tên tài khoản");
+        panel_ThaoTacTK.add(lbl_NhapTenTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
 
         txt_NhapTenTK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_NhapTenTKActionPerformed(evt);
             }
         });
+        panel_ThaoTacTK.add(txt_NhapTenTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 330, -1));
 
-        btn_TimKiemTK.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        btn_TimKiemTK.setText("Tìm kiếm");
-        btn_TimKiemTK.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_TimKiem.setBackground(new java.awt.Color(0, 51, 51));
+        btn_TimKiem.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        btn_TimKiem.setForeground(new java.awt.Color(255, 255, 255));
+        btn_TimKiem.setText("Tìm kiếm");
+        btn_TimKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panel_ThaoTacTK.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, -1));
 
-        btn_XoaTK.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        btn_XoaTK.setText("Xoá");
-        btn_XoaTK.setToolTipText("");
-        btn_XoaTK.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_XoaTK.addActionListener(new java.awt.event.ActionListener() {
+        btn_Xoa.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Xoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        btn_Xoa.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Xoa.setText("Xoá");
+        btn_Xoa.setToolTipText("");
+        btn_Xoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Xoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_XoaTKActionPerformed(evt);
+                btn_XoaActionPerformed(evt);
             }
         });
+        panel_ThaoTacTK.add(btn_Xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, -1, -1));
 
-        javax.swing.GroupLayout panel_ThaoTacTKLayout = new javax.swing.GroupLayout(panel_ThaoTacTK);
-        panel_ThaoTacTK.setLayout(panel_ThaoTacTKLayout);
-        panel_ThaoTacTKLayout.setHorizontalGroup(
-            panel_ThaoTacTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_ThaoTacTKLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_NhapTenTK)
-                .addGap(28, 28, 28)
-                .addComponent(txt_NhapTenTK, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
-                .addComponent(btn_TimKiemTK)
-                .addGap(18, 18, 18)
-                .addComponent(btn_XoaTK)
-                .addGap(150, 150, 150))
-        );
-        panel_ThaoTacTKLayout.setVerticalGroup(
-            panel_ThaoTacTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_ThaoTacTKLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(panel_ThaoTacTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_NhapTenTK)
-                    .addComponent(txt_NhapTenTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_TimKiemTK)
-                    .addComponent(btn_XoaTK))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(panel_ThaoTacTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1000, 70));
 
-        panel_TableTaiKhoan.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bảng danh sách tài khoản", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
+        panel_TableTaiKhoan.setBackground(new java.awt.Color(187, 205, 197));
+        panel_TableTaiKhoan.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Bảng danh sách tài khoản", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        panel_TableTaiKhoan.setPreferredSize(new java.awt.Dimension(841, 300));
+        panel_TableTaiKhoan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(525, 0));
 
         table_DanhSachTK.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,61 +115,26 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
                 "Tên tài khoản", "Thời gian đăng nhập gần nhất"
             }
         ));
+        table_DanhSachTK.setPreferredSize(new java.awt.Dimension(150, 100));
         jScrollPane1.setViewportView(table_DanhSachTK);
 
-        javax.swing.GroupLayout panel_TableTaiKhoanLayout = new javax.swing.GroupLayout(panel_TableTaiKhoan);
-        panel_TableTaiKhoan.setLayout(panel_TableTaiKhoanLayout);
-        panel_TableTaiKhoanLayout.setHorizontalGroup(
-            panel_TableTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_TableTaiKhoanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1))
-        );
-        panel_TableTaiKhoanLayout.setVerticalGroup(
-            panel_TableTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_TableTaiKhoanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        panel_TableTaiKhoan.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 980, 480));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel_QuanLyTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel_ThaoTacTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel_TableTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panel_QuanLyTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel_ThaoTacTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel_TableTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(panel_TableTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 1000, 560));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_NhapTenTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NhapTenTKActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_NhapTenTKActionPerformed
 
-    private void btn_XoaTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaTKActionPerformed
+    private void btn_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_XoaTKActionPerformed
+    }//GEN-LAST:event_btn_XoaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_TimKiemTK;
-    private javax.swing.JButton btn_XoaTK;
+    private javax.swing.JButton btn_TimKiem;
+    private javax.swing.JButton btn_Xoa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_NhapTenTK;
     private javax.swing.JLabel lbl_QuanLyTaiKhoan;
