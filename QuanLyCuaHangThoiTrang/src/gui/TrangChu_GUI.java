@@ -14,10 +14,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
@@ -175,6 +172,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
                 menuClicked(DoiTra_Panel);
             }
         });
+        
         Jpanel_KhachHang.addMouseListener(new PanelButtonMouseAdapter(Jpanel_KhachHang) {
             @Override
             public void mouseClicked(MouseEvent e) {
