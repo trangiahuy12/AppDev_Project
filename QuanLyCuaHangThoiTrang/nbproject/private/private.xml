@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/bus/ChuongTrinhKhuyenMai_bus.java</file>
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/Interface/ChuongTrinhKhuyenMai_Interface.java</file>
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/entity/ChuongTrinhKhuyenMaiEntity.java</file>
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/ChuongTrinhKhuyenMai_dao.java</file>
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/HoaDon_JPanel.java</file>
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/HoaDon_dao.java</file>
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/TrangChu_GUI.java</file>
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/KhuyenMai_JPanel.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/LamMoiMatKhau_GUI.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/DangNhap_GUI.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/TaiKhoan_dao.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/NhanVien_dao.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/ThayDoiMatKhau_GUI.java</file>
         </group>
     </open-files>
 </project-private>

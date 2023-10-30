@@ -21,8 +21,7 @@ import java.util.ArrayList;
  * @author DELL
  */
 public class ChuongTrinhKhuyenMai_dao implements ChuongTrinhKhuyenMai_Interface{
-    public ChuongTrinhKhuyenMai_dao(){
-        
+    public ChuongTrinhKhuyenMai_dao(){      
     }
 
    
