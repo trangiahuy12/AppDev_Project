@@ -1,16 +1,17 @@
 package entity;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 public class ChuongTrinhKhuyenMaiEntity {
 	private String maCTKM, tenCTKM;
 	private double soTienToiThieu;
 	private int giamGia;
-	private LocalDate ngayBatDau;
-	private LocalDate ngayKetThuc;
+	private Date ngayBatDau;
+	private Date ngayKetThuc;
 	public ChuongTrinhKhuyenMaiEntity(String maCTKM, String tenCTKM, double soTienToiThieu, int giamGia,
-			LocalDate ngayBatDau, LocalDate ngayKetThuc) {
+			Date ngayBatDau, Date ngayKetThuc) {
 		super();
 		this.maCTKM = maCTKM;
 		this.tenCTKM = tenCTKM;
@@ -50,16 +51,16 @@ public class ChuongTrinhKhuyenMaiEntity {
 	public void setGiamGia(int giamGia) {
 		this.giamGia = giamGia;
 	}
-	public LocalDate getNgayBatDau() {
+	public Date getNgayBatDau() {
 		return ngayBatDau;
 	}
-	public void setNgayBatDau(LocalDate ngayBatDau) {
+	public void setNgayBatDau(Date ngayBatDau) {
 		this.ngayBatDau = ngayBatDau;
 	}
-	public LocalDate getNgayKetThuc() {
+	public Date getNgayKetThuc() {
 		return ngayKetThuc;
 	}
-	public void setNgayKetThuc(LocalDate ngayKetThuc) {
+	public void setNgayKetThuc(Date ngayKetThuc) {
 		this.ngayKetThuc = ngayKetThuc;
 	}
 	@Override
