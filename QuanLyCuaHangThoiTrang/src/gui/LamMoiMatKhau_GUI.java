@@ -10,12 +10,12 @@ import util.email;
  *
  * @author 84335
  */
-public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
+public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
     
     /**
      * Creates new form DangNhap_GUI
      */
-    public LamMoiDangNhap_GUI() {
+    public LamMoiMatKhau_GUI() {
         initComponents();
         String a = "<HTML><u>Đăng nhập</u></HTML>";
         jlb_DangNhap.setText(a);
@@ -209,21 +209,23 @@ public class LamMoiDangNhap_GUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LamMoiDangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LamMoiMatKhau_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LamMoiDangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LamMoiMatKhau_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LamMoiDangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LamMoiMatKhau_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LamMoiDangNhap_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LamMoiMatKhau_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LamMoiDangNhap_GUI().setVisible(true);
+                new LamMoiMatKhau_GUI().setVisible(true);
             }
         });
     }

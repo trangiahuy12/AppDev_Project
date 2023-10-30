@@ -12,7 +12,8 @@ import javax.swing.ImageIcon;
  * @author 84335
  */
 public class DangNhap_GUI extends javax.swing.JFrame {
-    private LamMoiDangNhap_GUI lammoiDangNhap_GUI = new LamMoiDangNhap_GUI();
+
+    private LamMoiMatKhau_GUI lammoiDangNhap_GUI = new LamMoiMatKhau_GUI();
 //    private ThayDoiMatKhau_GUI thaydoimatkhau_gui = new ThayDoiMatKhau_GUI();
 
     /**
@@ -98,6 +99,11 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         btn_DangNhap.setText("Đăng nhập");
         btn_DangNhap.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_DangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_DangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_DangNhapMouseClicked(evt);
+            }
+        });
         btn_DangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_DangNhapActionPerformed(evt);
@@ -184,13 +190,18 @@ public class DangNhap_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_DangNhapActionPerformed
     private void jlb_QuanMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlb_QuanMatKhauMouseClicked
 
-             
         lammoiDangNhap_GUI.setVisible(true);
         this.setVisible(false);
 
-
         // TODO add your handling code here:
     }//GEN-LAST:event_jlb_QuanMatKhauMouseClicked
+
+    private void btn_DangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DangNhapMouseClicked
+        TrangChu_GUI trangChu_Gui = new TrangChu_GUI();
+        this.setVisible(false);
+        trangChu_Gui.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_DangNhapMouseClicked
 
     /**
      * @param args the command line arguments
