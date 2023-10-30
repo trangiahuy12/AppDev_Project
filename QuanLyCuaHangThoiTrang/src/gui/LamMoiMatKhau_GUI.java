@@ -4,6 +4,14 @@
  */
 package gui;
 
+import connectDB.ConnectDB;
+import dao.NhanVien_dao;
+import dao.TaiKhoan_dao;
+import entity.TaiKhoanEntity;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import util.email;
 
 /**
@@ -11,7 +19,7 @@ import util.email;
  * @author 84335
  */
 public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form DangNhap_GUI
      */
@@ -19,7 +27,7 @@ public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
         initComponents();
         String a = "<HTML><u>Đăng nhập</u></HTML>";
         jlb_DangNhap.setText(a);
-         setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -71,6 +79,7 @@ public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
         jlb_TenTaiKhoan.setText("Tên tài khoản");
 
         jtf_TenTaiKhoan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jtf_TenTaiKhoan.setText("0123456789");
         jtf_TenTaiKhoan.setToolTipText("");
         jtf_TenTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +116,7 @@ public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
         });
 
         jtf_email.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jtf_email.setText("hoang12@gmail.com");
         jtf_email.setToolTipText("");
         jtf_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,12 +190,34 @@ public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jlb_DangNhapMouseClicked
 
     private void btn_LamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_LamMoiMouseClicked
-        // TODO add your handling code here:
-        
+        try {
+            // TODO add your handling code here:
+            String mail = jtf_email.getText().trim();
+            String sdt = jtf_TenTaiKhoan.getText().trim();
+            System.out.println(mail);
+            System.out.println(sdt);
+            dao.NhanVien_dao nv_dao = new NhanVien_dao();
+            if (nv_dao.checkNV(mail, sdt) == false) {
+                JOptionPane.showMessageDialog(null, "Tài khoản và email không trùng khớp");
+            } else {
+                dao.TaiKhoan_dao tk_dao = new TaiKhoan_dao();
+                double number = Math.random();
+                int interger = (int) (number * 1000000);
+                String text = interger + "";
+                entity.TaiKhoanEntity tk = new TaiKhoanEntity(sdt, text);
+                
+                if (tk_dao.lamMoiMatKhau(tk) == true) {
+                    email.sendMess(mail, text);
+                    JOptionPane.showMessageDialog(null, "Đã làm mới mật khẩu");
+                } else {
+                    JOptionPane.showMessageDialog(null, "lỗi!");
+                }
 
-        String to = jtf_email.getText();
-        String text = "1234";
-        email.sendMess(to, text);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LamMoiMatKhau_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_LamMoiMouseClicked
 
     private void jtf_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_emailActionPerformed
@@ -225,6 +257,11 @@ public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    ConnectDB.getInstance().connect();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 new LamMoiMatKhau_GUI().setVisible(true);
             }
         });

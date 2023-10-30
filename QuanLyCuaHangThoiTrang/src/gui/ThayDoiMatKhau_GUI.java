@@ -4,6 +4,14 @@
  */
 package gui;
 
+import connectDB.ConnectDB;
+import dao.TaiKhoan_dao;
+import entity.TaiKhoanEntity;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 84335
@@ -16,7 +24,7 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
     public ThayDoiMatKhau_GUI() {
         initComponents();
         String a = "<HTML><u>Quên mật khẩu?</u></HTML>";
-       setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -103,6 +111,11 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
         btn_ThuyDoi.setText("Thay đổi");
         btn_ThuyDoi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_ThuyDoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_ThuyDoi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_ThuyDoiMouseClicked(evt);
+            }
+        });
         btn_ThuyDoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ThuyDoiActionPerformed(evt);
@@ -188,8 +201,38 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
 
     private void btn_HuyBoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_HuyBoMouseClicked
         // TODO add your handling code here:
-       this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_HuyBoMouseClicked
+
+    private void btn_ThuyDoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ThuyDoiMouseClicked
+        String tenTaiKhoan = jtf_TenTaiKhoan.getText();
+        char[] po = jpf_MatKhauHienTai.getPassword();
+        char[] pn = jpf_MatKhauMoi.getPassword();
+        String oldPass = new String(po);
+        String newPass = new String(pn);
+
+        dao.TaiKhoan_dao tk_dao = new TaiKhoan_dao();
+        entity.TaiKhoanEntity tk = new TaiKhoanEntity();
+
+        try {
+            tk = tk_dao.getTaiKhoan(tenTaiKhoan, oldPass);
+// TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(ThayDoiMatKhau_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(tk == null){
+            JOptionPane.showConfirmDialog(null, "Tài khoản và mật khẩu không khớp");
+        }else {
+           entity.TaiKhoanEntity newTK = new  TaiKhoanEntity(tenTaiKhoan, newPass);
+           if(tk_dao.lamMoiMatKhau(tk) == true){
+               JOptionPane.showConfirmDialog(null, "đồi mật khẩu thành công");
+               jtf_TenTaiKhoan.setText("");
+               jpf_MatKhauHienTai.setText("");
+               jpf_MatKhauMoi.setText("");
+           }
+            
+        }
+    }//GEN-LAST:event_btn_ThuyDoiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -222,6 +265,11 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                 try {
+                    ConnectDB.getInstance().connect();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 new ThayDoiMatKhau_GUI().setVisible(true);
             }
         });
