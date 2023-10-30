@@ -4,8 +4,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package gui;
+import bus.KhachHangBus;
+import entity.GioiTinh;
+import entity.KhachHangEntity;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,11 +22,14 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
     /**
      * Creates new form KhachHang_JPanel
      */
+    private DefaultTableModel tableModel = new DefaultTableModel();
+    private KhachHangBus bus = new KhachHangBus();
+    
     public KhachHang_JPanel() {
         initComponents();
         setBounds(0, 0, 1020, 700);
         
-         ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         btn_TimKiem.setIcon(img_btnTimKiem);
@@ -39,6 +48,22 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
         Image scaled_btnCapNhat = img_btnCapNhat.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnCapNhat = new ImageIcon(scaled_btnCapNhat);
         btn_CapNhat.setIcon(img_btnCapNhat);
+        
+        btg.add(rad_Nu);
+        btg.add(rad_Nam);
+        btg.add(rad_Khac);
+        
+        table_KhachHang.setModel(tableModel);
+        
+        loadData();
+    }
+    
+    private void loadData() {
+        ArrayList<KhachHangEntity> listKH = new ArrayList<>();
+        listKH = bus.findAll();
+        for (KhachHangEntity kh : listKH) {
+            tableModel.addRow(new Object[]{kh.getMaKH(), kh.getHoTen(), kh.getGioiTinh().toString(), kh.getSoDienThoai() ,kh.getDiaChi()});
+        }
     }
 
 
@@ -70,7 +95,7 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
         btn_CapNhat = new javax.swing.JButton();
         panel_TableKhachHang = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_KhachHang = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(187, 205, 197));
         setPreferredSize(new java.awt.Dimension(1020, 700));
@@ -222,15 +247,15 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
         panel_TableKhachHang.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Bảng danh sách khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         panel_TableKhachHang.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table_KhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã Khách Hàng", "Tên Khách Hàng", "mmm", "Title 4", "Title 5"
+                "Mã Khách Hàng", "Tên Khách Hàng", "Giới tính", "Số điện thoại", "Địa chỉ"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table_KhachHang);
 
         panel_TableKhachHang.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 980, 390));
 
@@ -254,7 +279,23 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_NhapSDTActionPerformed
 
     private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+        GioiTinh gt = null;
+        KhachHangEntity kh = new KhachHangEntity();
+        kh.setMaKH(txt_MaKH.getText());
+        kh.setHoTen(txt_HoTen.getText());
+        if (rad_Nam.isSelected()) gt = GioiTinh.NAM;
+        else if (rad_Nu.isSelected()) gt = GioiTinh.NU;
+        else gt = GioiTinh.KHAC;
+        kh.setGioiTinh(gt);
+        kh.setSoDienThoai(txt_SDT.getText());
+        kh.setDiaChi(txt_DiaChi.getText());
+        
+        if (bus.insert(kh)) {
+            tableModel.addRow(new Object[]{kh.getMaKH(), kh.getHoTen(), kh.getGioiTinh().toString(), kh.getSoDienThoai() ,kh.getDiaChi()});
+            JOptionPane.showMessageDialog(this, "Đã thêm khách hàng!");
+        }
+        else JOptionPane.showMessageDialog(this, "Thêm thất bại!");
     }//GEN-LAST:event_btn_ThemActionPerformed
 
     private void btn_CapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CapNhatActionPerformed
@@ -272,7 +313,6 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
     private javax.swing.JButton btn_Them;
     private javax.swing.JButton btn_TimKiem;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_DiaChiKH;
     private javax.swing.JLabel lbl_GioiTinhKH;
     private javax.swing.JLabel lbl_HoTenKH;
@@ -287,10 +327,12 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rad_Khac;
     private javax.swing.JRadioButton rad_Nam;
     private javax.swing.JRadioButton rad_Nu;
+    private javax.swing.JTable table_KhachHang;
     private javax.swing.JTextField txt_DiaChi;
     private javax.swing.JTextField txt_HoTen;
     private javax.swing.JTextField txt_MaKH;
     private javax.swing.JTextField txt_NhapSDT;
     private javax.swing.JTextField txt_SDT;
     // End of variables declaration//GEN-END:variables
+    private javax.swing.ButtonGroup btg;
 }

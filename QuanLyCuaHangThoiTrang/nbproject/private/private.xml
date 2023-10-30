@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/KhachHangDAO.java</file>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/KhachHangInterface.java</file>
             <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/TrangChu_GUI.java</file>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/connectDB/ConnectDB.java</file>
             <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/KhachHang_JPanel.java</file>
         </group>
     </open-files>

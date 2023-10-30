@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package dao;
+package Interface;
 
 import entity.KhachHangEntity;
 import java.util.ArrayList;
@@ -14,6 +14,6 @@ import java.util.ArrayList;
 public interface KhachHangInterface {
     KhachHangEntity findOne(String id   );
     void update(KhachHangEntity updateKH);
-    String insert(KhachHangEntity insertKH);
+    boolean insert(KhachHangEntity insertKH);
     ArrayList<KhachHangEntity> findAll();
 }

@@ -4,11 +4,11 @@
  */
 package dao;
 
+import Interface.KhachHangInterface;
 import com.sun.jdi.connect.spi.Connection;
 import connectDB.ConnectDB;
 import entity.GioiTinh;
 import entity.KhachHangEntity;
-import java.beans.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,9 +26,10 @@ public class KhachHangDAO implements KhachHangInterface{
     @Override
     public KhachHangEntity findOne(String id) {
         KhachHangEntity khachHang = null;
-        PreparedStatement statement = null;
         ResultSet rs = null;
         try {
+            connect.connect();
+            PreparedStatement statement = connect.getConnection().prepareStatement("SELECT * FROM KhachHang WHERE maKH = ?");
 //            statement = ConnectDB.getConnection().prepareStatement("SELECT * FROM KhachHang WHERE maKH = ?");
             statement.setString(1, id);
             rs = statement.executeQuery();
@@ -49,6 +50,8 @@ public class KhachHangDAO implements KhachHangInterface{
                        rs.getString("diaChi"));
             }
             
+            connect.disconnect();
+            
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,8 +64,25 @@ public class KhachHangDAO implements KhachHangInterface{
     }
 
     @Override
-    public String insert(KhachHangEntity insertKH) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean insert(KhachHangEntity KH) {
+        int n = 0;
+        StringBuilder sql = new StringBuilder("INSERT INTO KhachHang(maKH, hoTen, gioiTinh, soDienThoai, diaChi)");
+        sql.append(" VALUES(?, ?, ?, ?, ?)");
+        try {
+            connect.connect();
+            PreparedStatement statement = connect.getConnection().prepareStatement(sql.toString());
+            statement.setString(1, KH.getMaKH());
+            statement.setString(2, KH.getHoTen());
+            statement.setString(3, KH.getGioiTinh().toString());
+            statement.setString(4, KH.getSoDienThoai());
+            statement.setString(5, KH.getDiaChi());
+            n = statement.executeUpdate(sql.toString());
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n > 0;
     }
 
     @Override
@@ -75,10 +95,10 @@ public class KhachHangDAO implements KhachHangInterface{
             while (rs.next()) {
                 KhachHangEntity khachHang = null;
                 GioiTinh gt = null;
-                if (rs.getString("gioiTinh").equals("Nam")) {
+                if (rs.getString("gioiTinh").equals("Nam  ")) {
                     gt = GioiTinh.NAM;
                 }
-                else if (rs.getString("gioiTinh").equals("Nu")) {
+                else if (rs.getString("gioiTinh").equals("Nu   ")) {
                     gt = GioiTinh.NU;
                 }
                 else gt = GioiTinh.KHAC;

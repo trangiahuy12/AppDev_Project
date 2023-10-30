@@ -1,16 +1,17 @@
 package entity;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 public class HoaDonEntity {
 	private String maHD;
-	private LocalDate ngayLapHD;
+	private Date ngayLapHD;
 	private KhachHangEntity khachHang;
 	private NhanVienEntity nhanVien;
 	private ChuongTrinhKhuyenMaiEntity chuongTrinhKM;
 	private int thueVAT;
-	public HoaDonEntity(String maHD, LocalDate ngayLapHD, KhachHangEntity khachHang, NhanVienEntity nhanVien,
+	public HoaDonEntity(String maHD, Date ngayLapHD, KhachHangEntity khachHang, NhanVienEntity nhanVien,
 			ChuongTrinhKhuyenMaiEntity chuongTrinhKM, int thueVAT) {
 		super();
 		this.maHD = maHD;
@@ -33,10 +34,10 @@ public class HoaDonEntity {
 	public void setMaHD(String maHD) {
 		this.maHD = maHD;
 	}
-	public LocalDate getNgayLapHD() {
+	public Date getNgayLapHD() {
 		return ngayLapHD;
 	}
-	public void setNgayLapHD(LocalDate ngayLapHD) {
+	public void setNgayLapHD(Date ngayLapHD) {
 		this.ngayLapHD = ngayLapHD;
 	}
 	public KhachHangEntity getKhachHang() {

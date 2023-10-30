@@ -2,6 +2,7 @@ package connectDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConnectDB {
@@ -30,7 +31,11 @@ public class ConnectDB {
 		}
 	}
 	
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		return con;
 	}
+
+    public PreparedStatement getConnetion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
