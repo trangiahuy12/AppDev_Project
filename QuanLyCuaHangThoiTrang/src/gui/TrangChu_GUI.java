@@ -683,6 +683,16 @@ public class TrangChu_GUI extends javax.swing.JFrame {
 
         JMenu_ThayMatKhau.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         JMenu_ThayMatKhau.setText("Thay Mật Khẩu");
+        JMenu_ThayMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMenu_ThayMatKhauMouseClicked(evt);
+            }
+        });
+        JMenu_ThayMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenu_ThayMatKhauActionPerformed(evt);
+            }
+        });
         jMenu1.add(JMenu_ThayMatKhau);
 
         JMenu_DangXuat.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -743,6 +753,17 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private void JMenu_GioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_GioiThieuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JMenu_GioiThieuActionPerformed
+
+    private void JMenu_ThayMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMenu_ThayMatKhauMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JMenu_ThayMatKhauMouseClicked
+
+    private void JMenu_ThayMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_ThayMatKhauActionPerformed
+       ThayDoiMatKhau_GUI thayDoiMatKhay_Gui = new ThayDoiMatKhau_GUI();
+       thayDoiMatKhay_Gui.setVisible(true);
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JMenu_ThayMatKhauActionPerformed
 
     public static void main(String args[]) {
 

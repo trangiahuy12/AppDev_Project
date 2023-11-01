@@ -7,9 +7,6 @@ package dao;
 import Interface.ChuongTrinhKhuyenMai_Interface;
 import connectDB.ConnectDB;
 import entity.ChuongTrinhKhuyenMaiEntity;
-import entity.HoaDonEntity;
-import entity.KhachHangEntity;
-import entity.NhanVienEntity;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -22,8 +19,7 @@ import java.sql.*;
  * @author DELL
  */
 public class ChuongTrinhKhuyenMai_dao implements ChuongTrinhKhuyenMai_Interface{
-    public ChuongTrinhKhuyenMai_dao(){
-        
+    public ChuongTrinhKhuyenMai_dao(){      
     }
 
    

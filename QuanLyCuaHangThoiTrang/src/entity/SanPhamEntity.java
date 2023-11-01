@@ -5,16 +5,16 @@ import java.util.Objects;
 public class SanPhamEntity {
 	private String maSP;
 	private String tenSP, imgUrl;
-	private KichThuoc kichThuoc;
-	private MauSac mauSac;
+	private KichThuocEnum kichThuoc;
+	private MauSacEnum mauSac;
 	private double donGia;
 	private int soLuongTonKho;
-	private TinhTrangSanPham tinhTrang;
+	private TinhTrangSPEnum tinhTrang;
 	private ChatLieuEntity chatLieu;
 	private ThuongHieuEntity thuongHieu;
 	private DanhMucSanPhamEntity danhMucSanPham;
-	public SanPhamEntity(String maSP, String tenSP, String imgUrl, KichThuoc kichThuoc, MauSac mauSac, double donGia,
-			int soLuongTonKho, TinhTrangSanPham tinhTrang, ChatLieuEntity chatLieu, ThuongHieuEntity thuongHieu,
+	public SanPhamEntity(String maSP, String tenSP, String imgUrl, KichThuocEnum kichThuoc, MauSacEnum mauSac, double donGia,
+			int soLuongTonKho, TinhTrangSPEnum tinhTrang, ChatLieuEntity chatLieu, ThuongHieuEntity thuongHieu,
 			DanhMucSanPhamEntity danhMucSanPham) {
 		super();
 		this.maSP = maSP;
@@ -51,16 +51,16 @@ public class SanPhamEntity {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	public KichThuoc getKichThuoc() {
+	public KichThuocEnum getKichThuoc() {
 		return kichThuoc;
 	}
-	public void setKichThuoc(KichThuoc kichThuoc) {
+	public void setKichThuoc(KichThuocEnum kichThuoc) {
 		this.kichThuoc = kichThuoc;
 	}
-	public MauSac getMauSac() {
+	public MauSacEnum getMauSac() {
 		return mauSac;
 	}
-	public void setMauSac(MauSac mauSac) {
+	public void setMauSac(MauSacEnum mauSac) {
 		this.mauSac = mauSac;
 	}
 	public double getDonGia() {
@@ -75,10 +75,10 @@ public class SanPhamEntity {
 	public void setSoLuongTonKho(int soLuongTonKho) {
 		this.soLuongTonKho = soLuongTonKho;
 	}
-	public TinhTrangSanPham getTinhTrang() {
+	public TinhTrangSPEnum getTinhTrang() {
 		return tinhTrang;
 	}
-	public void setTinhTrang(TinhTrangSanPham tinhTrang) {
+	public void setTinhTrang(TinhTrangSPEnum tinhTrang) {
 		this.tinhTrang = tinhTrang;
 	}
 	public ChatLieuEntity getChatLieu() {

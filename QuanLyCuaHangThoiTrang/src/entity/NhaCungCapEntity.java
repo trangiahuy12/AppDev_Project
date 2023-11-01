@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class NhaCungCapEntity {
 	private String maNCC, tenNCC, diaChi, soDienThoai;
-	private TinhTrangNCCC tinhTrang;
-	public NhaCungCapEntity(String maNCC, String tenNCC, String diaChi, String soDienThoai, TinhTrangNCCC tinhTrang) {
+	private TinhTrangNCCEnum tinhTrang;
+	public NhaCungCapEntity(String maNCC, String tenNCC, String diaChi, String soDienThoai, TinhTrangNCCEnum tinhTrang) {
 		super();
 		this.maNCC = maNCC;
 		this.tenNCC = tenNCC;
@@ -44,10 +44,10 @@ public class NhaCungCapEntity {
 	public void setSoDienThoai(String soDienThoai) {
 		this.soDienThoai = soDienThoai;
 	}
-	public TinhTrangNCCC getTinhTrang() {
+	public TinhTrangNCCEnum getTinhTrang() {
 		return tinhTrang;
 	}
-	public void setTinhTrang(TinhTrangNCCC tinhTrang) {
+	public void setTinhTrang(TinhTrangNCCEnum tinhTrang) {
 		this.tinhTrang = tinhTrang;
 	}
 	@Override

@@ -1,5 +1,5 @@
 package entity;
 
-public enum KichThuoc {
+public enum KichThuocEnum {
 	XS, S, M, L, XL, XXL;
 }	

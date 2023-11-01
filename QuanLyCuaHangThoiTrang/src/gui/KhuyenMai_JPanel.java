@@ -2,14 +2,18 @@
 package gui;
 
 import bus.ChuongTrinhKhuyenMai_bus;
+import connectDB.ConnectDB;
 import entity.ChuongTrinhKhuyenMaiEntity;
 import java.awt.Image;
 import java.awt.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Date;
 import javax.swing.BorderFactory;
+=======
+>>>>>>> 2e3b25e5dca93121becf1319ae86ca34f8bae3e6
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
