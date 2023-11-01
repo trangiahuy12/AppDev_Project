@@ -19,6 +19,10 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Thay M&#x1ead;t Kh&#x1ea9;u"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JMenu_ThayMatKhauMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenu_ThayMatKhauActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMenu_DangXuat">
               <Properties>

@@ -4,15 +4,24 @@
  */
 package gui;
 
+import connectDB.ConnectDB;
+import dao.TaiKhoan_dao;
+import entity.TaiKhoanEntity;
 import java.awt.Image;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author 84335
  */
 public class DangNhap_GUI extends javax.swing.JFrame {
-    private LamMoiDangNhap_GUI lammoiDangNhap_GUI = new LamMoiDangNhap_GUI();
+
+    private LamMoiMatKhau_GUI lammoiDangNhap_GUI = new LamMoiMatKhau_GUI();
 //    private ThayDoiMatKhau_GUI thaydoimatkhau_gui = new ThayDoiMatKhau_GUI();
 
     /**
@@ -80,7 +89,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         jlb_TenTaiKhoan.setText("Tên tài khoản");
 
         jtf_TenTaiKhoan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jtf_TenTaiKhoan.setText("NHANVIEN");
+        jtf_TenTaiKhoan.setText("0312456789");
         jtf_TenTaiKhoan.setToolTipText("");
         jtf_TenTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +98,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         });
 
         jpf_MatKhau.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jpf_MatKhau.setText("123456");
+        jpf_MatKhau.setText("huy28102003");
         jpf_MatKhau.setToolTipText("");
 
         btn_DangNhap.setBackground(new java.awt.Color(0, 51, 51));
@@ -98,6 +107,11 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         btn_DangNhap.setText("Đăng nhập");
         btn_DangNhap.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_DangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_DangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_DangNhapMouseClicked(evt);
+            }
+        });
         btn_DangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_DangNhapActionPerformed(evt);
@@ -184,13 +198,36 @@ public class DangNhap_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_DangNhapActionPerformed
     private void jlb_QuanMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlb_QuanMatKhauMouseClicked
 
-             
         lammoiDangNhap_GUI.setVisible(true);
         this.setVisible(false);
 
-
         // TODO add your handling code here:
     }//GEN-LAST:event_jlb_QuanMatKhauMouseClicked
+
+
+    private void btn_DangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DangNhapMouseClicked
+
+        String tk = jtf_TenTaiKhoan.getText();
+        char[] mk = jpf_MatKhau.getPassword();
+        String password = new String(mk);
+
+        entity.TaiKhoanEntity taiKhoan = new TaiKhoanEntity();
+        dao.TaiKhoan_dao taiKhoan_dao = new TaiKhoan_dao();
+        try {
+            taiKhoan = taiKhoan_dao.getTaiKhoan(tk, password);
+        } catch (SQLException ex) {
+            Logger.getLogger(DangNhap_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (taiKhoan == null) {
+            JOptionPane.showMessageDialog(null, "Mật khẩu không hợp lệ");
+        } else {
+            TrangChu_GUI trangChu_Gui = new TrangChu_GUI();
+            this.setVisible(false);
+            trangChu_Gui.setVisible(true);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_DangNhapMouseClicked
 
     /**
      * @param args the command line arguments
@@ -222,6 +259,11 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    ConnectDB.getInstance().connect();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 new DangNhap_GUI().setVisible(true);
             }
         });
