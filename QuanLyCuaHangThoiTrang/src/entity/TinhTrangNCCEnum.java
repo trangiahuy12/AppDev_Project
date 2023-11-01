@@ -1,5 +1,5 @@
 package entity;
 
-public enum TinhTrangNCCC {
+public enum TinhTrangNCCEnum {
 	DANGNHAP, NGUNGNHAP;
 }

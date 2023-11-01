@@ -13,10 +13,10 @@ import java.util.Objects;
 public class KhachHangEntity {
     private String maKH;
     private String hoTen;
-    private GioiTinh gioiTinh;
+    private GioiTinhEnum gioiTinh;
     private String soDienThoai;
     private String diaChi;
-	public KhachHangEntity(String maKH, String hoTen, GioiTinh gioiTinh, String soDienThoai, String diaChi) {
+	public KhachHangEntity(String maKH, String hoTen, GioiTinhEnum gioiTinh, String soDienThoai, String diaChi) {
 		super();
 		this.maKH = maKH;
 		this.hoTen = hoTen;
@@ -43,10 +43,10 @@ public class KhachHangEntity {
 	public void setHoTen(String hoTen) {
 		this.hoTen = hoTen;
 	}
-	public GioiTinh getGioiTinh() {
+	public GioiTinhEnum getGioiTinh() {
 		return gioiTinh;
 	}
-	public void setGioiTinh(GioiTinh gioiTinh) {
+	public void setGioiTinh(GioiTinhEnum gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 	public String getSoDienThoai() {
@@ -61,19 +61,29 @@ public class KhachHangEntity {
 	public void setDiaChi(String diaChi) {
 		this.diaChi = diaChi;
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(maKH);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		KhachHangEntity other = (KhachHangEntity) obj;
-		return Objects.equals(maKH, other.maKH);
-	}
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.maKH);
+        hash = 29 * hash + Objects.hashCode(this.soDienThoai);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final KhachHangEntity other = (KhachHangEntity) obj;
+        
+        return Objects.equals(this.soDienThoai, other.soDienThoai);
+    }
+	
 }

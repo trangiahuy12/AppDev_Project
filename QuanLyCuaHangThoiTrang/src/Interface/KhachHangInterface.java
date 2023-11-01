@@ -10,10 +10,11 @@ import java.util.ArrayList;
 /**
  *
  * @author HUY
- */
+ */ 
 public interface KhachHangInterface {
     KhachHangEntity findOne(String id   );
-    void update(KhachHangEntity updateKH);
+    boolean update(KhachHangEntity updateKH);
     boolean insert(KhachHangEntity insertKH);
     ArrayList<KhachHangEntity> findAll();
+//    int count(String id);
 }

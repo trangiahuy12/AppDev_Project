@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import Interface.KhachHangInterface;
-import com.sun.jdi.connect.spi.Connection;
 import connectDB.ConnectDB;
-import entity.GioiTinh;
+import entity.GioiTinhEnum;
 import entity.KhachHangEntity;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author HUY
  */
-public class KhachHangDAO implements KhachHangInterface{
+public class KhachHang_dao implements KhachHangInterface{
     ConnectDB connect = new ConnectDB();
     
     @Override
@@ -29,19 +24,19 @@ public class KhachHangDAO implements KhachHangInterface{
         ResultSet rs = null;
         try {
             connect.connect();
-            PreparedStatement statement = connect.getConnection().prepareStatement("SELECT * FROM KhachHang WHERE maKH = ?");
+            PreparedStatement statement = connect.getConnection().prepareStatement("SELECT * FROM KhachHang WHERE soDienThoai = ?");
 //            statement = ConnectDB.getConnection().prepareStatement("SELECT * FROM KhachHang WHERE maKH = ?");
             statement.setString(1, id);
             rs = statement.executeQuery();
             while (rs.next()) {
-                GioiTinh gt = null;
-                if (rs.getString("gioiTinh").equals("Nam")) {
-                    gt = GioiTinh.NAM;
+                GioiTinhEnum gt = null;
+                if (rs.getString("gioiTinh").equals("Nam   ")) {
+                    gt = GioiTinhEnum.NAM;
                 }
-                else if (rs.getString("gioiTinh").equals("Nu")) {
-                    gt = GioiTinh.NU;
+                else if (rs.getString("gioiTinh").equals("Nu   ")) {
+                    gt = GioiTinhEnum.NU;
                 }
-                else gt = GioiTinh.KHAC;
+                else gt = GioiTinhEnum.KHAC;
                 khachHang = new KhachHangEntity(
                        rs.getString("maKH"), 
                        rs.getString("hoTen"), 
@@ -53,14 +48,30 @@ public class KhachHangDAO implements KhachHangInterface{
             connect.disconnect();
             
         } catch (SQLException ex) {
-            Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(KhachHang_dao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return khachHang;
     }
 
     @Override
-    public void update(KhachHangEntity updateKH) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean update(KhachHangEntity NewKH) {
+        StringBuilder sql = new StringBuilder("UPDATE KhachHang SET hoTen = ?, gioiTinh = ?,");
+        sql.append(" soDienThoai = ?, diaChi = ? WHERE maKH = ?");
+        int n = 0;
+        try {
+            connect.connect();
+            PreparedStatement statement = connect.getConnection().prepareStatement(sql.toString());
+            statement.setString(1, NewKH.getHoTen());
+            statement.setString(2, NewKH.getGioiTinh().toString());
+            statement.setString(3, NewKH.getSoDienThoai());
+            statement.setString(4, NewKH.getDiaChi());
+            statement.setString(5, NewKH.getMaKH());
+            n = statement.executeUpdate();
+            connect.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(KhachHang_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n > 0;
     }
 
     @Override
@@ -76,11 +87,10 @@ public class KhachHangDAO implements KhachHangInterface{
             statement.setString(3, KH.getGioiTinh().toString());
             statement.setString(4, KH.getSoDienThoai());
             statement.setString(5, KH.getDiaChi());
-            n = statement.executeUpdate(sql.toString());
-            
-            
+            n = statement.executeUpdate();
+            connect.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(KhachHang_dao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return n > 0;
     }
@@ -94,14 +104,14 @@ public class KhachHangDAO implements KhachHangInterface{
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 KhachHangEntity khachHang = null;
-                GioiTinh gt = null;
-                if (rs.getString("gioiTinh").equals("Nam  ")) {
-                    gt = GioiTinh.NAM;
+                GioiTinhEnum gt = null;
+                if (rs.getString("gioiTinh").equals("Nam")) {
+                    gt = GioiTinhEnum.NAM;
                 }
-                else if (rs.getString("gioiTinh").equals("Nu   ")) {
-                    gt = GioiTinh.NU;
+                else if (rs.getString("gioiTinh").equals("Nữ")) {
+                    gt = GioiTinhEnum.NU;
                 }
-                else gt = GioiTinh.KHAC;
+                else gt = GioiTinhEnum.KHAC;
                 khachHang = new KhachHangEntity(
                 rs.getString("maKH"), 
                 rs.getString("hoTen"), 
@@ -113,9 +123,28 @@ public class KhachHangDAO implements KhachHangInterface{
             connect.disconnect();
         }
         catch (SQLException ex) {
-            Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(KhachHang_dao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listKH;
     }
-    
+
+//    @Override
+//    public int count(String id) {
+//        int count = 0;
+//        StringBuilder sql = new StringBuilder("SELECT COUNT(*) AS TotalCount ");
+//            sql.append("FROM KhachHang WHERE maKH LIKE ?");
+//        try {
+//            connect.connect();
+//            PreparedStatement statement = connect.getConnection().prepareStatement(sql.toString());
+//            statement.setString(1, "%" + id + "%");
+//            ResultSet rs = statement.executeQuery();
+//            while (rs.next()) {
+//                count = rs.getInt("TotalCount");
+//            }
+//            connect.disconnect();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(KhachHang_dao.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return count;
+//    }
 }

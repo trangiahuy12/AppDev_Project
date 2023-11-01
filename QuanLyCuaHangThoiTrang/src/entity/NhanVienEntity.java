@@ -6,16 +6,16 @@ import java.util.Objects;
 public class NhanVienEntity {
 	private String maNV;
 	private String hoTen;
-	private GioiTinh gioiTinh;
+	private GioiTinhEnum gioiTinh;
 	private LocalDate ngaySinh;
 	private String email;
 	private String soDienThoai;
 	private String diaChi;
-	private ChucVu chucVu;
-	private TinhTrangNhanVien tinhTrang;
-	private CaLamViec caLamViec;
-	public NhanVienEntity(String maNV, String hoTen, GioiTinh gioiTinh, LocalDate ngaySinh, String email,
-			String soDienThoai, String diaChi, ChucVu chucVu, TinhTrangNhanVien tinhTrang, CaLamViec caLamViec) {
+	private ChucVuEnum chucVu;
+	private TinhTrangNVEnum tinhTrang;
+	private CaLamViecEnum caLamViec;
+	public NhanVienEntity(String maNV, String hoTen, GioiTinhEnum gioiTinh, LocalDate ngaySinh, String email,
+			String soDienThoai, String diaChi, ChucVuEnum chucVu, TinhTrangNVEnum tinhTrang, CaLamViecEnum caLamViec) {
 		super();
 		this.maNV = maNV;
 		this.hoTen = hoTen;
@@ -47,10 +47,10 @@ public class NhanVienEntity {
 	public void setHoTen(String hoTen) {
 		this.hoTen = hoTen;
 	}
-	public GioiTinh getGioiTinh() {
+	public GioiTinhEnum getGioiTinh() {
 		return gioiTinh;
 	}
-	public void setGioiTinh(GioiTinh gioiTinh) {
+	public void setGioiTinh(GioiTinhEnum gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 	public LocalDate getNgaySinh() {
@@ -77,39 +77,52 @@ public class NhanVienEntity {
 	public void setDiaChi(String diaChi) {
 		this.diaChi = diaChi;
 	}
-	public ChucVu getChucVu() {
+	public ChucVuEnum getChucVu() {
 		return chucVu;
 	}
-	public void setChucVu(ChucVu chucVu) {
+	public void setChucVu(ChucVuEnum chucVu) {
 		this.chucVu = chucVu;
 	}
-	public TinhTrangNhanVien getTinhTrang() {
+	public TinhTrangNVEnum getTinhTrang() {
 		return tinhTrang;
 	}
-	public void setTinhTrang(TinhTrangNhanVien tinhTrang) {
+	public void setTinhTrang(TinhTrangNVEnum tinhTrang) {
 		this.tinhTrang = tinhTrang;
 	}
-	public CaLamViec getCaLamViec() {
+	public CaLamViecEnum getCaLamViec() {
 		return caLamViec;
 	}
-	public void setCaLamViec(CaLamViec caLamViec) {
+	public void setCaLamViec(CaLamViecEnum caLamViec) {
 		this.caLamViec = caLamViec;
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(maNV);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		NhanVienEntity other = (NhanVienEntity) obj;
-		return Objects.equals(maNV, other.maNV);
-	}
+
+        @Override
+        public int hashCode() {
+            int hash = 7;
+            hash = 79 * hash + Objects.hashCode(this.maNV);
+            hash = 79 * hash + Objects.hashCode(this.soDienThoai);
+            return hash;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final NhanVienEntity other = (NhanVienEntity) obj;
+            if (!Objects.equals(this.maNV, other.maNV)) {
+                return false;
+            }
+            return Objects.equals(this.soDienThoai, other.soDienThoai);
+        }
+	
+        
 	
 	
 }

@@ -5,16 +5,17 @@
 package bus;
 
 import Interface.KhachHangInterface;
-import dao.KhachHangDAO;
+import dao.KhachHang_dao;
 import entity.KhachHangEntity;
 import java.util.ArrayList;
+import util.GenerateID;
 
 /**
  *
  * @author HUY
  */
-public class KhachHangBus implements KhachHangInterface {
-    KhachHangDAO khachHangDAO = new KhachHangDAO();
+public class KhachHang_bus implements KhachHangInterface {
+    KhachHang_dao khachHangDAO = new KhachHang_dao();
     
     @Override
     public KhachHangEntity findOne(String id) {
@@ -22,12 +23,13 @@ public class KhachHangBus implements KhachHangInterface {
     }
 
     @Override
-    public void update(KhachHangEntity updateKH) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean update(KhachHangEntity updateKH) {
+        return khachHangDAO.update(updateKH);
     }
 
     @Override
     public boolean insert(KhachHangEntity insertKH) {
+//        insertKH.setMaKH(generateID.sinhMa(khachHangDAO.count(GenerateID.dateFormat()), "KH"));
         return khachHangDAO.insert(insertKH);
     }
 
@@ -35,5 +37,10 @@ public class KhachHangBus implements KhachHangInterface {
     public ArrayList<KhachHangEntity> findAll() {
         return khachHangDAO.findAll();
     }
+
+//    @Override
+//    public int count(String id) {
+//        return khachHangDAO.count(id);
+//    }
     
 }

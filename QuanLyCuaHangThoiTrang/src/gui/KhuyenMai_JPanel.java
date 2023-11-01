@@ -2,10 +2,10 @@
 package gui;
 
 import bus.ChuongTrinhKhuyenMai_bus;
+import connectDB.ConnectDB;
 import entity.ChuongTrinhKhuyenMaiEntity;
 import java.awt.Image;
 import java.util.ArrayList;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 

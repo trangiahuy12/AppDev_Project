@@ -1,6 +1,6 @@
 package entity;
 
-public enum TinhTrangSanPham {
+public enum TinhTrangSPEnum {
 	DANGBAN, NGUNGBAN;
 	
 	@Override

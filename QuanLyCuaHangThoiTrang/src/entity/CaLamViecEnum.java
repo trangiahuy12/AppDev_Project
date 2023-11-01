@@ -1,6 +1,6 @@
 package entity;
 
-public enum CaLamViec {
+public enum CaLamViecEnum {
 	CA1, CA2
 	
 	
