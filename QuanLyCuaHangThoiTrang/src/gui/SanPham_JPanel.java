@@ -5,7 +5,13 @@
 package gui;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
  * @author 84335
  */
 public class SanPham_JPanel extends javax.swing.JPanel {
+
+    private byte[] selectedImage = null;
 
     /**
      * Creates new form SanPham_JPanel
@@ -187,6 +195,11 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         btn_ChonAnh.setForeground(java.awt.Color.white);
         btn_ChonAnh.setText("Chọn ảnh");
         btn_ChonAnh.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btn_ChonAnh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ChonAnhActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_ThongTinLayout = new javax.swing.GroupLayout(panel_ThongTin);
         panel_ThongTin.setLayout(panel_ThongTinLayout);
@@ -252,7 +265,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         panel_ThongTinLayout.setVerticalGroup(
             panel_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_ThongTinLayout.createSequentialGroup()
-                .addComponent(lbl_AnhSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_AnhSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_ChonAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
@@ -357,7 +370,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         );
         panel_DanhSachSanPhamLayout.setVerticalGroup(
             panel_DanhSachSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scroll_TableSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .addComponent(scroll_TableSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
         );
 
         lbl_TieuDe.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -390,10 +403,30 @@ public class SanPham_JPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel_ThaoTac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel_DanhSachSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel_DanhSachSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ChonAnhActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File chonFile = fileChooser.getSelectedFile();
+
+            try {
+                selectedImage = Files.readAllBytes(chonFile.toPath());
+                ImageIcon imageIcon = new ImageIcon(selectedImage);
+                Image anh=imageIcon.getImage().getScaledInstance(150, 130, Image.SCALE_SMOOTH);
+                imageIcon=new ImageIcon(anh);
+                lbl_AnhSanPham.setIcon(imageIcon);
+            } catch (IOException ex) {
+                Logger.getLogger(SanPham_JPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_btn_ChonAnhActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
