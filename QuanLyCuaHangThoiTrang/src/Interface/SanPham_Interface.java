@@ -14,4 +14,5 @@ import java.util.ArrayList;
 public interface SanPham_Interface {
     public ArrayList<SanPhamEntity> getAllSanPham();
     public boolean themSP(SanPhamEntity sp);
+    public ArrayList<SanPhamEntity> timSanPham(String ma);
 }

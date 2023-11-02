@@ -24,5 +24,10 @@ public class SanPham_bus implements SanPham_Interface{
     public boolean themSP(SanPhamEntity sp) {
         return sp_dao.themSP(sp);
     }
+
+    @Override
+    public ArrayList<SanPhamEntity> timSanPham(String ma) {
+        return sp_dao.timSanPham(ma);
+    }
     
 }

@@ -349,6 +349,11 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         btn_TimKiem.setText("Tìm kiếm");
         btn_TimKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_TimKiem.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btn_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TimKiemActionPerformed(evt);
+            }
+        });
         panel_ThaoTac.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 19, 120, 30));
 
         btn_LamMoi.setBackground(new java.awt.Color(0, 51, 51));
@@ -358,6 +363,11 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         btn_LamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_LamMoi.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btn_LamMoi.setPreferredSize(new java.awt.Dimension(90, 31));
+        btn_LamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LamMoiActionPerformed(evt);
+            }
+        });
         panel_ThaoTac.add(btn_LamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 19, 120, 30));
 
         btn_Them.setBackground(new java.awt.Color(0, 51, 51));
@@ -504,6 +514,18 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         kiemTraAnhNull(row);
 //        lbl_AnhSanPham.setIcon(ResizeImageIcon(String.valueOf(sp_bus.getAllSanPham().get(row).getImgUrl())));
     }//GEN-LAST:event_table_DanhSachSanPhamMouseClicked
+
+    private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
+        // TODO add your handling code here:
+        String ma = txt_MaSanPham_Search.getText().trim();
+        timKiemSanPham(ma);
+
+    }//GEN-LAST:event_btn_TimKiemActionPerformed
+
+    private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
+        // TODO add your handling code here:
+        lamMoi();
+    }//GEN-LAST:event_btn_LamMoiActionPerformed
     private void kiemTraAnhNull(int row) {
         String img = sp_bus.getAllSanPham().get(row).getImgUrl();
         ImageIcon imageIcon;
@@ -567,6 +589,42 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Thêm không thành công");
         }
+    }
+
+    private void timKiemSanPham(String ma) {
+        model.setRowCount(0); // Đặt số hàng của bảng về 0 để xóa kết quả trước
+        ArrayList<SanPhamEntity> dsSP = sp_bus.timSanPham(ma);
+        if(dsSP.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm.");
+            loadDuLieuTuDataLenTable();
+        }else{
+            for (SanPhamEntity sp : dsSP) {
+            model.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getKichThuoc(),
+                sp.getMauSac().toString(), sp.getDonGia(), sp.getTinhTrang().toString(),
+                sp.getSoLuongTonKho(), sp.getChatLieu().getMaChatLieu(),
+                sp.getThuongHieu().getMaThuongHieu(), sp.getDanhMucSanPham().getMaDanhMuc()});
+        }
+        }
+        
+    }
+
+    private void lamMoi() {
+        txt_MaSanPham.setText("");
+        txt_TenSanPham.setText("");
+        txt_ChatLieu.setText("");
+        txt_DonGia.setText("");
+        txt_SoLuongTonKho.setText("");
+        txt_ThuongHieu.setText("");
+        cbo_KichThuoc.setSelectedItem("XS");
+        cbo_MauSac.setSelectedItem("Trắng");
+        cbo_DanhMuc.setSelectedIndex(0);
+        cbo_TinhTrang.setSelectedItem("Đang bán");
+        txt_MaSanPham_Search.setText("");
+        model.setRowCount(0);
+        ImageIcon anhMacDinh = new ImageIcon("src//pic//labelAnh.png");
+        ImageIcon imageIcon = new ImageIcon(anhMacDinh.getImage().getScaledInstance(lbl_AnhSanPham.getWidth(), lbl_AnhSanPham.getHeight(), Image.SCALE_SMOOTH));
+        lbl_AnhSanPham.setIcon(imageIcon);
+        loadDuLieuTuDataLenTable();
     }
 
     private void duaDuLieuVaComboboxoDanhMuc() {
