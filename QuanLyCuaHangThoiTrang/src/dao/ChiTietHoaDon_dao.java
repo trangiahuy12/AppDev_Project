@@ -86,7 +86,7 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
             ChatLieuEntity chatlieu = new ChatLieuEntity(rs.getString("maChatLieu"));
             ThuongHieuEntity thuonghieu = new ThuongHieuEntity(rs.getString("maThuongHieu"));
             DanhMucSanPhamEntity danhmuc = new DanhMucSanPhamEntity(rs.getString("maDanhMuc"));
-            SanPhamEntity sp = new SanPhamEntity(ma, ten, null, kichthuoc, mausac, dongia, sl, tinhtrang, chatlieu, thuonghieu, danhmuc);
+            SanPhamEntity sp=new SanPhamEntity(maSP, ten, kichthuoc, mausac, dongia, sl, tinhtrang, chatlieu, thuonghieu, danhmuc, null);
             dsSP.add(sp);
         }
     } catch (SQLException e) {

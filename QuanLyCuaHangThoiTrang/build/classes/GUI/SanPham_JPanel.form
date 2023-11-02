@@ -51,7 +51,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panel_ThaoTac" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panel_DanhSachSanPham" min="-2" pref="372" max="-2" attributes="0"/>
+              <Component id="panel_DanhSachSanPham" min="-2" pref="363" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -158,7 +158,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="lbl_AnhSanPham" max="32767" attributes="0"/>
+                  <Component id="lbl_AnhSanPham" min="-2" pref="130" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btn_ChonAnh" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -462,6 +462,9 @@
             <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n &#x1ea3;nh"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ChonAnhActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -664,7 +667,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="scroll_TableSanPham" alignment="0" pref="350" max="32767" attributes="0"/>
+              <Component id="scroll_TableSanPham" alignment="0" pref="341" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

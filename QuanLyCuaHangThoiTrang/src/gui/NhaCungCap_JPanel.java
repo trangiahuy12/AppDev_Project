@@ -4,9 +4,19 @@
  */
 package gui;
 
+import bus.NhaCungCap_bus;
+import entity.NhaCungCapEntity;
+import entity.TinhTrangNCCEnum;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import util.GenerateID;
 
 /**
  *
@@ -14,11 +24,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NhaCungCap_JPanel extends javax.swing.JPanel {
 
+    private NhaCungCap_bus ncc_bus;
+
     /**
      * Creates new form NhaCungCap_JPanel
      */
     public NhaCungCap_JPanel() {
         initComponents();
+        //---------
+        ncc_bus = new NhaCungCap_bus();
+        //---------
         setBounds(0, 0, 1020, 720);
         ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
@@ -36,7 +51,18 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         Image scaled_btnCapNhat = img_btnCapNhat.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnCapNhat = new ImageIcon(scaled_btnCapNhat);
         btn_CapNhat.setIcon(img_btnCapNhat);
-        
+        loadDuLieuTuDataLenTable();
+        txt_TenNhaCungCap.setText("Cty TNHH An Thành");
+        txt_SoDienThoai.setText("0345682887");
+        txt_DiaChi.setText("Quận Bình Thạnh, TPHCM");
+
+    }
+
+    private void loadDuLieuTuDataLenTable() {
+        ArrayList<NhaCungCapEntity> dsNCC = ncc_bus.getAllNhaCungCap();
+        for (NhaCungCapEntity ncc : dsNCC) {
+            model.addRow(new Object[]{ncc.getMaNCC(), ncc.getTenNCC(), ncc.getSoDienThoai(), ncc.getDiaChi(), ncc.getTinhTrang()});
+        }
     }
 
     /**
@@ -66,9 +92,10 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         btn_LamMoi = new javax.swing.JButton();
         btn_Them = new javax.swing.JButton();
         btn_CapNhat = new javax.swing.JButton();
+        btn_Loc = new javax.swing.JButton();
         panel_DanhSachNhaCungCap = new javax.swing.JPanel();
         srcoll_TableNhaCungCap = new javax.swing.JScrollPane();
-        Object[][] data = {{}};
+        Object[][] data = {};
         String[] columnNames = {"Mã", "Tên", "Số điện thoại", "Địa chỉ", "Tình trạng"};
         model=new DefaultTableModel(data, columnNames){
             @Override
@@ -85,60 +112,110 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         panel_ThongTin.setBackground(new java.awt.Color(187, 205, 197));
         panel_ThongTin.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Thông tin nhà cung cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         panel_ThongTin.setPreferredSize(new java.awt.Dimension(998, 87));
-        panel_ThongTin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_MaNhaCungCap.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_MaNhaCungCap.setText("Mã nhà cung cấp");
         lbl_MaNhaCungCap.setPreferredSize(new java.awt.Dimension(85, 15));
-        panel_ThongTin.add(lbl_MaNhaCungCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 20, 120, 20));
 
         lbl_TenNhaCungCap.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_TenNhaCungCap.setText("Tên nhà cung cấp");
         lbl_TenNhaCungCap.setPreferredSize(new java.awt.Dimension(85, 15));
-        panel_ThongTin.add(lbl_TenNhaCungCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 49, 120, 30));
 
         txt_MaNhaCungCap.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txt_MaNhaCungCap.setEnabled(false);
         txt_MaNhaCungCap.setPreferredSize(new java.awt.Dimension(68, 26));
-        panel_ThongTin.add(txt_MaNhaCungCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 18, 200, 25));
 
         txt_TenNhaCungCap.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        panel_ThongTin.add(txt_TenNhaCungCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 52, 200, 25));
 
         lbl_SoDienThoai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_SoDienThoai.setText("Số điện thoại");
         lbl_SoDienThoai.setPreferredSize(new java.awt.Dimension(85, 15));
-        panel_ThongTin.add(lbl_SoDienThoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 20, -1, 20));
 
         lbl_DiaChi.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_DiaChi.setText("Địa chỉ");
         lbl_DiaChi.setMaximumSize(new java.awt.Dimension(82, 15));
         lbl_DiaChi.setMinimumSize(new java.awt.Dimension(82, 15));
         lbl_DiaChi.setPreferredSize(new java.awt.Dimension(85, 15));
-        panel_ThongTin.add(lbl_DiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 51, -1, 26));
 
         txt_SoDienThoai.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        panel_ThongTin.add(txt_SoDienThoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 18, 200, 25));
 
         txt_DiaChi.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        panel_ThongTin.add(txt_DiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 52, 200, 25));
 
         lbl_TinhTrang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_TinhTrang.setText("Tình trạng");
         lbl_TinhTrang.setPreferredSize(new java.awt.Dimension(85, 15));
-        panel_ThongTin.add(lbl_TinhTrang, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 17, 97, 26));
 
         cbo_TinhTrang.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbo_TinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đã nhập", "Đang nhập" }));
-        panel_ThongTin.add(cbo_TinhTrang, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 18, 200, 25));
+        cbo_TinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang nhập", "Ngừng nhập" }));
+
+        javax.swing.GroupLayout panel_ThongTinLayout = new javax.swing.GroupLayout(panel_ThongTin);
+        panel_ThongTin.setLayout(panel_ThongTinLayout);
+        panel_ThongTinLayout.setHorizontalGroup(
+            panel_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addComponent(lbl_MaNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(txt_MaNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(lbl_SoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(txt_SoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addComponent(lbl_TenNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(txt_TenNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(lbl_DiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(txt_DiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addComponent(lbl_TinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(cbo_TinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panel_ThongTinLayout.setVerticalGroup(
+            panel_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                .addGroup(panel_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbl_MaNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txt_MaNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbl_SoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txt_SoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_TinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(cbo_TinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addGroup(panel_ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_TenNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(txt_TenNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(lbl_DiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ThongTinLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(txt_DiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
 
         panel_ThaoTac.setBackground(new java.awt.Color(187, 205, 197));
         panel_ThaoTac.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Các thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
-        panel_ThaoTac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel_ThaoTac.setPreferredSize(new java.awt.Dimension(990, 50));
 
         lbl_MaNhaCungCap_Search.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_MaNhaCungCap_Search.setText("Mã nhà cung cấp");
-        panel_ThaoTac.add(lbl_MaNhaCungCap_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 21, -1, -1));
-        panel_ThaoTac.add(txt_MaNhaCungCap_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 19, 274, 25));
 
         btn_TimKiem.setBackground(new java.awt.Color(0, 51, 51));
         btn_TimKiem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -146,7 +223,11 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         btn_TimKiem.setText("Tìm kiếm");
         btn_TimKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_TimKiem.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        panel_ThaoTac.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 17, 120, 30));
+        btn_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TimKiemActionPerformed(evt);
+            }
+        });
 
         btn_LamMoi.setBackground(new java.awt.Color(0, 51, 51));
         btn_LamMoi.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -155,7 +236,11 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         btn_LamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_LamMoi.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btn_LamMoi.setPreferredSize(new java.awt.Dimension(90, 31));
-        panel_ThaoTac.add(btn_LamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 17, 120, 30));
+        btn_LamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LamMoiActionPerformed(evt);
+            }
+        });
 
         btn_Them.setBackground(new java.awt.Color(0, 51, 51));
         btn_Them.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -163,7 +248,11 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         btn_Them.setText("Thêm");
         btn_Them.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Them.setPreferredSize(new java.awt.Dimension(90, 31));
-        panel_ThaoTac.add(btn_Them, new org.netbeans.lib.awtextra.AbsoluteConstraints(741, 17, 120, 30));
+        btn_Them.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ThemActionPerformed(evt);
+            }
+        });
 
         btn_CapNhat.setBackground(new java.awt.Color(0, 51, 51));
         btn_CapNhat.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -172,13 +261,74 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         btn_CapNhat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_CapNhat.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btn_CapNhat.setPreferredSize(new java.awt.Dimension(90, 31));
-        panel_ThaoTac.add(btn_CapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(879, 17, 120, 30));
+        btn_CapNhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CapNhatActionPerformed(evt);
+            }
+        });
+
+        btn_Loc.setBackground(new java.awt.Color(0, 51, 51));
+        btn_Loc.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_Loc.setForeground(java.awt.Color.white);
+        btn_Loc.setText("Lọc");
+        btn_Loc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LocActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_ThaoTacLayout = new javax.swing.GroupLayout(panel_ThaoTac);
+        panel_ThaoTac.setLayout(panel_ThaoTacLayout);
+        panel_ThaoTacLayout.setHorizontalGroup(
+            panel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ThaoTacLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(lbl_MaNhaCungCap_Search)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_MaNhaCungCap_Search)
+                .addGap(18, 18, 18)
+                .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_Loc, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panel_ThaoTacLayout.setVerticalGroup(
+            panel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ThaoTacLayout.createSequentialGroup()
+                .addGroup(panel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_ThaoTacLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(txt_MaNhaCungCap_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_ThaoTacLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(panel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Loc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panel_ThaoTacLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(lbl_MaNhaCungCap_Search)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         panel_DanhSachNhaCungCap.setBackground(new java.awt.Color(187, 205, 197));
         panel_DanhSachNhaCungCap.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Bảng danh sách nhà cung cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         panel_DanhSachNhaCungCap.setPreferredSize(new java.awt.Dimension(466, 486));
 
         table_DanhSachNhaCungCap.setModel(model);
+        table_DanhSachNhaCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_DanhSachNhaCungCapMouseClicked(evt);
+            }
+        });
         srcoll_TableNhaCungCap.setViewportView(table_DanhSachNhaCungCap);
 
         javax.swing.GroupLayout panel_DanhSachNhaCungCapLayout = new javax.swing.GroupLayout(panel_DanhSachNhaCungCap);
@@ -189,9 +339,7 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         );
         panel_DanhSachNhaCungCapLayout.setVerticalGroup(
             panel_DanhSachNhaCungCapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_DanhSachNhaCungCapLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(srcoll_TableNhaCungCap, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE))
+            .addComponent(srcoll_TableNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
         );
 
         lbl_TieuDe.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -204,37 +352,160 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel_DanhSachNhaCungCap, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
-                    .addComponent(panel_ThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE))
-                .addGap(5, 5, 5))
             .addComponent(lbl_TieuDe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panel_ThaoTac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(panel_ThongTin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
+                    .addComponent(panel_DanhSachNhaCungCap, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
+                    .addComponent(panel_ThaoTac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_TieuDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_TieuDe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel_ThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel_ThaoTac, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel_DanhSachNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panel_ThaoTac, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(panel_DanhSachNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
+        // TODO add your handling code here:
+        themNhaCungCap();
+    }//GEN-LAST:event_btn_ThemActionPerformed
 
+    private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
+        // TODO add your handling code here:
+//        timKiemNhaCungCap();
+        String dieuKien = txt_MaNhaCungCap_Search.getText();
+        timkiemNhaCungCap(dieuKien);
+    }//GEN-LAST:event_btn_TimKiemActionPerformed
+
+    private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
+        // TODO add your handling code here:
+        lamMoi();
+    }//GEN-LAST:event_btn_LamMoiActionPerformed
+
+    private void table_DanhSachNhaCungCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_DanhSachNhaCungCapMouseClicked
+        // TODO add your handling code here:
+        int row = table_DanhSachNhaCungCap.getSelectedRow();
+        txt_MaNhaCungCap.setText(model.getValueAt(row, 0).toString());
+        txt_TenNhaCungCap.setText(model.getValueAt(row, 1).toString());
+        txt_SoDienThoai.setText(model.getValueAt(row, 2).toString());
+        txt_DiaChi.setText(model.getValueAt(row, 3).toString());
+        cbo_TinhTrang.setSelectedItem(model.getValueAt(row, 4).toString());
+    }//GEN-LAST:event_table_DanhSachNhaCungCapMouseClicked
+
+    private void btn_LocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LocActionPerformed
+        // TODO add your handling code here:
+        String tinhTrang = (String) cbo_TinhTrang.getSelectedItem();
+        loc(tinhTrang);
+    }//GEN-LAST:event_btn_LocActionPerformed
+
+    private void btn_CapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CapNhatActionPerformed
+        // TODO add your handling code here:
+        capNhatNhaCungCap();
+    }//GEN-LAST:event_btn_CapNhatActionPerformed
+    private void themNhaCungCap() {
+        String maNCC = GenerateID.sinhMa("NCC");
+        String tenNCC = txt_TenNhaCungCap.getText();
+        String soDienThoai = txt_SoDienThoai.getText();
+        String diaChi = txt_DiaChi.getText();
+        TinhTrangNCCEnum tinhTrang = null;
+        if (cbo_TinhTrang.getSelectedIndex() == 0) {
+            tinhTrang = TinhTrangNCCEnum.DANGNHAP;
+        } else if (cbo_TinhTrang.getSelectedIndex() == 1) {
+            tinhTrang = TinhTrangNCCEnum.NGUNGNHAP;
+        }
+        NhaCungCapEntity ncc = new NhaCungCapEntity(maNCC, tenNCC, diaChi, soDienThoai, tinhTrang);
+        boolean kiemTra = ncc_bus.themNCC(ncc);
+        if (kiemTra) {
+            model.addRow(new Object[]{ncc.getMaNCC(), ncc.getTenNCC(), ncc.getSoDienThoai(), ncc.getDiaChi(), ncc.getTinhTrang()});
+            JOptionPane.showMessageDialog(null, "Thêm thành công");
+        } else {
+            JOptionPane.showMessageDialog(null, "Thêm không thành công");
+        }
+    }
+
+    // Hàm tìm kiếm nhà cung cấp và hiển thị kết quả trên bảng
+    private void timkiemNhaCungCap(String dieuKien) {
+        model.setRowCount(0); // Đặt số hàng của bảng về 0 để xóa kết quả trước
+        ArrayList<NhaCungCapEntity> dsNCC = ncc_bus.getAllNhaCungCap();
+        for (NhaCungCapEntity ncc : dsNCC) {
+            if (ncc.matchesSearchTerm(dieuKien)) {
+                model.addRow(new Object[]{ncc.getMaNCC(), ncc.getTenNCC(), ncc.getSoDienThoai(), ncc.getDiaChi(), ncc.getTinhTrang().toString()});
+            }
+        }
+    }
+
+    private void lamMoi() {
+        txt_MaNhaCungCap.setText("");
+        txt_TenNhaCungCap.setText("");
+        txt_SoDienThoai.setText("");
+        txt_DiaChi.setText("");
+        cbo_TinhTrang.setSelectedIndex(0);
+        txt_MaNhaCungCap_Search.setText("");
+        model.setRowCount(0);
+        resetLoc();
+        loadDuLieuTuDataLenTable();
+    }
+
+    private void loc(String ma) {
+        DefaultTableModel data = (DefaultTableModel) table_DanhSachNhaCungCap.getModel();
+        TableRowSorter<DefaultTableModel> sort = new TableRowSorter<DefaultTableModel>(data);
+        table_DanhSachNhaCungCap.setRowSorter(sort);
+        sort.setRowFilter(RowFilter.regexFilter(ma));
+    }
+
+    private void resetLoc() {
+        DefaultTableModel data = (DefaultTableModel) table_DanhSachNhaCungCap.getModel();
+        TableRowSorter<DefaultTableModel> sort = (TableRowSorter<DefaultTableModel>) table_DanhSachNhaCungCap.getRowSorter();
+        if (sort != null) {
+            sort.setRowFilter(null); // Xóa bộ lọc
+            table_DanhSachNhaCungCap.setRowSorter(null); // Loại bỏ RowSorter
+        }
+    }
+
+    private void capNhatNhaCungCap() {
+        int row = table_DanhSachNhaCungCap.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Chưa chọn dòng để cập nhật");
+        } else {
+            if (table_DanhSachNhaCungCap.getSelectedRowCount() == 1) {
+                if (JOptionPane.showConfirmDialog(null, "Bạn có chắc chắc cập nhật nhà cung cấp có mã " + table_DanhSachNhaCungCap.getValueAt(row, 0) + " này không?", "Cảnh báo cập nhật", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    String maNCC = txt_MaNhaCungCap.getText();
+                    String tenNCC = txt_TenNhaCungCap.getText();
+                    String soDienThoai = txt_SoDienThoai.getText();
+                    String diaChi = txt_DiaChi.getText();
+                    TinhTrangNCCEnum tinhTrang = null;
+                    if (cbo_TinhTrang.getSelectedIndex() == 0) {
+                        tinhTrang = TinhTrangNCCEnum.DANGNHAP;
+                    } else if (cbo_TinhTrang.getSelectedIndex() == 1) {
+                        tinhTrang = TinhTrangNCCEnum.NGUNGNHAP;
+                    }
+                    NhaCungCapEntity ncc = new NhaCungCapEntity(maNCC, tenNCC, diaChi, soDienThoai, tinhTrang);
+                    boolean kq=ncc_bus.capNhatNhaCungCap(ncc);
+                    if(kq){
+                        JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+                        lamMoi();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Cập nhật không thành công");
+                    }
+                }
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_CapNhat;
     private javax.swing.JButton btn_LamMoi;
+    private javax.swing.JButton btn_Loc;
     private javax.swing.JButton btn_Them;
     private javax.swing.JButton btn_TimKiem;
     private javax.swing.JComboBox<String> cbo_TinhTrang;
@@ -257,5 +528,4 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_SoDienThoai;
     private javax.swing.JTextField txt_TenNhaCungCap;
     // End of variables declaration//GEN-END:variables
-
 }
