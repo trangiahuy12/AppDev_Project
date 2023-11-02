@@ -19,6 +19,9 @@ public class SanPhamEntity {
     public SanPhamEntity() {
         super();
     }
+    public SanPhamEntity(String maSP) {
+        this.maSP = maSP;
+    }
 
     public SanPhamEntity(String maSP, String tenSP, KichThuocEnum kichThuoc, MauSacEnum mauSac, double donGia, int soLuongTonKho, TinhTrangSPEnum tinhTrang, ChatLieuEntity chatLieu, ThuongHieuEntity thuongHieu, DanhMucSanPhamEntity danhMucSanPham, byte[] imgUrl) {
         this.maSP = maSP;

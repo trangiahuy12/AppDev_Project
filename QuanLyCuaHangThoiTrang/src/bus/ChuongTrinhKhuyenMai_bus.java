@@ -19,5 +19,27 @@ public class ChuongTrinhKhuyenMai_bus implements ChuongTrinhKhuyenMai_Interface{
     public ArrayList<ChuongTrinhKhuyenMaiEntity> getallCTKM() {
        return ctkm_dao.getallCTKM();
     }
+
+    @Override
+    public ArrayList<ChuongTrinhKhuyenMaiEntity> getCTKMTheoMaCTKM(String maCTKM) {
+       return ctkm_dao.getCTKMTheoMaCTKM(maCTKM);
+    }
+
+    @Override
+    public boolean create(ChuongTrinhKhuyenMaiEntity ctkm) {
+        return ctkm_dao.create(ctkm);
+    }
+
+    @Override
+    public boolean delete(ChuongTrinhKhuyenMaiEntity ctkm) {
+       return ctkm_dao.delete(ctkm);
+    }
+
+    @Override
+    public boolean update(ChuongTrinhKhuyenMaiEntity ctkm) {
+       return ctkm_dao.update(ctkm);
+    }
+
+ 
     
 }
