@@ -9,11 +9,8 @@ import java.awt.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Date;
 import javax.swing.BorderFactory;
-=======
->>>>>>> 2e3b25e5dca93121becf1319ae86ca34f8bae3e6
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -33,11 +30,13 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
      */
     public KhuyenMai_JPanel() {
         initComponents();
+         try {
+            ConnectDB.getInstance().connect();
+        } catch (Exception e) {
+        }
           setBounds(0, 0, 1020, 700);
-          
-          
-        
-          ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         btn_TimKiem.setIcon(img_btnTimKiem);
@@ -287,6 +286,7 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
         JPanel_ThongTinCTKM.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 55, 120, 30));
 
         txtTenCTKM.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtTenCTKM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTenCTKM.setBorder(null);
         JPanel_ThongTinCTKM.add(txtTenCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 55, 170, 30));
 
@@ -301,6 +301,7 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
 
         txtMaCTKM.setEditable(false);
         txtMaCTKM.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtMaCTKM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMaCTKM.setBorder(null);
         JPanel_ThongTinCTKM.add(txtMaCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 15, 170, 30));
 

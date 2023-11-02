@@ -3,19 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/ChuongTrinhKhuyenMai_dao.java</file>
-            <file>file:/C:/Users/DELL/Desktop/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/KhuyenMai_JPanel.java</file>
-=======
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/NhanVien_JPanel.java</file>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/test.java</file>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/KhachHang_dao.java</file>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/util/GenerateID.java</file>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/TrangChu_GUI.java</file>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/bus/KhachHang_bus.java</file>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/TaiKhoan_JPanel.java</file>
-            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/KhachHang_JPanel.java</file>
->>>>>>> 2e3b25e5dca93121becf1319ae86ca34f8bae3e6
+            <file>file:/C:/Users/DELL/Desktop/DoAnPTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/KhuyenMai_JPanel.java</file>
+            <file>file:/C:/Users/DELL/Desktop/DoAnPTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/HoaDon_JPanel.java</file>
+            <file>file:/C:/Users/DELL/Desktop/DoAnPTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/TrangChu_GUI.java</file>
+            <file>file:/C:/Users/DELL/Desktop/DoAnPTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/ChiTietHoaDon_dao.java</file>
         </group>
     </open-files>
 </project-private>
