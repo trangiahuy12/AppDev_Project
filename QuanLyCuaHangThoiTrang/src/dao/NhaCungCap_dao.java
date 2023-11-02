@@ -13,8 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,9 +39,9 @@ public class NhaCungCap_dao implements NhaCungCap_Interface {
                 String diaChi = rs.getString("diaChi");
                 String tinhTrang = rs.getString("tinhTrang");
                 TinhTrangNCCEnum tinhTrangEnum = null;
-                if (rs.getString("tinhTrang").equals("Đang nhập")) {
+                if (tinhTrang.equals("Đang nhập")) {
                     tinhTrangEnum = TinhTrangNCCEnum.DANGNHAP;
-                } else if (rs.getString("tinhTrang").equals("Ngừng nhập")) {
+                } else if (tinhTrang.equals("Ngừng nhập")) {
                     tinhTrangEnum = TinhTrangNCCEnum.NGUNGNHAP;
                 }
                 NhaCungCapEntity ncc = new NhaCungCapEntity(maNCC, tenNCC, diaChi, soDienThoai, tinhTrangEnum);

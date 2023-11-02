@@ -23,7 +23,7 @@ public class HoaDon_dao implements  Interface.HoaDon_Interface{
     public ArrayList<HoaDonEntity> getallHoaDon() {
         ArrayList<HoaDonEntity> dshd = new ArrayList<HoaDonEntity>();
         try {
-            ConnectDB.getInstance();
+            ConnectDB.getInstance().connect();
             Connection con =ConnectDB.getConnection();
             String sql = "Select * from HoaDon";
              Statement statement = con.createStatement();
@@ -54,7 +54,7 @@ public class HoaDon_dao implements  Interface.HoaDon_Interface{
         double total = 0;
         String sql = "select tongTien from HoaDon where maHD = ? ";
         try {
-            ConnectDB.getInstance();
+            ConnectDB.getInstance().connect();
             Connection con = ConnectDB.getConnection();
             PreparedStatement sta = null;
             sta =  con.prepareStatement(sql);
