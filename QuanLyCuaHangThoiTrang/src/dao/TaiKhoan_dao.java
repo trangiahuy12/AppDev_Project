@@ -26,7 +26,7 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
 
     public entity.TaiKhoanEntity getTaiKhoan(String taiKhoan, String matKhau) throws SQLException {
 
-        ConnectDB.getInstance();
+        ConnectDB.getInstance().connect();
         Connection con = ConnectDB.getConnection();
         PreparedStatement statement = null;
         try {
@@ -61,7 +61,11 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
     
      public boolean lamMoiMatKhau(TaiKhoanEntity tk) {
 
-        ConnectDB.getInstance();
+        try {
+            ConnectDB.getInstance().connect();
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiKhoan_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Connection con = ConnectDB.getConnection();
         PreparedStatement statement = null;
         int n = 0;
