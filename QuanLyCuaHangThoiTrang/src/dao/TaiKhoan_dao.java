@@ -4,6 +4,7 @@
  */
 package dao;
 
+import Interface.TaiKhoanInterface;
 import connectDB.ConnectDB;
 import entity.TaiKhoanEntity;
 
@@ -12,21 +13,16 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
  *
- * @author Admin
+ * @author HUY
  */
-public class TaiKhoan_dao {
-
-    private static boolean lamMoiMatKhau() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-   
+public class TaiKhoan_dao implements TaiKhoanInterface{
+     ConnectDB connect = new ConnectDB();
 
     public entity.TaiKhoanEntity getTaiKhoan(String taiKhoan, String matKhau) throws SQLException {
 
@@ -92,6 +88,65 @@ public class TaiKhoan_dao {
         }
 
         return n > 0;
+    }
+
+    @Override
+    public boolean insert(TaiKhoanEntity tk) {
+        int n = 0;
+
+        try {
+            ConnectDB.getInstance().connect();
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiKhoan_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Connection con = ConnectDB.getConnection();
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement("INSERT INTO TaiKhoan "
+                    + " values(?,?)");
+            statement.setString(1, tk.getTenTaiKhoan());
+            statement.setString(2, tk.getMatKhau());
+
+            n = statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return n > 0;
+    }
+
+    @Override
+    public boolean update(TaiKhoanEntity tk) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean delete(TaiKhoanEntity tk) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean findOne(String tenTK) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<TaiKhoanEntity> findAll() {
+        ArrayList<TaiKhoanEntity> listTK = new ArrayList<>();
+        try {
+            connect.connect();
+            PreparedStatement statement = connect.getConnection().prepareStatement("SELECT * FROM TaiKhoan");
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                TaiKhoanEntity taiKhoan = null;
+                taiKhoan = new TaiKhoanEntity(rs.getString("tenTaiKhoan"), rs.getString("matKhau"));
+                if (!listTK.contains(taiKhoan)) listTK.add(taiKhoan);
+            }
+            connect.disconnect();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(KhachHang_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listTK;
     }
     
 }
