@@ -19,6 +19,7 @@ public class SanPhamEntity {
     public SanPhamEntity() {
         super();
     }
+
     public SanPhamEntity(String maSP) {
         this.maSP = maSP;
     }
@@ -125,13 +126,11 @@ public class SanPhamEntity {
         this.imgUrl = imgUrl;
     }
 
-    
-
     @Override
     public String toString() {
         return "SanPhamEntity{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", kichThuoc=" + kichThuoc + ", mauSac=" + mauSac + ", donGia=" + donGia + ", soLuongTonKho=" + soLuongTonKho + ", tinhTrang=" + tinhTrang + ", chatLieu=" + chatLieu + ", thuongHieu=" + thuongHieu + ", danhMucSanPham=" + danhMucSanPham + ", imgUrl=" + imgUrl + '}';
     }
-    
+
     @Override
     public int hashCode() {
         return Objects.hash(maSP);
@@ -151,5 +150,29 @@ public class SanPhamEntity {
         SanPhamEntity other = (SanPhamEntity) obj;
         return Objects.equals(maSP, other.maSP);
     }
+// Kiểm tra xem sản phẩm có chứa tiêu chí tìm kiếm không
 
+    public boolean matchesSearchTerm(String search) {
+        if (maSP.contains(search)
+                || tenSP.contains(search)
+                || kichThuoc.toString().contains(search)
+                || mauSac.toString().contains(search)
+                || Double.toString(donGia).contains(search)
+                || tinhTrang.toString().contains(search)
+                || Integer.toString(soLuongTonKho).contains(search)
+                ) {
+            return true;
+        }
+        if (chatLieu != null && chatLieu.getMaChatLieu() != null && chatLieu.getMaChatLieu().contains(search)) {
+            return true;
+
+        }
+        if(thuongHieu != null &&  thuongHieu.getMaThuongHieu() != null && thuongHieu.getMaThuongHieu().contains(search)){
+            return true;
+        }
+        if(danhMucSanPham != null && danhMucSanPham.getMaDanhMuc() != null && danhMucSanPham.getMaDanhMuc().contains(search)){
+            return true;
+        }
+        return false;
+    }
 }

@@ -452,7 +452,7 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         txt_TenNhaCungCap.setText("");
         txt_SoDienThoai.setText("");
         txt_DiaChi.setText("");
-        cbo_TinhTrang.setSelectedIndex(0);
+        cbo_TinhTrang.setSelectedItem("Đang nhập");
         txt_MaNhaCungCap_Search.setText("");
         model.setRowCount(0);
         resetLoc();
@@ -478,7 +478,7 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
     private void capNhatNhaCungCap() {
         int row = table_DanhSachNhaCungCap.getSelectedRow();
         if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Chưa chọn dòng để cập nhật");
+            JOptionPane.showMessageDialog(null, "Chưa chọn nhà cung cấp để cập nhật");
         } else {
             if (table_DanhSachNhaCungCap.getSelectedRowCount() == 1) {
                 if (JOptionPane.showConfirmDialog(null, "Bạn có chắc chắc cập nhật nhà cung cấp có mã " + table_DanhSachNhaCungCap.getValueAt(row, 0) + " này không?", "Cảnh báo cập nhật", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {

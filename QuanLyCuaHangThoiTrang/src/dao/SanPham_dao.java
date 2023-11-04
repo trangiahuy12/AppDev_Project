@@ -42,8 +42,9 @@ public class SanPham_dao implements SanPham_Interface {
                 String tenSP = rs.getString("tenSP");
                 String kichThuoc = rs.getString("kichThuoc");
                 String mauSac = rs.getString("mauSac");
-                int donGia = rs.getInt("donGia");
+                double donGia = rs.getDouble("donGia");
                 String tinhTrang = rs.getString("tinhTrang");
+                int soLuongTonKho=rs.getInt("soLuongTonKho");
                 String chatLieu = rs.getString("maChatLieu");
                 String thuongHieu = rs.getString("maThuongHieu");
                 String danhMuc = rs.getString("maDanhMuc");
@@ -79,7 +80,7 @@ public class SanPham_dao implements SanPham_Interface {
                 ChatLieuEntity maChatLieu = new ChatLieuEntity(chatLieu);
                 ThuongHieuEntity maThuongHieu = new ThuongHieuEntity(thuongHieu);
                 DanhMucSanPhamEntity maDanhMuc = new DanhMucSanPhamEntity(danhMuc);
-                SanPhamEntity sp = new SanPhamEntity(maSP, tenSP, kichThuocEnum, mauSacEnum, donGia, donGia, tinhTrangSPEnum, maChatLieu, maThuongHieu, maDanhMuc, imgUrl);
+                SanPhamEntity sp = new SanPhamEntity(maSP, tenSP, kichThuocEnum, mauSacEnum, donGia, soLuongTonKho, tinhTrangSPEnum, maChatLieu, maThuongHieu, maDanhMuc, imgUrl);
                 dsSanPham.add(sp);
             }
             ps.close();
@@ -163,12 +164,12 @@ public class SanPham_dao implements SanPham_Interface {
                 } else if (rs.getString("tinhTrang").equals("Ngừng bán")) {
                     tinhTrang = TinhTrangSPEnum.NGUNGBAN;
                 }
-                int soLuongTonKho=rs.getInt("soLuongTonKho");
-                ChatLieuEntity chatLieu=new ChatLieuEntity(rs.getString("maChatLieu"));
-                ThuongHieuEntity thuongHieu=new ThuongHieuEntity(rs.getString("maThuongHieu"));
-                DanhMucSanPhamEntity danhMuc=new DanhMucSanPhamEntity(rs.getString("maDanhMuc"));
-                String imgUrl=rs.getString("imgUrl");
-                SanPhamEntity sp=new SanPhamEntity(maSP, tenSP, kichThuoc, mauSac, donGia, soLuongTonKho, tinhTrang, chatLieu, thuongHieu, danhMuc, imgUrl);
+                int soLuongTonKho = rs.getInt("soLuongTonKho");
+                ChatLieuEntity chatLieu = new ChatLieuEntity(rs.getString("maChatLieu"));
+                ThuongHieuEntity thuongHieu = new ThuongHieuEntity(rs.getString("maThuongHieu"));
+                DanhMucSanPhamEntity danhMuc = new DanhMucSanPhamEntity(rs.getString("maDanhMuc"));
+                String imgUrl = rs.getString("imgUrl");
+                SanPhamEntity sp = new SanPhamEntity(maSP, tenSP, kichThuoc, mauSac, donGia, soLuongTonKho, tinhTrang, chatLieu, thuongHieu, danhMuc, imgUrl);
                 dsSanPham.add(sp);
             }
             ps.close();
@@ -178,5 +179,96 @@ public class SanPham_dao implements SanPham_Interface {
             Logger.getLogger(SanPham_dao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return dsSanPham;
+    }
+
+    @Override
+    public boolean capNhatSanPham(SanPhamEntity sp) {
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = null;
+            String sql = "update SanPham set tenSP=?, kichThuoc=?, mauSac=?, donGia=?, tinhTrang=?, soLuongTonKho=?, maChatLieu=?, maThuongHieu=?, maDanhMuc=?, imgUrl=? where maSP=?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, sp.getTenSP());
+            ps.setString(2, sp.getKichThuoc().toString());
+            ps.setString(3, sp.getMauSac().toString());
+            ps.setDouble(4, sp.getDonGia());
+            ps.setString(5, sp.getTinhTrang().toString());
+            ps.setInt(6, sp.getSoLuongTonKho());
+            ps.setString(7, sp.getChatLieu().getMaChatLieu());
+            ps.setString(8, sp.getThuongHieu().getMaThuongHieu());
+            ps.setString(9, sp.getDanhMucSanPham().getMaDanhMuc());
+            ps.setString(10, sp.getImgUrl());
+            ps.setString(11, sp.getMaSP());
+            ps.executeUpdate();
+            ps.close();
+            ConnectDB.getInstance().disconnect();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(NhaCungCap_dao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    @Override
+    public ArrayList<SanPhamEntity> kiemTraTonKho() {
+        ArrayList<SanPhamEntity> dsSP = new ArrayList<SanPhamEntity>();
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = null;
+            String sql="SELECT * FROM SanPham ORDER BY soLuongTonKho ASC";
+            ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()) {                
+                String maSP = rs.getString("maSP");
+                String tenSP = rs.getString("tenSP");
+                String kichThuoc = rs.getString("kichThuoc");
+                String mauSac = rs.getString("mauSac");
+                double donGia = rs.getDouble("donGia");
+                String tinhTrang = rs.getString("tinhTrang");
+                int soLuongTonKho=rs.getInt("soLuongTonKho");
+                String chatLieu = rs.getString("maChatLieu");
+                String thuongHieu = rs.getString("maThuongHieu");
+                String danhMuc = rs.getString("maDanhMuc");
+                String imgUrl = rs.getString("imgUrl");
+                KichThuocEnum kichThuocEnum = null;
+                if (kichThuoc.equals("XS")) {
+                    kichThuocEnum = KichThuocEnum.XS;
+                } else if (kichThuoc.equals("S")) {
+                    kichThuocEnum = KichThuocEnum.S;
+                } else if (kichThuoc.equals("M")) {
+                    kichThuocEnum = KichThuocEnum.M;
+                } else if (kichThuoc.equals("L")) {
+                    kichThuocEnum = KichThuocEnum.L;
+                } else if (kichThuoc.equals("XL")) {
+                    kichThuocEnum = KichThuocEnum.XL;
+                } else if (kichThuoc.equals("XXL")) {
+                    kichThuocEnum = KichThuocEnum.XXL;
+                }
+                MauSacEnum mauSacEnum = null;
+                if (mauSac.equals("Trắng")) {
+                    mauSacEnum = MauSacEnum.TRANG;
+                } else if (mauSac.equals("Đen")) {
+                    mauSacEnum = MauSacEnum.DEN;
+                } else if (mauSac.equals("Xám")) {
+                    mauSacEnum = MauSacEnum.XAM;
+                }
+                TinhTrangSPEnum tinhTrangSPEnum = null;
+                if (tinhTrang.equals("Đang bán")) {
+                    tinhTrangSPEnum = TinhTrangSPEnum.DANGBAN;
+                } else if (tinhTrang.equals("Ngừng bán")) {
+                    tinhTrangSPEnum = TinhTrangSPEnum.NGUNGBAN;
+                }
+                ChatLieuEntity maChatLieu = new ChatLieuEntity(chatLieu);
+                ThuongHieuEntity maThuongHieu = new ThuongHieuEntity(thuongHieu);
+                DanhMucSanPhamEntity maDanhMuc = new DanhMucSanPhamEntity(danhMuc);
+                SanPhamEntity sp = new SanPhamEntity(maSP, tenSP, kichThuocEnum, mauSacEnum, donGia, soLuongTonKho, tinhTrangSPEnum, maChatLieu, maThuongHieu, maDanhMuc, imgUrl);
+                dsSP.add(sp);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPham_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dsSP;
     }
 }

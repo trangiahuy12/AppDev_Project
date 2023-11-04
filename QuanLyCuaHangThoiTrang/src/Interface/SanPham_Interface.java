@@ -12,7 +12,13 @@ import java.util.ArrayList;
  * @author Tran Hien Vinh
  */
 public interface SanPham_Interface {
+
     public ArrayList<SanPhamEntity> getAllSanPham();
+
     public boolean themSP(SanPhamEntity sp);
+
     public ArrayList<SanPhamEntity> timSanPham(String ma);
+
+    public boolean capNhatSanPham(SanPhamEntity sp);
+    public ArrayList<SanPhamEntity> kiemTraTonKho();
 }
