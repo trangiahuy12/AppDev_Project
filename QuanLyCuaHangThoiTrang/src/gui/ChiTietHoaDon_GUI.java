@@ -37,6 +37,7 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         });
     }
     private final ChiTietHoaDon_bus cthdbus;
+    private DefaultTableModel model;
 
     /**
      * Creates new form ChiTietHoaDon_GUI
@@ -51,11 +52,6 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         cthdbus = new ChiTietHoaDon_bus();
 
-        
-//        ImageIcon img_Exits = new ImageIcon("src\\pic\\close.png");
-//        Image scaled_Exits  = img_Exits.getImage().getScaledInstance(15, 15,Image.SCALE_SMOOTH );
-//        img_Exits = new ImageIcon(scaled_Exits);
-//        lbl_IConExit.setIcon(img_Exits);
         lbl_IConExit.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -86,11 +82,9 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
     
     for (ChiTietHoaDonEntity cthd : listCTHD) {
         System.out.println(cthd.getHoaDon().getMaHD());
-//        allSP.addAll(cthdbus.getSanPhamTheo(cthd.getHoaDon().getMaHD())); // Thêm sản phẩm vào danh sách tất cả sản phẩm
+        allSP.addAll(cthdbus.getSanPhamTheoMaSP(cthd.getHoaDon().getMaHD())); // Thêm sản phẩm vào danh sách tất cả sản phẩm
         System.out.println(allSP);
     }
-
-    SwingUtilities.invokeLater(() -> {
         for (ChiTietHoaDonEntity cthd : listCTHD) {
             for (SanPhamEntity sp : allSP) {
                 addRows(new Object[]{
@@ -104,11 +98,10 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
                 });
             }
         }
-    });
+
 }
 
        public void addRows (Object[] row){
-       DefaultTableModel model;
         model = (DefaultTableModel) table.getModel();
         model.addRow(row);
    } 
