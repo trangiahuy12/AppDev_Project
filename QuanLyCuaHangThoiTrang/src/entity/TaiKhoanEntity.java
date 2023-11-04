@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Objects;
+
 public class TaiKhoanEntity {
 	private String tenTaiKhoan, matKhau;
 
@@ -33,6 +35,28 @@ public class TaiKhoanEntity {
 	public String toString() {
 		return "TaiKhoanEntity [tenTaiKhoan=" + tenTaiKhoan + ", matKhau=" + matKhau + "]";
 	}
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TaiKhoanEntity other = (TaiKhoanEntity) obj;
+        return Objects.equals(this.tenTaiKhoan, other.tenTaiKhoan);
+    }
 	
+        
 	
 }

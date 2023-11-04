@@ -116,9 +116,7 @@ public class NhanVienEntity {
                 return false;
             }
             final NhanVienEntity other = (NhanVienEntity) obj;
-            if (!Objects.equals(this.maNV, other.maNV)) {
-                return false;
-            }
+            
             return Objects.equals(this.soDienThoai, other.soDienThoai);
         }
 	
