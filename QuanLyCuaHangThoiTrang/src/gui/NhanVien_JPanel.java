@@ -525,6 +525,7 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
         try {
             if (checkInput()) {
                 Date ns = txt_date.getDate();
+//              Chuyển từ date sang localDate
                 LocalDate ngaySinh = ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 GioiTinhEnum gt = null;
                 System.out.println(ngaySinh.toString());
@@ -661,6 +662,8 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
                 NhanVienEntity nv = new NhanVienEntity();
                 TinhTrangNVEnum tt = null;
                 
+                
+                
                 tt = switch (cbo_TinhTrang.getSelectedItem().toString()) {
                     case "Đang làm việc" -> TinhTrangNVEnum.DANGLAMVIEC;
                     case "Nghỉ việc" -> TinhTrangNVEnum.NGHIVIEC;
@@ -749,6 +752,9 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
         String SDT = txt_SDT.getText();
         String diaChi = txt_DiaChi.getText();
         String email = txt_email.getText();
+        Date birthDate = txt_date.getDate();
+        Date currentDate = new Date();
+        
         if (hoTen.isBlank() || SDT.isBlank() || diaChi.isBlank() || (rad_Nam.isSelected() == false && rad_Nu.isSelected() == false && rad_Khac.isSelected() == false)) {
             JOptionPane.showMessageDialog(this, "Tất cả thông tin không được rỗng!");
             return false;
@@ -761,7 +767,7 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Số điện thoại phải có 10 ký số và thuộc quốc gia Việt Nam!");
             return false;
         }
-        else if (!diaChi.matches("^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ0-9]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ,]*)*$") && diaChi.length() <= 50) {
+        else if (!diaChi.matches("^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ0-9,]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ,][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ,]*)*$") && diaChi.length() <= 50) {
             JOptionPane.showMessageDialog(this, "Địa chỉ tối đa 50 kí tự"
                     + "!");
             return false;
@@ -770,7 +776,10 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Địa chỉ email không hợp lệ!");
             return false;
         }
-        
+        else if (NhanVienEntity.getAge(currentDate, birthDate) < 15) {
+            JOptionPane.showMessageDialog(this, "Nhân viên phải đủ đủ 15 tuổi trở lên mới được nhận!");
+            return false;
+        }
         return true;
     }
     

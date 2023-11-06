@@ -1,6 +1,8 @@
 package entity;
 
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class NhanVienEntity {
@@ -120,7 +122,22 @@ public class NhanVienEntity {
             return Objects.equals(this.soDienThoai, other.soDienThoai);
         }
 	
-        
-	
-	
+        public static int getAge(Date currentDate, Date birthDate) {
+            Calendar calendarCurrent = Calendar.getInstance();
+            calendarCurrent.setTime(currentDate);
+
+            Calendar calendarBirth = Calendar.getInstance();
+            calendarBirth.setTime(birthDate);
+
+            int years = calendarCurrent.get(Calendar.YEAR) - calendarBirth.get(Calendar.YEAR);
+
+            // Check if the birthdate has occurred this year
+            if (calendarBirth.get(Calendar.MONTH) > calendarCurrent.get(Calendar.MONTH)
+                    || (calendarBirth.get(Calendar.MONTH) == calendarCurrent.get(Calendar.MONTH)
+                    && calendarBirth.get(Calendar.DAY_OF_MONTH) > calendarCurrent.get(Calendar.DAY_OF_MONTH))) {
+                years--;
+            }
+
+            return years;
+    }
 }
