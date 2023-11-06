@@ -9,7 +9,7 @@ public enum MauSacEnum {
 			case TRANG: return "Trắng";
 			case DEN: return "Đen";
 			case XAM: return "Xám";
+                        default: return null;
 		}
-		return null;
 	}
 }
