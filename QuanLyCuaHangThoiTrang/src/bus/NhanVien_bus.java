@@ -3,6 +3,7 @@ package bus;
 import Interface.NhanVienInterface;
 import dao.NhanVien_dao;
 import entity.NhanVienEntity;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -31,6 +32,16 @@ public class NhanVien_bus implements NhanVienInterface{
     @Override
     public ArrayList<NhanVienEntity> findAll() {
         return NVdao.findAll();
+    }
+
+    @Override
+    public Boolean checkNV(String email, String sdt) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getTenNV(String sdt) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

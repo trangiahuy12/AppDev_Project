@@ -1,6 +1,7 @@
 package entity;
 
 public enum MauSacEnum {
+
 	TRANG, DEN, XAM;
 	
 	@Override

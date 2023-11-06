@@ -3,12 +3,14 @@ package gui;
 import connectDB.ConnectDB;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.AbstractAction;
@@ -19,11 +21,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
+import util.ToanCuc;
 
 public class TrangChu_GUI extends javax.swing.JFrame {
 
     public TrangChu_GUI() {
+
         initComponents();
+        ToanCuc tc = new ToanCuc();
+        jlb_name.setText(tc.getName());
+
        
         setSize(1200, 720);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -122,7 +129,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         ImageIcon img_DangXuat = new ImageIcon("src\\pic\\logout.png");
         Image scaled_DangXuat = img_DangXuat.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         img_DangXuat = new ImageIcon(scaled_DangXuat);
-         JMenu_DangXuat.setIcon(img_DangXuat);
+        JMenu_DangXuat.setIcon(img_DangXuat);
 
         ImageIcon img_ThayMatKhau = new ImageIcon("src\\pic\\key.png");
         Image scaled_ThayMatKhau = img_ThayMatKhau.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
@@ -157,219 +164,219 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_TrangChu.addMouseListener(new PanelButtonMouseAdapter(Jpanel_TrangChu) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                  Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(112,128,144));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(112, 128, 144));
                 menuClicked(TrangChu_Panel);
-               
+
             }
         });
 
         Jpanel_BanHang.addMouseListener(new PanelButtonMouseAdapter(Jpanel_BanHang) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(112,128,144));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(112, 128, 144));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(BanHang_Panel);
             }
         });
         Jpanel_DoiTra.addMouseListener(new PanelButtonMouseAdapter(Jpanel_DoiTra) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(112,128,144));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(112, 128, 144));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(DoiTra_Panel);
             }
         });
-        
+
         Jpanel_KhachHang.addMouseListener(new PanelButtonMouseAdapter(Jpanel_KhachHang) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(112,128,144));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(112, 128, 144));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(KhachHang_Panel);
             }
         });
         Jpanel_KhuyenMai.addMouseListener(new PanelButtonMouseAdapter(Jpanel_KhuyenMai) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(112,128,144));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(112, 128, 144));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(KhuyenMai_Panel);
             }
         });
         Jpanel_NhaCungCap.addMouseListener(new PanelButtonMouseAdapter(Jpanel_NhaCungCap) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(112,128,144));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(112, 128, 144));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(NhaCungCap_Panel);
             }
         });
         Jpanel_NhanVien.addMouseListener(new PanelButtonMouseAdapter(Jpanel_NhanVien) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(112,128,144));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(112, 128, 144));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(NhanVien_Panel);
             }
         });
         Jpanel_PhieuNhap.addMouseListener(new PanelButtonMouseAdapter(Jpanel_PhieuNhap) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(112,128,144));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(112, 128, 144));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(PhieuNhap_Panel);
             }
         });
         Jpanel_SanPham.addMouseListener(new PanelButtonMouseAdapter(Jpanel_SanPham) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(112,128,144));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(112, 128, 144));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(SanPham_Panel);
             }
         });
         Jpanel_TaiKhoan.addMouseListener(new PanelButtonMouseAdapter(Jpanel_TaiKhoan) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(112,128,144));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(112, 128, 144));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(TaiKhoan_Panel);
             }
         });
         Jpanel_ThongKe.addMouseListener(new PanelButtonMouseAdapter(Jpanel_ThongKe) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(112,128,144));
-                 Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(112, 128, 144));
+                Jpanel_HoaDon.setBackground(new Color(0, 51, 51));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(ThongKe_Panel);
             }
         });
         Jpanel_HoaDon.addMouseListener(new PanelButtonMouseAdapter(Jpanel_HoaDon) {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 Jpanel_BanHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
-                 Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
-                 Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
-                 Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
-                 Jpanel_SanPham.setBackground(new Color(0, 51, 51));
-                 Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
-                 Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
-                 Jpanel_HoaDon.setBackground(new Color(112,128,144));
-                 Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
+                Jpanel_BanHang.setBackground(new Color(0, 51, 51));
+                Jpanel_DoiTra.setBackground(new Color(0, 51, 51));
+                Jpanel_KhachHang.setBackground(new Color(0, 51, 51));
+                Jpanel_KhuyenMai.setBackground(new Color(0, 51, 51));
+                Jpanel_NhaCungCap.setBackground(new Color(0, 51, 51));
+                Jpanel_NhanVien.setBackground(new Color(0, 51, 51));
+                Jpanel_PhieuNhap.setBackground(new Color(0, 51, 51));
+                Jpanel_SanPham.setBackground(new Color(0, 51, 51));
+                Jpanel_TaiKhoan.setBackground(new Color(0, 51, 51));
+                Jpanel_ThongKe.setBackground(new Color(0, 51, 51));
+                Jpanel_HoaDon.setBackground(new Color(112, 128, 144));
+                Jpanel_TrangChu.setBackground(new Color(0, 51, 51));
                 menuClicked(HoaDon_Panel);
             }
         });
@@ -391,8 +398,8 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         JMenuItem_An.setPreferredSize(new java.awt.Dimension(0, 0));
         JMenu_DangXuat.setToolTipText("Ctrl+0");
         JMenu_DangXuat.setAccelerator(null);
-        
-          // Tạo và cấu hình timer
+
+        // Tạo và cấu hình timer
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -408,10 +415,8 @@ public class TrangChu_GUI extends javax.swing.JFrame {
             }
         });
         timer.start();
-       
+
         menuClicked(TrangChu_Panel);
-        
-        
 
     }
 
@@ -439,7 +444,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
 
         Jpanel_Menu = new javax.swing.JPanel();
         Jpanel_Users = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jlb_name = new javax.swing.JLabel();
         lbl_Users = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Jpanel_TaiKhoan = new javax.swing.JPanel();
@@ -503,11 +508,11 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         Jpanel_Users.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Đinh Nguyên Chung");
-        Jpanel_Users.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 30));
+        jlb_name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jlb_name.setForeground(new java.awt.Color(255, 255, 255));
+        jlb_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlb_name.setText("Đinh Nguyên Chung");
+        Jpanel_Users.add(jlb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 30));
         Jpanel_Users.add(lbl_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -730,6 +735,11 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         jMenu2.add(JMenu_GioiThieu);
 
         JMenu_TroGiup.setText("Trợ Giúp");
+        JMenu_TroGiup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenu_TroGiupActionPerformed(evt);
+            }
+        });
         jMenu2.add(JMenu_TroGiup);
 
         jMenuBar1.add(jMenu2);
@@ -768,11 +778,24 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenu_ThayMatKhauMouseClicked
 
     private void JMenu_ThayMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_ThayMatKhauActionPerformed
-       ThayDoiMatKhau_GUI thayDoiMatKhay_Gui = new ThayDoiMatKhau_GUI();
-       thayDoiMatKhay_Gui.setVisible(true);
-        
+        ThayDoiMatKhau_GUI thayDoiMatKhay_Gui = new ThayDoiMatKhau_GUI();
+        thayDoiMatKhay_Gui.setVisible(true);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_JMenu_ThayMatKhauActionPerformed
+
+    private void JMenu_TroGiupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_TroGiupActionPerformed
+
+        try {
+            System.out.println("Start..");
+            File file = new java.io.File("src/HTMLFile/HELPPAGE/main.html").getAbsoluteFile();
+            Desktop.getDesktop().open(file);
+            System.out.println("End..");
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JMenu_TroGiupActionPerformed
 
     public static void main(String args[]) {
 
@@ -780,6 +803,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
             public void run() {
                 TrangChu_GUI trangchu = new TrangChu_GUI();
 //                trangchu.setUndecorated(true);
+
                 trangchu.setVisible(true);
             }
         });
@@ -852,12 +876,12 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel Jpanel_Time;
     private javax.swing.JPanel Jpanel_TrangChu;
     private javax.swing.JPanel Jpanel_Users;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jlb_name;
     private javax.swing.JLabel lbl_BanHang;
     private javax.swing.JLabel lbl_DoiTra;
     private javax.swing.JLabel lbl_IconBanHang;
