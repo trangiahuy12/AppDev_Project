@@ -62,7 +62,7 @@ public class email {
             message.setSubject("Mật khẩu mới");
 
             // Email content
-            message.setText(text);
+            message.setText("Mật khẩu mới của bạn: "+text);
 
             // Send the email
             Transport.send(message);

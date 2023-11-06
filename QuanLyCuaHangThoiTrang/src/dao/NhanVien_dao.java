@@ -51,4 +51,34 @@ public class NhanVien_dao {
         return false;
       
     }
+    
+    public String getTenNV( String sdt) throws SQLException {
+
+        ConnectDB.getInstance();
+        Connection con = ConnectDB.getConnection();
+        PreparedStatement statement = null;
+        try {
+
+            String sql = "SELECT * FROM NhanVien WHERE  soDienThoai = ?";
+            statement = con.prepareStatement(sql);
+            statement.setString(1, sdt);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+              String name = rs.getString("hoTen");
+               return name;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch (Exception e2) {
+                // TODO: handle exception
+                e2.printStackTrace();
+            }
+        }
+        return "";
+      
+    }
 }
