@@ -22,6 +22,7 @@ import entity.MauSacEnum;
 import entity.ThuongHieuEntity;
 import entity.TinhTrangSPEnum;
 import java.awt.Component;
+import java.awt.Font;
 import java.text.DecimalFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -30,6 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 import util.GenerateID;
 
 /**
@@ -161,7 +163,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         lbl_TenSanPham.setPreferredSize(new java.awt.Dimension(85, 15));
 
         txt_MaSanPham.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txt_MaSanPham.setEnabled(false);
+        txt_MaSanPham.setEditable(false);
 
         txt_TenSanPham.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -420,6 +422,9 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         panel_DanhSachSanPham.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Bảng danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         panel_DanhSachSanPham.setPreferredSize(new java.awt.Dimension(1008, 317));
 
+        JTableHeader tableHeader=table_DanhSachSanPham.getTableHeader();
+        tableHeader.setFont(new Font("Times New Roman", Font.BOLD, 13));
+        table_DanhSachSanPham.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         table_DanhSachSanPham.setModel(model);
         table_DanhSachSanPham.getColumnModel().getColumn(0).setPreferredWidth(100);
         table_DanhSachSanPham.getColumnModel().getColumn(1).setPreferredWidth(200);
@@ -617,8 +622,8 @@ public class SanPham_JPanel extends javax.swing.JPanel {
                     sp.getMauSac().toString(), sp.getDonGia(), sp.getTinhTrang().toString(),
                     sp.getSoLuongTonKho(), sp.getChatLieu().getMaChatLieu(),
                     sp.getThuongHieu().getMaThuongHieu(), sp.getDanhMucSanPham().getMaDanhMuc()});
-                JOptionPane.showMessageDialog(null, "Thêm thành công");
                 lamMoi();
+                JOptionPane.showMessageDialog(null, "Thêm thành công");    
             } else {
                 JOptionPane.showMessageDialog(null, "Thêm không thành công");
             }
