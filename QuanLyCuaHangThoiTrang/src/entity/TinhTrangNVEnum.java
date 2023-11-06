@@ -1,6 +1,6 @@
 package entity;
 
-public enum TinhTrangNhanVien {
+public enum TinhTrangNVEnum {
 	DANGLAMVIEC, NGHIVIEC, NGHIPHEP;
 	
 	@Override

@@ -8,7 +8,7 @@ package entity;
  *
  * @author HUY
  */
-public enum GioiTinh {
+public enum GioiTinhEnum {
     NAM, NU, KHAC;
     
     @Override

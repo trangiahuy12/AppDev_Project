@@ -10,11 +10,11 @@ public class ChatLieuEntity {
 		this.maChatLieu = maChatLieu;
 		this.tenChatLieu = tenChatLieu;
 		this.xuatXu = xuatXu;
-	}
+	} 
 	public ChatLieuEntity(String maChatLieu) {
 		super();
 		this.maChatLieu = maChatLieu;
-	}
+	}    
 	public ChatLieuEntity() {
 		super();
 	}

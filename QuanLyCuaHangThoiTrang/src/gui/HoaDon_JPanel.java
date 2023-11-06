@@ -6,8 +6,6 @@ import entity.HoaDonEntity;
 import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.management.modelmbean.ModelMBean;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,11 +36,11 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         btn_Xoa.setIcon(img_btnXoa);
         
         // KHởi tạo kết nối database
-        try {
-            ConnectDB.getInstance().connect();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            ConnectDB.getInstance().connect();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         
          hdbus = new HoaDon_bus();
          DocDuLieuTuSQLvaoTable();

@@ -16,7 +16,6 @@ public class ConnectDB {
 		String url = "jdbc:sqlserver://localhost:1433;databasename=QuanLyBanHang";
 		String user = "sa";
 		String password = "sapassword";
-
 		con = DriverManager.getConnection(url, user, password);
 	}
 	

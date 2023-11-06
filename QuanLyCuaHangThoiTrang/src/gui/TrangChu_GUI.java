@@ -1,5 +1,6 @@
 package gui;
 
+import connectDB.ConnectDB;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Desktop;
@@ -16,6 +17,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
@@ -29,6 +31,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         ToanCuc tc = new ToanCuc();
         jlb_name.setText(tc.getName());
 
+       
         setSize(1200, 720);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -752,7 +755,13 @@ public class TrangChu_GUI extends javax.swing.JFrame {
 
     private void JMenu_DangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_DangXuatActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        DangNhap_GUI dangnhap = new DangNhap_GUI();
+        int hoi = JOptionPane.showConfirmDialog(null, "Bạn có chắn muốn đăng xuất ?","Chú ý !",JOptionPane.YES_NO_OPTION);
+        if(hoi == JOptionPane.YES_OPTION){
+        dangnhap.setVisible(true);
+        dispose(); 
+        }
+        
     }//GEN-LAST:event_JMenu_DangXuatActionPerformed
 
     private void JMenu_DangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMenu_DangXuatMouseClicked
