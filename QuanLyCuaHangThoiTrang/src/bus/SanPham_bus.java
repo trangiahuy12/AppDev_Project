@@ -39,5 +39,11 @@ public class SanPham_bus implements SanPham_Interface{
     public ArrayList<SanPhamEntity> kiemTraTonKho() {
         return sp_dao.kiemTraTonKho();
     }
+
+    // Nguyen Huy Hoang
+    @Override
+    public SanPhamEntity timKiemSanPham(String ma) {
+        return sp_dao.timKiemSanPham(ma);
+    }
     
 }

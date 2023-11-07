@@ -20,6 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import util.ConvertStringToEnum;
 
 /**
  *
@@ -270,5 +271,61 @@ public class SanPham_dao implements SanPham_Interface {
             Logger.getLogger(SanPham_dao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return dsSP;
+    }
+    
+    // Nguyen Huy Hoang
+    @Override
+    public SanPhamEntity timKiemSanPham(String ma) {
+        PreparedStatement statement = null;
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+
+            String sql = "Select sp.*, dm.tenDanhMuc, cl.tenChatLieu, cl.xuatXu, th.tenThuongHieu from SanPham as sp inner join DanhMucSanPham as dm on sp.maDanhMuc=dm.maDanhMuc"
+                    + " inner join ThuongHieu as th on sp.maThuongHieu=th.maThuongHieu inner join ChatLieu as cl on sp.maChatLieu=cl.maChatLieu where maSP=? ";
+            statement = con.prepareStatement(sql);
+            statement.setString(1, ma);
+            
+            ResultSet rs = statement.executeQuery();
+            SanPhamEntity sanPham = null;
+            while(rs.next()) {
+                String maSP = rs.getString("maSP");
+                String tenSP = rs.getString("tenSP");
+                String kichThuoc = rs.getString("kichThuoc");
+                String imgUrl = rs.getString("imgUrl");
+                String mauSac = rs.getString("mauSac");
+                double donGia = rs.getDouble("donGia");
+                int soLuongTonKho = rs.getInt("soLuongTonKho");
+                String tinhTrang = rs.getString("tinhTrang");
+               
+                String maChatLieu = rs.getString("maChatLieu");
+                String tenChatLieu = rs.getString("tenChatLieu");
+                String xuatXu = rs.getString("xuatXu");
+                ChatLieuEntity chatLieu = new ChatLieuEntity(maChatLieu, tenChatLieu, xuatXu);
+                
+                String maThuongHieu = rs.getString("maThuongHieu");
+                String tenThuongHieu = rs.getString("tenThuongHieu");
+                ThuongHieuEntity thuongHieu = new ThuongHieuEntity(maThuongHieu, tenThuongHieu);
+                
+                String maDanhMuc = rs.getString("maDanhMuc");
+                String tenDanhMuc = rs.getString("tenDanhMuc");
+                DanhMucSanPhamEntity danhMucSanPham = new DanhMucSanPhamEntity(maDanhMuc, tenDanhMuc);
+                
+                ConvertStringToEnum convertToEnum = new ConvertStringToEnum();
+                
+                sanPham = new SanPhamEntity(maSP, tenSP, convertToEnum.KichThuoctoEnum(kichThuoc), convertToEnum.MauSactoEnum(mauSac), donGia, soLuongTonKho, convertToEnum.TinhTrangSPToEnum(tinhTrang), chatLieu, thuongHieu, danhMucSanPham, imgUrl);
+            }
+            return sanPham;
+        } catch(SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                statement.close();
+                ConnectDB.getInstance().disconnect();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
