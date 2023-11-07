@@ -1,8 +1,3 @@
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package gui;
 import bus.KhachHang_bus;
 import dao.KhachHang_dao;
@@ -266,6 +261,11 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
                 btn_TimKiemMouseClicked(evt);
             }
         });
+        btn_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TimKiemActionPerformed(evt);
+            }
+        });
         panel_ThaoTaoKH.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 120, 30));
 
         btn_LamMoi.setBackground(new java.awt.Color(0, 51, 51));
@@ -381,8 +381,6 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(this, "Thêm khách hàng thành công!");
                 }
                 else JOptionPane.showMessageDialog(this, "Thêm thất bại! Số điện thoại khách hàng đã bị trùng!");
-
-                
             }
         } catch (BadLocationException ex) {
             Logger.getLogger(KhachHang_JPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -426,8 +424,8 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
     }
     
     private void btn_CapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CapNhatActionPerformed
-        KhachHang_dao dao = new KhachHang_dao();
-        ArrayList<KhachHangEntity> listKH = bus.findAll();
+//        KhachHang_dao dao = new KhachHang_dao();
+//        ArrayList<KhachHangEntity> listKH = bus.findAll();
         try {
             if (checkInput()) {
                 GioiTinhEnum gt = null;
@@ -441,7 +439,10 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
                 kh.setSoDienThoai(txt_SDT.getText());
                 kh.setDiaChi(txt_DiaChi.getText());
                 
-                if (!listKH.contains(kh) && bus.update(kh)) {
+//                listKH.remove(kh);
+                
+                if (bus.update(kh)) {
+//                    listKH.add(kh);
                     refresh();
                     JOptionPane.showMessageDialog(this, "Đã sửa dữ liệu khách hàng thành công!");
                 }
@@ -517,6 +518,10 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
     private void btn_LamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_LamMoiMouseClicked
         refresh();
     }//GEN-LAST:event_btn_LamMoiMouseClicked
+
+    private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_TimKiemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

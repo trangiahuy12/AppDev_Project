@@ -1,10 +1,15 @@
 package gui;
 
+import bus.TaiKhoan_bus;
+import entity.TaiKhoanEntity;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 public class TaiKhoan_JPanel extends javax.swing.JPanel {
-
+    private TaiKhoan_bus bus = new TaiKhoan_bus();
+    private DefaultTableModel tableModel = new DefaultTableModel();
     public TaiKhoan_JPanel() {
         initComponents();
         setBounds(0, 0, 1020, 720);
@@ -16,6 +21,11 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
         Image scaled_btnXoa = img_btnXoa.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnXoa = new ImageIcon(scaled_btnXoa);
         btn_Xoa.setIcon(img_btnXoa);
+        
+        tableModel = (DefaultTableModel) table_DanhSachTK.getModel();
+        table_DanhSachTK.setModel(tableModel);
+        
+        loadData();
     }
 
     @SuppressWarnings("unchecked")
@@ -163,6 +173,13 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_XoaActionPerformed
 
+     private void loadData() {
+        ArrayList<TaiKhoanEntity> listTK = new ArrayList<>();
+        listTK = bus.findAll();
+        for (TaiKhoanEntity tk : listTK) {
+            tableModel.addRow(new Object[]{tk.getTenTaiKhoan(), tk.getMatKhau()});
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_TimKiem;

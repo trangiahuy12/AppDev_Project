@@ -30,13 +30,12 @@ public class KhachHang_dao implements KhachHangInterface{
             rs = statement.executeQuery();
             while (rs.next()) {
                 GioiTinhEnum gt = null;
-                if (rs.getString("gioiTinh").equals("Nam   ")) {
+                if (rs.getString("gioiTinh").equals("Nam")) {
                     gt = GioiTinhEnum.NAM;
                 }
-                else if (rs.getString("gioiTinh").equals("Nu   ")) {
+                else if (rs.getString("gioiTinh").equals("Nữ")) {
                     gt = GioiTinhEnum.NU;
-                }
-                else gt = GioiTinhEnum.KHAC;
+                } else gt = GioiTinhEnum.KHAC;
                 khachHang = new KhachHangEntity(
                        rs.getString("maKH"), 
                        rs.getString("hoTen"), 

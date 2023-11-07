@@ -6,9 +6,9 @@ import entity.HoaDonEntity;
 import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.management.modelmbean.ModelMBean;
-import javax.swing.BorderFactory;
+import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class HoaDon_JPanel extends javax.swing.JPanel {
@@ -20,6 +20,7 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
      * Creates new form HoaDon_JPanel
      */
     public HoaDon_JPanel() {
+            
         initComponents();
         setBounds(0, 0, 1020, 700);
 //          Jpanel_ThaoTac.setBorder(BorderFactory.createTitledBorder("Thao tác"));
@@ -38,11 +39,11 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         btn_Xoa.setIcon(img_btnXoa);
         
         // KHởi tạo kết nối database
-        try {
-            ConnectDB.getInstance().connect();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            ConnectDB.getInstance().connect();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         
          hdbus = new HoaDon_bus();
          DocDuLieuTuSQLvaoTable();
@@ -60,6 +61,11 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         model = (DefaultTableModel) jTable1.getModel();
         model.addRow(row);
    } 
+   public String getMaHDInHD(){
+       int row = jTable1.getSelectedRow();
+       String ma = jTable1.getValueAt(row, 0).toString();
+       return ma;
+   }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -180,9 +186,19 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
 
     private void btn_XemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XemChiTietActionPerformed
         // TODO add your handling code here:
+        
         chitiethoadon = new ChiTietHoaDon_GUI();
-        chitiethoadon.setVisible(true);
-
+        try {
+             int row = jTable1.getSelectedRow();
+            String maHD = jTable1.getValueAt(row, 0).toString();
+            String maKH = jTable1.getValueAt(row, 1).toString();
+            String maNV = jTable1.getValueAt(row, 2).toString();
+            String ngayLap = jTable1.getValueAt(row, 6).toString();
+            chitiethoadon.getHD(maHD,maKH,maNV,ngayLap);
+            chitiethoadon.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn hoá đơn cần xem !");
+        }
     }//GEN-LAST:event_btn_XemChiTietActionPerformed
 
     private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed

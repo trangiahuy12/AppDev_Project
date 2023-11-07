@@ -12,5 +12,5 @@ import java.util.ArrayList;
 public interface ChiTietHoaDon_Interface {
     public ArrayList<ChiTietHoaDonEntity> getallCTHD();
     public ArrayList<SanPhamEntity> getSanPhamTheoMaSP(String maSP); 
-    public ArrayList<String> getMaSPTheoMaCTHD(String maHD);
+    public ArrayList<SanPhamEntity> getSanPhamTheoMaHD(String maHD);
 }

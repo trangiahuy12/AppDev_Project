@@ -1,13 +1,13 @@
 package entity;
 
 public enum ChucVuEnum {
-	NHANVIEN, QUANLY;
+    NHANVIEN, QUANLY;
 	
-	@Override
+    @Override
     public String toString() {
             return switch (this) {
-                case NHANVIEN -> "Nhân Viên";
-                default -> "Quản Lý";
+                case NHANVIEN -> "Nhân viên";
+                default -> "Quản lý";
             };
     }
 }

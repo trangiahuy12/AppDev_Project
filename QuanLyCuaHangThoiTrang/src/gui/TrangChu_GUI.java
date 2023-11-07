@@ -152,7 +152,8 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Main.add(PhieuNhap_Panel);
         Jpanel_Main.add(KhuyenMai_Panel);
         Jpanel_Main.add(TaiKhoan_Panel);
-
+        // Gán panleTrangChu background
+        Jpanel_TrangChu.setBackground(new Color(112,128,144));
         // Gán sự kiện click Jpanel
         Jpanel_TrangChu.addMouseListener(new PanelButtonMouseAdapter(Jpanel_TrangChu) {
             @Override

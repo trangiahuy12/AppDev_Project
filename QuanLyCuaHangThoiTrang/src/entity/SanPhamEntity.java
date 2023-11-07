@@ -14,7 +14,7 @@ public class SanPhamEntity {
     private ChatLieuEntity chatLieu;
     private ThuongHieuEntity thuongHieu;
     private DanhMucSanPhamEntity danhMucSanPham;
-    private byte[] imgUrl;
+    private String imgUrl;
 
     public SanPhamEntity() {
         super();
@@ -23,7 +23,7 @@ public class SanPhamEntity {
         this.maSP = maSP;
     }
 
-    public SanPhamEntity(String maSP, String tenSP, KichThuocEnum kichThuoc, MauSacEnum mauSac, double donGia, int soLuongTonKho, TinhTrangSPEnum tinhTrang, ChatLieuEntity chatLieu, ThuongHieuEntity thuongHieu, DanhMucSanPhamEntity danhMucSanPham, byte[] imgUrl) {
+    public SanPhamEntity(String maSP, String tenSP, KichThuocEnum kichThuoc, MauSacEnum mauSac, double donGia, int soLuongTonKho, TinhTrangSPEnum tinhTrang, ChatLieuEntity chatLieu, ThuongHieuEntity thuongHieu, DanhMucSanPhamEntity danhMucSanPham, String imgUrl) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.kichThuoc = kichThuoc;
@@ -117,13 +117,15 @@ public class SanPhamEntity {
         this.danhMucSanPham = danhMucSanPham;
     }
 
-    public byte[] getImgUrl() {
+    public String getImgUrl() {
         return imgUrl;
     }
 
-    public void setImgUrl(byte[] imgUrl) {
+    public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
+    
 
     @Override
     public String toString() {

@@ -8,8 +8,6 @@ import bus.NhaCungCap_bus;
 import entity.NhaCungCapEntity;
 import entity.TinhTrangNCCEnum;
 import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -51,6 +49,10 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         Image scaled_btnCapNhat = img_btnCapNhat.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnCapNhat = new ImageIcon(scaled_btnCapNhat);
         btn_CapNhat.setIcon(img_btnCapNhat);
+        ImageIcon img_btnLoc = new ImageIcon("src//pic//buttonLoc.png");
+        Image scaled_btnLoc = img_btnLoc.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnLoc = new ImageIcon(scaled_btnLoc);
+        btn_Loc.setIcon(img_btnLoc);
         loadDuLieuTuDataLenTable();
         txt_TenNhaCungCap.setText("Cty TNHH An Thành");
         txt_SoDienThoai.setText("0345682887");
@@ -419,9 +421,9 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         String soDienThoai = txt_SoDienThoai.getText();
         String diaChi = txt_DiaChi.getText();
         TinhTrangNCCEnum tinhTrang = null;
-        if (cbo_TinhTrang.getSelectedIndex() == 0) {
+        if (cbo_TinhTrang.getSelectedItem().equals("Đang nhập")) {
             tinhTrang = TinhTrangNCCEnum.DANGNHAP;
-        } else if (cbo_TinhTrang.getSelectedIndex() == 1) {
+        } else if (cbo_TinhTrang.getSelectedItem().equals("Ngừng nhập")) {
             tinhTrang = TinhTrangNCCEnum.NGUNGNHAP;
         }
         NhaCungCapEntity ncc = new NhaCungCapEntity(maNCC, tenNCC, diaChi, soDienThoai, tinhTrang);

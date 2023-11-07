@@ -111,25 +111,90 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
 
 
     @Override
-    public ArrayList<String> getMaSPTheoMaCTHD(String maHD) {
-        ArrayList<String> dsMa = new ArrayList<String>();
-        
+   public ArrayList<SanPhamEntity> getSanPhamTheoMaHD(String maHD) {
         try {
-            ConnectDB.getInstance();
-            Connection con = ConnectDB.getConnection();
-            String sql = "Select maSP from ChiTietHoaDon where maHD = ?";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, maHD);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()){
-                String ma = rs.getString("maSP");
-                dsMa.add(ma);
-            }
-        } catch (Exception e) {
+            ConnectDB.getInstance().connect();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return dsMa;
-                
+        ArrayList<SanPhamEntity> dsSP = new ArrayList<SanPhamEntity>();
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+    try {
+        ConnectDB.getInstance();
+        con = ConnectDB.getConnection();
+        String sql = "select * from SanPham where maSP = (select maSP from ChiTietHoaDon where maHD = ?)";
+        stmt = con.prepareStatement(sql);
+        stmt.setString(1, maHD);
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
+             String maSP = rs.getString("maSP");
+                String tenSP = rs.getString("tenSP");
+                String kichThuoc = rs.getString("kichThuoc");
+                String mauSac = rs.getString("mauSac");
+                int donGia = rs.getInt("donGia");
+                String tinhTrang = rs.getString("tinhTrang");
+                String chatLieu = rs.getString("maChatLieu");
+                String thuongHieu = rs.getString("maThuongHieu");
+                String danhMuc = rs.getString("maDanhMuc");
+                String imgUrl = rs.getString("imgUrl");
+                KichThuocEnum kichThuocEnum = null;
+                if (kichThuoc.equals("XS")) {
+                    kichThuocEnum = KichThuocEnum.XS;
+                } else if (kichThuoc.equals("S")) {
+                    kichThuocEnum = KichThuocEnum.S;
+                } else if (kichThuoc.equals("M")) {
+                    kichThuocEnum = KichThuocEnum.M;
+                } else if (kichThuoc.equals("L")) {
+                    kichThuocEnum = KichThuocEnum.L;
+                } else if (kichThuoc.equals("XL")) {
+                    kichThuocEnum = KichThuocEnum.XL;
+                } else if (kichThuoc.equals("XXL")) {
+                    kichThuocEnum = KichThuocEnum.XXL;
+                }
+                MauSacEnum mauSacEnum = null;
+                if (mauSac.equals("Trắng")) {
+                    mauSacEnum = MauSacEnum.TRANG;
+                } else if (mauSac.equals("Đen")) {
+                    mauSacEnum = MauSacEnum.DEN;
+                } else if (mauSac.equals("Xám")) {
+                    mauSacEnum = MauSacEnum.XAM;
+                }
+                TinhTrangSPEnum tinhTrangSPEnum = null;
+                if (tinhTrang.equals("Đang bán")) {
+                    tinhTrangSPEnum = TinhTrangSPEnum.DANGBAN;
+                } else if (tinhTrang.equals("Ngừng bán")) {
+                    tinhTrangSPEnum = TinhTrangSPEnum.NGUNGBAN;
+                }
+                ChatLieuEntity maChatLieu = new ChatLieuEntity(chatLieu);
+                ThuongHieuEntity maThuongHieu = new ThuongHieuEntity(thuongHieu);
+                DanhMucSanPhamEntity maDanhMuc = new DanhMucSanPhamEntity(danhMuc);
+                SanPhamEntity sp = new SanPhamEntity(maSP, tenSP, kichThuocEnum, mauSacEnum, donGia, donGia, tinhTrangSPEnum, maChatLieu, maThuongHieu, maDanhMuc, imgUrl);
+            dsSP.add(sp);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
+
+    return dsSP;
+}
+
     
 }

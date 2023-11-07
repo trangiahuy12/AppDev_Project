@@ -27,7 +27,7 @@ public class ChiTietHoaDon_bus implements ChiTietHoaDon_Interface{
     }
 
     @Override
-    public ArrayList<String> getMaSPTheoMaCTHD(String maHD) {
-        return cthd_dao.getMaSPTheoMaCTHD(maHD);
+    public ArrayList<SanPhamEntity> getSanPhamTheoMaHD(String maHD) {
+        return cthd_dao.getSanPhamTheoMaHD(maHD);
     }
 }

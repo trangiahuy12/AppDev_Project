@@ -2,6 +2,7 @@
 package gui;
 
 import bus.ChiTietHoaDon_bus;
+import bus.SanPham_bus;
 import connectDB.ConnectDB;
 import entity.ChiTietHoaDonEntity;
 import entity.SanPhamEntity;
@@ -10,7 +11,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,12 +41,14 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
     }
     private final ChiTietHoaDon_bus cthdbus;
     private DefaultTableModel model;
+    private SanPham_bus spbus;
+    private HoaDon_JPanel HDPanel;
 
     /**
      * Creates new form ChiTietHoaDon_GUI
      */
     public ChiTietHoaDon_GUI() {
-        try {
+           try {
             ConnectDB.getInstance().connect();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,42 +67,23 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
           DocDuLieuSQLvaoTable();
 
     }
-//    private void DocDuLieuSQLvaoTable(){
-//        ArrayList<ChiTietHoaDonEntity> listCTHD = cthdbus.getallCTHD();
-//        System.out.println(listCTHD);
-//        for(ChiTietHoaDonEntity cthd: listCTHD){
-//            ArrayList<SanPhamEntity> listSP = cthdbus.getSanPhamTheoMaCTHD(cthd.getMaCTHD());
-//            System.out.println(listSP);
-//            for (SanPhamEntity sp :listSP ){
-//                 addRows(new Object[]{cthd.getHoaDon().getMaHD(),sp.getTenSP(),sp.getKichThuoc(),sp.getMauSac(),cthd.getSoLuong(),sp.getDonGia(),cthd.getSoLuong()*sp.getDonGia()});
-//            }
-//           
-//        }
-//    }
+
     private void DocDuLieuSQLvaoTable() {
     ArrayList<ChiTietHoaDonEntity> listCTHD = cthdbus.getallCTHD();
-//    System.out.println(listCTHD);
-    
-    ArrayList<SanPhamEntity> allSP = new ArrayList<SanPhamEntity>(); // Danh sách tất cả sản phẩm
-    
-    for (ChiTietHoaDonEntity cthd : listCTHD) {
-        System.out.println(cthd.getHoaDon().getMaHD());
-        allSP.addAll(cthdbus.getSanPhamTheoMaSP(cthd.getHoaDon().getMaHD())); // Thêm sản phẩm vào danh sách tất cả sản phẩm
-        System.out.println(allSP);
-    }
-        for (ChiTietHoaDonEntity cthd : listCTHD) {
-            for (SanPhamEntity sp : allSP) {
-                addRows(new Object[]{
-                    cthd.getHoaDon().getMaHD(),
-                    sp.getTenSP(),
-                    sp.getKichThuoc(),
-                    sp.getMauSac(),
-                    cthd.getSoLuong(),
-                    sp.getDonGia(),
-                    cthd.getSoLuong() * sp.getDonGia()
-                });
+        try {
+            String maHD = lbl_MaHoaDon.getText();
+            ArrayList<SanPhamEntity> allSP = new ArrayList<SanPhamEntity>(); // Danh sách tất cả sản phẩm
+             allSP = cthdbus.getSanPhamTheoMaHD(maHD);
+             System.out.println(allSP);
+            for(SanPhamEntity sp: allSP){
+                addRows(new Object[]{sp.getTenSP(),sp.getKichThuoc(),sp.getMauSac(),sp.getSoLuongTonKho(),sp.getDonGia(),sp.getSoLuongTonKho() * sp.getDonGia()});
             }
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn hoá đơn cần xem !");
+            e.printStackTrace();
         }
+   
 
 }
 
@@ -105,6 +91,15 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         model.addRow(row);
    } 
+    public boolean getHD(String maHD,String maKH,String maNV,String ngayLap ){
+        lbl_MaHoaDon.setText(maHD);
+        lbl_MaKhachHang.setText(maKH);
+        lbl_MaNhanVien.setText(maNV);
+        lbl_NgayLapHoaDon.setText(ngayLap);
+        return false;
+    }
+       
+       
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -136,7 +131,7 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(241, 241, 241));
+        jPanel1.setBackground(new java.awt.Color(187, 205, 197));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -149,10 +144,11 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 20));
 
-        jPanel2.setBackground(new java.awt.Color(241, 241, 241));
+        jPanel2.setBackground(new java.awt.Color(187, 205, 197));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("THÔNG TIN CHI TIẾT HÓA ĐƠN");
@@ -171,7 +167,7 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 90, 30));
 
         lbl_MaHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lbl_MaHoaDon.setText("HD20202278");
+        lbl_MaHoaDon.setText("KM1202022303");
         jPanel2.add(lbl_MaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 110, 30));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -190,15 +186,16 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         lbl_NgayLapHoaDon.setText("21/10/2023");
         jPanel2.add(lbl_NgayLapHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 110, 30));
 
-        table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã Hóa Đơn", "Tên Sản Phẩm", "Kích Thước", "Màu Sắc", "Số Lượng", "Giá bán", "Thành tiền"
+                "Tên Sản Phẩm", "Kích Thước", "Màu Sắc", "Số Lượng", "Giá bán", "Thành tiền"
             }
         ));
+        table.setRowHeight(30);
+        table.getColumnModel().getColumn(0).setPreferredWidth(200);
         jScrollPane1.setViewportView(table);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 760, 240));
@@ -227,7 +224,9 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         jLabel11.setText("10 %");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 100, 30));
 
+        btn_XacNhan.setBackground(new java.awt.Color(0, 51, 51));
         btn_XacNhan.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btn_XacNhan.setForeground(new java.awt.Color(255, 255, 255));
         btn_XacNhan.setText("Xác Nhận");
         btn_XacNhan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -238,7 +237,7 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 800, 680));
 
-        jPanel3.setBackground(new java.awt.Color(241, 241, 241));
+        jPanel3.setBackground(new java.awt.Color(187, 205, 197));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
