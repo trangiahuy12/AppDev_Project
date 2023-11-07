@@ -73,6 +73,6 @@ public class NhaCungCapEntity {
 	
 	// Kiểm tra xem nhà cung cấp có chứa tiêu chí tìm kiếm không
         public boolean matchesSearchTerm(String search) {
-            return maNCC.contains(search) || tenNCC.contains(search) || soDienThoai.contains(search) || diaChi.contains(search);
+            return maNCC.contains(search) || tenNCC.contains(search) || soDienThoai.contains(search) || diaChi.contains(search)||tinhTrang.toString().contains(search);
         }
 }

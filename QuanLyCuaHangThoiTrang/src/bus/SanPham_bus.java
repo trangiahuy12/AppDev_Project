@@ -29,5 +29,15 @@ public class SanPham_bus implements SanPham_Interface{
     public ArrayList<SanPhamEntity> timSanPham(String ma) {
         return sp_dao.timSanPham(ma);
     }
+
+    @Override
+    public boolean capNhatSanPham(SanPhamEntity sp) {
+        return sp_dao.capNhatSanPham(sp);
+    }
+
+    @Override
+    public ArrayList<SanPhamEntity> kiemTraTonKho() {
+        return sp_dao.kiemTraTonKho();
+    }
     
 }

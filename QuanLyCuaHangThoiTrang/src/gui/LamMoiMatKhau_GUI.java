@@ -8,10 +8,13 @@ import connectDB.ConnectDB;
 import dao.NhanVien_dao;
 import dao.TaiKhoan_dao;
 import entity.TaiKhoanEntity;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import util.MD5Encode;
 import util.email;
 
 /**
@@ -63,6 +66,7 @@ public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jlf_LamMoiMatKhau.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jlf_LamMoiMatKhau.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -204,7 +208,8 @@ public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
                 double number = Math.random();
                 int interger = (int) (number * 1000000);
                 String text = interger + "";
-                entity.TaiKhoanEntity tk = new TaiKhoanEntity(sdt, text);
+                String encodeText = MD5Encode.md5Encode(text);
+                entity.TaiKhoanEntity tk = new TaiKhoanEntity(sdt, encodeText);
                 
                 if (tk_dao.lamMoiMatKhau(tk) == true) {
                     email.sendMess(mail, text);
@@ -216,6 +221,10 @@ public class LamMoiMatKhau_GUI extends javax.swing.JFrame {
             }
 
         } catch (SQLException ex) {
+            Logger.getLogger(LamMoiMatKhau_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LamMoiMatKhau_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(LamMoiMatKhau_GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_LamMoiMouseClicked

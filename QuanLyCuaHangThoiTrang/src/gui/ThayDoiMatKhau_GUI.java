@@ -7,10 +7,13 @@ package gui;
 import connectDB.ConnectDB;
 import dao.TaiKhoan_dao;
 import entity.TaiKhoanEntity;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import util.MD5Encode;
 
 /**
  *
@@ -62,6 +65,7 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jlb_ThayDoiMatKhau.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
         jlb_ThayDoiMatKhau.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -205,32 +209,53 @@ public class ThayDoiMatKhau_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_HuyBoMouseClicked
 
     private void btn_ThuyDoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ThuyDoiMouseClicked
-        String tenTaiKhoan = jtf_TenTaiKhoan.getText();
-        char[] po = jpf_MatKhauHienTai.getPassword();
-        char[] pn = jpf_MatKhauMoi.getPassword();
-        String oldPass = new String(po);
-        String newPass = new String(pn);
-
-        dao.TaiKhoan_dao tk_dao = new TaiKhoan_dao();
-        entity.TaiKhoanEntity tk = new TaiKhoanEntity();
-
-        try {
-            tk = tk_dao.getTaiKhoan(tenTaiKhoan, oldPass);
-// TODO add your handling code here:
-        } catch (SQLException ex) {
-            Logger.getLogger(ThayDoiMatKhau_GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if(tk == null){
-            JOptionPane.showConfirmDialog(null, "Tài khoản và mật khẩu không khớp");
-        }else {
-           entity.TaiKhoanEntity newTK = new  TaiKhoanEntity(tenTaiKhoan, newPass);
-           if(tk_dao.lamMoiMatKhau(tk) == true){
-               JOptionPane.showConfirmDialog(null, "đồi mật khẩu thành công");
-               jtf_TenTaiKhoan.setText("");
-               jpf_MatKhauHienTai.setText("");
-               jpf_MatKhauMoi.setText("");
-           }
+        try {                                         
+            String tenTaiKhoan = jtf_TenTaiKhoan.getText();
+            char[] po = jpf_MatKhauHienTai.getPassword();
+            char[] pn = jpf_MatKhauMoi.getPassword();
+            String oldPass = new String(po);
+            String newPass = new String(pn);
             
+            
+            String encodeOldPass = MD5Encode.md5Encode(oldPass);       
+            String encodeNewPass = MD5Encode.md5Encode(newPass);
+
+            dao.TaiKhoan_dao tk_dao = new TaiKhoan_dao();
+            entity.TaiKhoanEntity tk = new TaiKhoanEntity();
+            if(tenTaiKhoan.trim().length() ==0){
+                 JOptionPane.showMessageDialog(null, "Tài khoản không được rổng");
+                 return;
+            }else if(oldPass.trim().length() ==0){
+                 JOptionPane.showMessageDialog(null, "chưa nhập mật khẩu hiện tại");
+                 return;
+            }else if(newPass.trim().length() ==0){
+                 JOptionPane.showMessageDialog(null, "chưa nhập mật khẩu mới");
+                 return;
+            }
+            
+            
+            try {
+                tk = tk_dao.getTaiKhoan(tenTaiKhoan, encodeOldPass);
+            } catch (SQLException ex) {
+                Logger.getLogger(ThayDoiMatKhau_GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(tk == null){
+                JOptionPane.showMessageDialog(null, "Tài khoản và mật khẩu không khớp");
+            }else {
+                
+                entity.TaiKhoanEntity newTK = new  TaiKhoanEntity(tenTaiKhoan, encodeNewPass);
+                if(tk_dao.lamMoiMatKhau(newTK) == true){
+                    JOptionPane.showMessageDialog(null, "đồi mật khẩu thành công");
+                    jtf_TenTaiKhoan.setText("");
+                    jpf_MatKhauHienTai.setText("");
+                    jpf_MatKhauMoi.setText("");
+                }
+                
+            }
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ThayDoiMatKhau_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(ThayDoiMatKhau_GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_ThuyDoiMouseClicked
 

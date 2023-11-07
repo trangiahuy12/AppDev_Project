@@ -1,6 +1,7 @@
 package Interface;
 
 import entity.NhanVienEntity;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -8,6 +9,8 @@ import java.util.ArrayList;
  * @author HUY
  */
 public interface NhanVienInterface {
+    public Boolean checkNV(String email, String sdt) throws SQLException ;
+    public String getTenNV( String sdt) throws SQLException ;
     NhanVienEntity findOne(String id);
     boolean update(NhanVienEntity updateNV);
     boolean insert(NhanVienEntity insertNV);

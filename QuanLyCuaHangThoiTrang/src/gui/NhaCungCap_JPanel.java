@@ -7,12 +7,15 @@ package gui;
 import bus.NhaCungCap_bus;
 import entity.NhaCungCapEntity;
 import entity.TinhTrangNCCEnum;
+import java.awt.Font;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableRowSorter;
 import util.GenerateID;
 
@@ -124,8 +127,8 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         lbl_TenNhaCungCap.setPreferredSize(new java.awt.Dimension(85, 15));
 
         txt_MaNhaCungCap.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txt_MaNhaCungCap.setEnabled(false);
         txt_MaNhaCungCap.setPreferredSize(new java.awt.Dimension(68, 26));
+        txt_MaNhaCungCap.setEditable(false);
 
         txt_TenNhaCungCap.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -218,6 +221,8 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
 
         lbl_MaNhaCungCap_Search.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_MaNhaCungCap_Search.setText("Mã nhà cung cấp");
+
+        txt_MaNhaCungCap_Search.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         btn_TimKiem.setBackground(new java.awt.Color(0, 51, 51));
         btn_TimKiem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -325,6 +330,9 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         panel_DanhSachNhaCungCap.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Bảng danh sách nhà cung cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
         panel_DanhSachNhaCungCap.setPreferredSize(new java.awt.Dimension(466, 486));
 
+        JTableHeader tableHeader=table_DanhSachNhaCungCap.getTableHeader();
+        tableHeader.setFont(new Font("Times New Roman", Font.BOLD, 13));
+        table_DanhSachNhaCungCap.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         table_DanhSachNhaCungCap.setModel(model);
         table_DanhSachNhaCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -430,6 +438,7 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         boolean kiemTra = ncc_bus.themNCC(ncc);
         if (kiemTra) {
             model.addRow(new Object[]{ncc.getMaNCC(), ncc.getTenNCC(), ncc.getSoDienThoai(), ncc.getDiaChi(), ncc.getTinhTrang()});
+            lamMoi();
             JOptionPane.showMessageDialog(null, "Thêm thành công");
         } else {
             JOptionPane.showMessageDialog(null, "Thêm không thành công");
@@ -438,7 +447,7 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
 
     // Hàm tìm kiếm nhà cung cấp và hiển thị kết quả trên bảng
     private void timkiemNhaCungCap(String dieuKien) {
-        model.setRowCount(0); // Đặt số hàng của bảng về 0 để xóa kết quả trước
+        model.setRowCount(0);
         ArrayList<NhaCungCapEntity> dsNCC = ncc_bus.getAllNhaCungCap();
         for (NhaCungCapEntity ncc : dsNCC) {
             if (ncc.matchesSearchTerm(dieuKien)) {
@@ -452,7 +461,7 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
         txt_TenNhaCungCap.setText("");
         txt_SoDienThoai.setText("");
         txt_DiaChi.setText("");
-        cbo_TinhTrang.setSelectedIndex(0);
+        cbo_TinhTrang.setSelectedItem("Đang nhập");
         txt_MaNhaCungCap_Search.setText("");
         model.setRowCount(0);
         resetLoc();
@@ -478,7 +487,7 @@ public class NhaCungCap_JPanel extends javax.swing.JPanel {
     private void capNhatNhaCungCap() {
         int row = table_DanhSachNhaCungCap.getSelectedRow();
         if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Chưa chọn dòng để cập nhật");
+            JOptionPane.showMessageDialog(null, "Chưa chọn nhà cung cấp để cập nhật");
         } else {
             if (table_DanhSachNhaCungCap.getSelectedRowCount() == 1) {
                 if (JOptionPane.showConfirmDialog(null, "Bạn có chắc chắc cập nhật nhà cung cấp có mã " + table_DanhSachNhaCungCap.getValueAt(row, 0) + " này không?", "Cảnh báo cập nhật", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {

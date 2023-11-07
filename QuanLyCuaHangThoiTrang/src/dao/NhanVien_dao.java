@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  */
 public class NhanVien_dao implements NhanVienInterface{
     ConnectDB connect = new ConnectDB();
-    
+    @Override
     public Boolean checkNV(String email, String sdt) throws SQLException {
         ConnectDB.getInstance();
         Connection con = ConnectDB.getConnection();
@@ -52,7 +52,36 @@ public class NhanVien_dao implements NhanVienInterface{
         return false;
       
     }
+    @Override
+    public String getTenNV( String sdt) throws SQLException {
 
+        ConnectDB.getInstance();
+        Connection con = ConnectDB.getConnection();
+        PreparedStatement statement = null;
+        try {
+
+            String sql = "SELECT * FROM NhanVien WHERE  soDienThoai = ?";
+            statement = con.prepareStatement(sql);
+            statement.setString(1, sdt);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+              String name = rs.getString("hoTen");
+               return name;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch (Exception e2) {
+                // TODO: handle exception
+                e2.printStackTrace();
+            }
+        }
+        return "";
+      
+    }
     @Override
     public NhanVienEntity findOne(String id) {
         NhanVienEntity nhanVien = null;

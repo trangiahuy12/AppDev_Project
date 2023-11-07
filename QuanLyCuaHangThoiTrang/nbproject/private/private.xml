@@ -3,11 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/DELL/Desktop/DoAnPTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/HoaDon_JPanel.java</file>
             <file>file:/C:/Users/DELL/Desktop/DoAnPTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/TrangChu_GUI.java</file>
             <file>file:/C:/Users/DELL/Desktop/DoAnPTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/Interface/ChiTietHoaDon_Interface.java</file>
             <file>file:/C:/Users/DELL/Desktop/DoAnPTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/ChiTietHoaDon_GUI.java</file>
             <file>file:/C:/Users/DELL/Desktop/DoAnPTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/ChiTietHoaDon_dao.java</file>
+=======
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/SanPham_JPanel.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/TrangChu_GUI.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/DangNhap_GUI.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/Interface/NhanVienInterface.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/entity/SanPhamEntity.java</file>
+            <file>file:/D:/Year3/PTUD/projects/AppDev_Project/QuanLyCuaHangThoiTrang/src/entity/MauSacEnum.java</file>
+>>>>>>> 4d3ac8a20cfe10d3596dc8695dc28a69a58654bd
         </group>
     </open-files>
 </project-private>
