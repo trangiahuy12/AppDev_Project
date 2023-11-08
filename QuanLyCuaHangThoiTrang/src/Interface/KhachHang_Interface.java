@@ -11,10 +11,13 @@ import java.util.ArrayList;
  *
  * @author HUY
  */ 
-public interface KhachHangInterface {
+public interface KhachHang_Interface {
     KhachHangEntity findOne(String id   );
     boolean update(KhachHangEntity updateKH);
     boolean insert(KhachHangEntity insertKH);
     ArrayList<KhachHangEntity> findAll();
 //    int count(String id);
+    
+    // Nguyen Huy Hoang
+    public KhachHangEntity timKiemTheoSDT(String sdt);
 }

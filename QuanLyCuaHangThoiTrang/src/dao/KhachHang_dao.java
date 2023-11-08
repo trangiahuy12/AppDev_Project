@@ -1,21 +1,23 @@
 package dao;
 
-import Interface.KhachHangInterface;
 import connectDB.ConnectDB;
 import entity.GioiTinhEnum;
 import entity.KhachHangEntity;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Interface.KhachHang_Interface;
+import util.ConvertStringToEnum;
 
 /**
  *
  * @author HUY
  */
-public class KhachHang_dao implements KhachHangInterface{
+public class KhachHang_dao implements KhachHang_Interface{
     ConnectDB connect = new ConnectDB();
     
     @Override
@@ -146,4 +148,45 @@ public class KhachHang_dao implements KhachHangInterface{
 //        }
 //        return count;
 //    }
+    
+    
+    // Nguyen Huy Hoang
+    @Override
+    public KhachHangEntity timKiemTheoSDT(String sdt) {
+        PreparedStatement statement = null;
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            
+            String sql = "Select * from KhachHang where soDienThoai=?";
+            statement = con.prepareStatement(sql);
+            statement.setString(1, sdt);
+            
+            ResultSet rs = statement.executeQuery();
+            
+            KhachHangEntity khachHang = null;
+            while(rs.next()) {
+                String maKH = rs.getString("maKH");
+                String hoTen = rs.getString("hoTen");
+                String gioiTinh = rs.getString("gioiTinh");
+                String soDienThoai = rs.getString("soDienThoai");
+                String diaChi = rs.getString("diaChi");
+                
+                ConvertStringToEnum convertToEnum = new ConvertStringToEnum();
+                
+                khachHang = new KhachHangEntity(maKH, hoTen, convertToEnum.GioiTinhtoEnum(gioiTinh), soDienThoai, diaChi);
+            }
+            return khachHang;
+        } catch(SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                statement.close();
+                ConnectDB.getInstance().disconnect();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
