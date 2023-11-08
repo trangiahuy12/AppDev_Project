@@ -53,8 +53,8 @@ public class NhanVien_dao implements NhanVienInterface{
       
     }
     @Override
-    public String getTenNV( String sdt) throws SQLException {
-
+    public NhanVienEntity getNV( String sdt) throws SQLException {
+        NhanVienEntity nv = new NhanVienEntity();
         ConnectDB.getInstance();
         Connection con = ConnectDB.getConnection();
         PreparedStatement statement = null;
@@ -65,22 +65,39 @@ public class NhanVien_dao implements NhanVienInterface{
             statement.setString(1, sdt);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-              String name = rs.getString("hoTen");
-               return name;
+               
+              GioiTinhEnum gt = null;
+                gt = switch (rs.getString("gioiTinh")) {
+                    case "Nam" -> GioiTinhEnum.NAM;
+                    case "Nữ" -> GioiTinhEnum.NU;
+                    default -> GioiTinhEnum.KHAC;
+                };
+                TinhTrangNVEnum tt = null;
+                tt = switch (rs.getString("tinhTrang")) {
+                    case "Đang làm việc" -> TinhTrangNVEnum.DANGLAMVIEC;
+                    case "Nghỉ việc" -> TinhTrangNVEnum.NGHIVIEC;
+                    default -> TinhTrangNVEnum.NGHIPHEP;
+                };
+                nv = new NhanVienEntity(rs.getString("maNV"), 
+                        rs.getString("hoTen"), 
+                        gt, LocalDate.parse(rs.getString("ngaySinh")), 
+                        rs.getString("email"), 
+                        rs.getString("soDienThoai"), 
+                        rs.getString("diaChi"), 
+                        rs.getString("chucVu").equals(ChucVuEnum.NHANVIEN.toString()) == true ? ChucVuEnum.NHANVIEN : ChucVuEnum.QUANLY, 
+                        tt, 
+                        rs.getString("caLamViec").equals(CaLamViecEnum.CA1.toString()) == true ? CaLamViecEnum.CA1 : CaLamViecEnum.CA2);
             }
+            
+              
+               
+            
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                statement.close();
-            } catch (Exception e2) {
-                // TODO: handle exception
-                e2.printStackTrace();
-            }
         }
-        return "";
-      
+//        return "";
+        return nv;
     }
     @Override
     public NhanVienEntity findOne(String id) {
