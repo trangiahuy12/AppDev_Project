@@ -40,8 +40,8 @@ public class NhanVien_bus implements NhanVienInterface{
     }
 
     @Override
-    public String getTenNV(String sdt) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public NhanVienEntity getNV(String sdt) throws SQLException {
+        return NVdao.getNV(sdt);
     }
     
 }

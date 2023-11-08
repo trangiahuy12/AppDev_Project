@@ -30,6 +30,20 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         initComponents();
         ToanCuc tc = new ToanCuc();
         jlb_name.setText(tc.getName());
+        lbl_ChucVu.setText(tc.getChucvu());
+        if(tc.getGioitnh().equals("Nữ")){
+                    ImageIcon img_User_nu = new ImageIcon("src\\pic\\user_nu.png");
+                    Image scaled_Users_nu = img_User_nu.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+                    img_User_nu = new ImageIcon(scaled_Users_nu);
+                    
+            lbl_Users.setIcon(img_User_nu);
+        }
+        else{
+                    ImageIcon img_User = new ImageIcon("src\\pic\\user_nam.png");
+                    Image scaled_Users = img_User.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+                    img_User = new ImageIcon(scaled_Users);
+            lbl_Users.setIcon(img_User);
+        }
 
        
         setSize(1200, 720);
@@ -66,21 +80,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Image scaled_BanHang = img_BanHang.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_BanHang = new ImageIcon(scaled_BanHang);
         lbl_IconBanHang.setIcon(img_BanHang);
-//    
-//     ImageIcon img_Exits = new ImageIcon("src\\pic\\close.png");
-//    Image scaled_Exits = img_Exits.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
-//    img_Exits = new ImageIcon(scaled_Exits);
-//    lbl_IconExit.setIcon(img_Exits);
 
-        ImageIcon img_User = new ImageIcon("src\\pic\\user_nam.png");
-        Image scaled_Users = img_User.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        img_User = new ImageIcon(scaled_Users);
-        lbl_Users.setIcon(img_User);
-
-//    ImageIcon img_Settings = new ImageIcon("src\\pic\\settings.png");
-//    Image scaled_Settings = img_Settings.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-//    img_Settings = new ImageIcon(scaled_Settings);
-//    lbl_Settings.setIcon(img_Settings);
         ImageIcon img_HoaDon = new ImageIcon("src\\pic\\hoadon.png");
         Image scaled_HoaDon = img_HoaDon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_HoaDon = new ImageIcon(scaled_HoaDon);
@@ -447,7 +447,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users = new javax.swing.JPanel();
         jlb_name = new javax.swing.JLabel();
         lbl_Users = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_ChucVu = new javax.swing.JLabel();
         Jpanel_TaiKhoan = new javax.swing.JPanel();
         lbl_TaiKhoan = new javax.swing.JLabel();
         lbl_IconTaiKhoan = new javax.swing.JLabel();
@@ -516,10 +516,11 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users.add(jlb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 30));
         Jpanel_Users.add(lbl_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("NV21127891");
-        Jpanel_Users.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, 30));
+        lbl_ChucVu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lbl_ChucVu.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_ChucVu.setText("Quản Lý");
+        Jpanel_Users.add(lbl_ChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, 30));
+        lbl_ChucVu.getAccessibleContext().setAccessibleName("Quản Lý");
 
         Jpanel_Menu.add(Jpanel_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
@@ -877,13 +878,13 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel Jpanel_Time;
     private javax.swing.JPanel Jpanel_TrangChu;
     private javax.swing.JPanel Jpanel_Users;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jlb_name;
     private javax.swing.JLabel lbl_BanHang;
+    private javax.swing.JLabel lbl_ChucVu;
     private javax.swing.JLabel lbl_DoiTra;
     private javax.swing.JLabel lbl_IconBanHang;
     private javax.swing.JLabel lbl_IconDoiTra;

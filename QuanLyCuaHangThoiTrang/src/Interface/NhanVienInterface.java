@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public interface NhanVienInterface {
     public Boolean checkNV(String email, String sdt) throws SQLException ;
-    public String getTenNV( String sdt) throws SQLException ;
+    public NhanVienEntity getNV( String sdt) throws SQLException ;
     NhanVienEntity findOne(String id);
     boolean update(NhanVienEntity updateNV);
     boolean insert(NhanVienEntity insertNV);
