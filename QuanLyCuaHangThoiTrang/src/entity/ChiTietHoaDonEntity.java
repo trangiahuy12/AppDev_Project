@@ -7,12 +7,25 @@ public class ChiTietHoaDonEntity {
 	private SanPhamEntity sanPham;
 	private HoaDonEntity hoaDon;
 	private int soLuong;
-	public ChiTietHoaDonEntity(String maCTHD, SanPhamEntity sanPham, HoaDonEntity hoaDon, int soLuong) {
+        private double giaBan;
+        private double thanhTien;
+        
+        public ChiTietHoaDonEntity(String maCTHD, SanPhamEntity sanPham, HoaDonEntity hoaDon, int soLuong) {
 		super();
 		this.maCTHD = maCTHD;
 		this.sanPham = sanPham;
 		this.hoaDon = hoaDon;
 		this.soLuong = soLuong;
+	}
+        
+	public ChiTietHoaDonEntity(String maCTHD, SanPhamEntity sanPham, HoaDonEntity hoaDon, int soLuong, double giaBan, double thanhTien) {
+		super();
+		this.maCTHD = maCTHD;
+		this.sanPham = sanPham;
+		this.hoaDon = hoaDon;
+		this.soLuong = soLuong;
+                this.giaBan = giaBan;
+                this.thanhTien = thanhTien;
 	}
 	public ChiTietHoaDonEntity(String maCTHD) {
 		super();
@@ -45,6 +58,23 @@ public class ChiTietHoaDonEntity {
 	public void setSoLuong(int soLuong) {
 		this.soLuong = soLuong;
 	}
+
+        public double getGiaBan() {
+            return giaBan;
+        }
+
+        public void setGiaBan(double giaBan) {
+            this.giaBan = giaBan;
+        }
+
+        public double getThanhTien() {
+            return thanhTien;
+        }
+
+        public void setThanhTien(double thanhTien) {
+            this.thanhTien = thanhTien;
+        }
+    
 	@Override
 	public String toString() {
 		return "ChiTietHoaDonEntity [maCTHD=" + maCTHD + ", hoaDon=" + hoaDon + ", soLuong=" + soLuong + "]";
@@ -63,7 +93,5 @@ public class ChiTietHoaDonEntity {
 			return false;
 		ChiTietHoaDonEntity other = (ChiTietHoaDonEntity) obj;
 		return Objects.equals(maCTHD, other.maCTHD);
-	}
-	
-	
+        }
 }

@@ -4,11 +4,16 @@ package dao;
 import entity.HoaDonEntity;
 import java.util.ArrayList;
 import connectDB.ConnectDB;
+import entity.ChiTietHoaDonEntity;
 import entity.ChuongTrinhKhuyenMaiEntity;
 import entity.KhachHangEntity;
 import entity.NhanVienEntity;
-import java.sql.*;
-import java.time.LocalDate;
+import java.sql.Date;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -68,6 +73,48 @@ public class HoaDon_dao implements  Interface.HoaDon_Interface{
         }
         return total;
     }
-
     
+    // Nguyen Huy Hoang
+    @Override
+    public boolean themHoaDon(HoaDonEntity hoaDon, ArrayList<ChiTietHoaDonEntity> danhSachCTHD) {
+        PreparedStatement statement = null;
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            
+            String sql = "Insert into HoaDon(maHD, maKH, maNV, maCTKM, ngayLapHD, thueVAT, tongTien) values (?, ?, ?, ?, ?, ?, ?)";
+            statement = con.prepareStatement(sql);
+            
+            statement.setString(1, hoaDon.getMaHD());
+            statement.setString(2, hoaDon.getKhachHang().getMaKH());
+            statement.setString(3, hoaDon.getNhanVien().getMaNV());
+            statement.setString(4, hoaDon.getChuongTrinhKM().getMaCTKM());
+            statement.setDate(5, hoaDon.getNgayLapHD());
+            statement.setInt(6, hoaDon.getThueVAT());
+            statement.setDouble(7, hoaDon.getTongTien());
+            
+            int ketQua = statement.executeUpdate();
+            if(ketQua < 1) {
+                return false;
+            }
+            
+            ChiTietHoaDon_dao cthd_dao = new ChiTietHoaDon_dao();
+            for (ChiTietHoaDonEntity cthd : danhSachCTHD) {
+                if(!cthd_dao.themChiTietHoaDon(cthd)) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                statement.close();
+                ConnectDB.getInstance().disconnect();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

@@ -447,7 +447,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users = new javax.swing.JPanel();
         jlb_name = new javax.swing.JLabel();
         lbl_Users = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_MaNhanVien = new javax.swing.JLabel();
         Jpanel_TaiKhoan = new javax.swing.JPanel();
         lbl_TaiKhoan = new javax.swing.JLabel();
         lbl_IconTaiKhoan = new javax.swing.JLabel();
@@ -516,10 +516,10 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users.add(jlb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 30));
         Jpanel_Users.add(lbl_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("NV21127891");
-        Jpanel_Users.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, 30));
+        lbl_MaNhanVien.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        lbl_MaNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_MaNhanVien.setText("NV21127891");
+        Jpanel_Users.add(lbl_MaNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, 30));
 
         Jpanel_Menu.add(Jpanel_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
@@ -877,7 +877,6 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel Jpanel_Time;
     private javax.swing.JPanel Jpanel_TrangChu;
     private javax.swing.JPanel Jpanel_Users;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -899,6 +898,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_IconTrangChu;
     private javax.swing.JLabel lbl_KhachHang;
     private javax.swing.JLabel lbl_KhuyenMai;
+    private javax.swing.JLabel lbl_MaNhanVien;
     private javax.swing.JLabel lbl_NhaCungCap;
     private javax.swing.JLabel lbl_NhanVien;
     private javax.swing.JLabel lbl_PhieuNhap;
