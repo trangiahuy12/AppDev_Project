@@ -3,6 +3,7 @@ package bus;
 
 import Interface.HoaDon_Interface;
 import dao.HoaDon_dao;
+import entity.ChiTietHoaDonEntity;
 import entity.HoaDonEntity;
 import java.util.ArrayList;
 
@@ -20,6 +21,11 @@ public class HoaDon_bus implements HoaDon_Interface{
     @Override
     public double getTotalMoney(String maHD) {
         return hd_dao.getTotalMoney(maHD);
+    }
+
+    @Override
+    public boolean themHoaDon(HoaDonEntity hoaDon, ArrayList<ChiTietHoaDonEntity> danhSachCTHD) {
+        return hd_dao.themHoaDon(hoaDon, danhSachCTHD);
     }
     
 }

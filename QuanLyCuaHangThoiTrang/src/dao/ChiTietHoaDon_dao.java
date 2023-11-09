@@ -195,6 +195,43 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
 
     return dsSP;
 }
+   
+    // Nguyen Huy Hoang
+    @Override
+    public boolean themChiTietHoaDon(ChiTietHoaDonEntity cthd) {
+        PreparedStatement statement = null;
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            
+            String sql = "Insert into ChiTietHoaDon(maCTHD, maSP, maHD, soLuong, giaBan, thanhTien) values (?, ?, ?, ?, ?, ?)";
+            statement = con.prepareStatement(sql);
+            statement.setString(1, cthd.getMaCTHD());
+            statement.setString(2, cthd.getSanPham().getMaSP());
+            statement.setString(3, cthd.getHoaDon().getMaHD());
+            statement.setInt(4, cthd.getSoLuong());
+            statement.setDouble(5, cthd.getGiaBan());
+            statement.setDouble(6, cthd.getThanhTien());
+            
+            int ketQua = statement.executeUpdate();
+            System.out.println(ketQua);
+            if(ketQua < 1) {
+                return false;
+            }
+            
+            return true;
+        } catch(SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                statement.close();
+                ConnectDB.getInstance().disconnect();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     
 }

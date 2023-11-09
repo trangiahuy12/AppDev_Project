@@ -30,4 +30,11 @@ public class ChiTietHoaDon_bus implements ChiTietHoaDon_Interface{
     public ArrayList<SanPhamEntity> getSanPhamTheoMaHD(String maHD) {
         return cthd_dao.getSanPhamTheoMaHD(maHD);
     }
+    
+    
+    // Nguyen Huy Hoang
+    @Override
+    public boolean themChiTietHoaDon(ChiTietHoaDonEntity cthd) {
+        return cthd_dao.themChiTietHoaDon(cthd);
+    }
 }

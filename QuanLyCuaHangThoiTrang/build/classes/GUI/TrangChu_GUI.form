@@ -178,7 +178,11 @@
                 </Constraint>
               </Constraints>
             </Component>
+<<<<<<< HEAD
+            <Component class="javax.swing.JLabel" name="lbl_MaNhanVien">
+=======
             <Component class="javax.swing.JLabel" name="lbl_ChucVu">
+>>>>>>> 0f2a4818e18ce4d6751a7c305e589f8872a6bc7b
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
