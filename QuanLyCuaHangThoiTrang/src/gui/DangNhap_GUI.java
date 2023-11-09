@@ -39,7 +39,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         initComponents();
         String b = "<HTML><u>Quên mật khẩu?</u></HTML>";
         jlb_QuanMatKhau.setText(b);
-        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//stores.png");
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//icon//stores.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         jLabel1.setIcon(img_btnTimKiem);

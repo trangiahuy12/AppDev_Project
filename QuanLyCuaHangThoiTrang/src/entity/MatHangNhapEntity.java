@@ -1,24 +1,32 @@
 package entity;
 
-
 import java.time.LocalDate;
-import java.util.Date;
 
 public class MatHangNhapEntity {
-	private NhaCungCapEntity nhaCungCap;
-	private SanPhamEntity sanPham;
-	private int soLuongNhap;
-	private LocalDate ngayNhap;
+
+    private String maMHN;
+    private NhaCungCapEntity nhaCungCap;
+    private SanPhamEntity sanPham;
+    private int soLuongNhap;
+    private LocalDate ngayNhap;
 
     public MatHangNhapEntity() {
     }
 
-        
-    public MatHangNhapEntity(NhaCungCapEntity nhaCungCap, SanPhamEntity sanPham, int soLuongNhap, LocalDate ngayNhap) {
+    public MatHangNhapEntity(String maMHN, NhaCungCapEntity nhaCungCap, SanPhamEntity sanPham, int soLuongNhap, LocalDate ngayNhap) {
+        this.maMHN = maMHN;
         this.nhaCungCap = nhaCungCap;
         this.sanPham = sanPham;
         this.soLuongNhap = soLuongNhap;
         this.ngayNhap = ngayNhap;
+    }
+
+    public String getMaMHN() {
+        return maMHN;
+    }
+
+    public void setMaMHN(String maMHN) {
+        this.maMHN = maMHN;
     }
 
     public NhaCungCapEntity getNhaCungCap() {
@@ -53,8 +61,9 @@ public class MatHangNhapEntity {
         this.ngayNhap = ngayNhap;
     }
 
-    
-	
-	
-	
+    @Override
+    public String toString() {
+        return "MatHangNhapEntity{" + "maMHN=" + maMHN + ", nhaCungCap=" + nhaCungCap + ", sanPham=" + sanPham + ", soLuongNhap=" + soLuongNhap + ", ngayNhap=" + ngayNhap + '}';
+    }
+
 }
