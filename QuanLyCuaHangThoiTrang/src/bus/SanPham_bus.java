@@ -40,10 +40,19 @@ public class SanPham_bus implements SanPham_Interface{
         return sp_dao.kiemTraTonKho();
     }
 
-    // Nguyen Huy Hoang
     @Override
     public SanPhamEntity timKiemSanPham(String ma) {
         return sp_dao.timKiemSanPham(ma);
+    }
+    @Override
+    public int laySoLuongTonKhoTheoMaSP(String maSP) {
+        return sp_dao.laySoLuongTonKhoTheoMaSP(maSP);
+    }
+
+    @Override
+    public boolean capNhatSoLuong(String maSP, int soLuongNhap) {
+        return sp_dao.capNhatSoLuong(maSP, soLuongNhap);
+
     }
     
 }

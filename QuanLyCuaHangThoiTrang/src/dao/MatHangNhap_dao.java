@@ -36,13 +36,14 @@ public class MatHangNhap_dao implements MatHangNhap_Interface {
             ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                String maMHN = rs.getString("maMHN");
                 String maNCC = rs.getString("maNCC");
                 String maSP = rs.getString("maSP");
                 int soLuongNhap = rs.getInt("soLuongNhap");
                 LocalDate ngayNhap = LocalDate.parse(rs.getString("ngayNhap"));
                 NhaCungCapEntity ncc = new NhaCungCapEntity(maNCC);
                 SanPhamEntity sp = new SanPhamEntity(maSP);
-                MatHangNhapEntity mhn = new MatHangNhapEntity(ncc, sp, soLuongNhap, ngayNhap);
+                MatHangNhapEntity mhn = new MatHangNhapEntity(maMHN, ncc, sp, soLuongNhap, ngayNhap);
                 dsMHN.add(mhn);
             }
             ps.close();
@@ -60,12 +61,13 @@ public class MatHangNhap_dao implements MatHangNhap_Interface {
             ConnectDB.getInstance().connect();
             Connection con = ConnectDB.getConnection();
             PreparedStatement ps = null;
-            String sql = "Insert into MatHangNhap(maNCC,maSP,soLuongNhap,ngayNhap) values(?,?,?,?)";
+            String sql = "Insert into MatHangNhap(maMHN,maNCC,maSP,soLuongNhap,ngayNhap) values(?,?,?,?,?)";
             ps = con.prepareStatement(sql);
-            ps.setString(1, mhn.getNhaCungCap().getMaNCC());
-            ps.setString(2, mhn.getSanPham().getMaSP());
-            ps.setInt(3, mhn.getSoLuongNhap());
-            ps.setDate(4, Date.valueOf(mhn.getNgayNhap()));
+            ps.setString(1, mhn.getMaMHN());
+            ps.setString(2, mhn.getNhaCungCap().getMaNCC());
+            ps.setString(3, mhn.getSanPham().getMaSP());
+            ps.setInt(4, mhn.getSoLuongNhap());
+            ps.setDate(5, Date.valueOf(mhn.getNgayNhap()));
             int check = ps.executeUpdate();
             ps.close();
             ConnectDB.getInstance().disconnect();
@@ -89,12 +91,13 @@ public class MatHangNhap_dao implements MatHangNhap_Interface {
                 ps.setDate(1, Date.valueOf(ngayNhap));
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
+                    String maMHN = rs.getString("maMHN");
                     NhaCungCapEntity ncc = new NhaCungCapEntity(rs.getString("maNCC"));
                     SanPhamEntity sp = new SanPhamEntity(rs.getString("maSP"));
                     int soLuongNhap = rs.getInt("soLuongNhap");
                     Date ngayNhap_Date = rs.getDate("ngayNhap");
                     LocalDate ngayNhap_LocalDate = ngayNhap_Date.toLocalDate();
-                    MatHangNhapEntity mhn=new MatHangNhapEntity(ncc, sp, soLuongNhap, ngayNhap);
+                    MatHangNhapEntity mhn = new MatHangNhapEntity(maMHN, ncc, sp, soLuongNhap, ngayNhap);
                     dsMHN.add(mhn);
                 }
                 ps.close();
@@ -116,12 +119,10 @@ public class MatHangNhap_dao implements MatHangNhap_Interface {
             ConnectDB.getInstance().connect();
             Connection con = ConnectDB.getConnection();
             PreparedStatement ps = null;
-            String sql = "update MatHangNhap set soLuongNhap=?, ngayNhap=? where maSP=? AND maNCC=?";
+            String sql = "update MatHangNhap set soLuongNhap=? where maMHN=?";
             ps = con.prepareStatement(sql);
             ps.setInt(1, mhn.getSoLuongNhap());
-            ps.setDate(2, Date.valueOf(mhn.getNgayNhap()));
-            ps.setString(3, mhn.getSanPham().getMaSP());
-            ps.setString(4, mhn.getNhaCungCap().getMaNCC());
+            ps.setString(2, mhn.getMaMHN());
             ps.executeUpdate();
             ps.close();
             ConnectDB.getInstance().disconnect();
@@ -131,5 +132,4 @@ public class MatHangNhap_dao implements MatHangNhap_Interface {
             return false;
         }
     }
-
 }

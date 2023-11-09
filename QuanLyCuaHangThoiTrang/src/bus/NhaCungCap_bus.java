@@ -34,5 +34,10 @@ public class NhaCungCap_bus implements NhaCungCap_Interface{
     public boolean capNhatNhaCungCap(NhaCungCapEntity maNCC) {
         return ncc_dao.capNhatNhaCungCap(maNCC);
     }
+
+    @Override
+    public ArrayList<NhaCungCapEntity> layDSNCCDangNhap() {
+        return ncc_dao.layDSNCCDangNhap();
+    }
     
 }

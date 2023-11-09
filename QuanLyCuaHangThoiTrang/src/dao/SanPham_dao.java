@@ -45,7 +45,7 @@ public class SanPham_dao implements SanPham_Interface {
                 String mauSac = rs.getString("mauSac");
                 double donGia = rs.getDouble("donGia");
                 String tinhTrang = rs.getString("tinhTrang");
-                int soLuongTonKho=rs.getInt("soLuongTonKho");
+                int soLuongTonKho = rs.getInt("soLuongTonKho");
                 String chatLieu = rs.getString("maChatLieu");
                 String thuongHieu = rs.getString("maThuongHieu");
                 String danhMuc = rs.getString("maDanhMuc");
@@ -218,17 +218,17 @@ public class SanPham_dao implements SanPham_Interface {
             ConnectDB.getInstance().connect();
             Connection con = ConnectDB.getConnection();
             PreparedStatement ps = null;
-            String sql="SELECT * FROM SanPham ORDER BY soLuongTonKho ASC";
-            ps=con.prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();
-            while (rs.next()) {                
+            String sql = "SELECT * FROM SanPham ORDER BY soLuongTonKho ASC";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 String maSP = rs.getString("maSP");
                 String tenSP = rs.getString("tenSP");
                 String kichThuoc = rs.getString("kichThuoc");
                 String mauSac = rs.getString("mauSac");
                 double donGia = rs.getDouble("donGia");
                 String tinhTrang = rs.getString("tinhTrang");
-                int soLuongTonKho=rs.getInt("soLuongTonKho");
+                int soLuongTonKho = rs.getInt("soLuongTonKho");
                 String chatLieu = rs.getString("maChatLieu");
                 String thuongHieu = rs.getString("maThuongHieu");
                 String danhMuc = rs.getString("maDanhMuc");
@@ -272,8 +272,7 @@ public class SanPham_dao implements SanPham_Interface {
         }
         return dsSP;
     }
-    
-    // Nguyen Huy Hoang
+
     @Override
     public SanPhamEntity timKiemSanPham(String ma) {
         PreparedStatement statement = null;
@@ -285,10 +284,10 @@ public class SanPham_dao implements SanPham_Interface {
                     + " inner join ThuongHieu as th on sp.maThuongHieu=th.maThuongHieu inner join ChatLieu as cl on sp.maChatLieu=cl.maChatLieu where maSP=? ";
             statement = con.prepareStatement(sql);
             statement.setString(1, ma);
-            
+
             ResultSet rs = statement.executeQuery();
             SanPhamEntity sanPham = null;
-            while(rs.next()) {
+            while (rs.next()) {
                 String maSP = rs.getString("maSP");
                 String tenSP = rs.getString("tenSP");
                 String kichThuoc = rs.getString("kichThuoc");
@@ -297,26 +296,26 @@ public class SanPham_dao implements SanPham_Interface {
                 double donGia = rs.getDouble("donGia");
                 int soLuongTonKho = rs.getInt("soLuongTonKho");
                 String tinhTrang = rs.getString("tinhTrang");
-               
+
                 String maChatLieu = rs.getString("maChatLieu");
                 String tenChatLieu = rs.getString("tenChatLieu");
                 String xuatXu = rs.getString("xuatXu");
                 ChatLieuEntity chatLieu = new ChatLieuEntity(maChatLieu, tenChatLieu, xuatXu);
-                
+
                 String maThuongHieu = rs.getString("maThuongHieu");
                 String tenThuongHieu = rs.getString("tenThuongHieu");
                 ThuongHieuEntity thuongHieu = new ThuongHieuEntity(maThuongHieu, tenThuongHieu);
-                
+
                 String maDanhMuc = rs.getString("maDanhMuc");
                 String tenDanhMuc = rs.getString("tenDanhMuc");
                 DanhMucSanPhamEntity danhMucSanPham = new DanhMucSanPhamEntity(maDanhMuc, tenDanhMuc);
-                
+
                 ConvertStringToEnum convertToEnum = new ConvertStringToEnum();
-                
+
                 sanPham = new SanPhamEntity(maSP, tenSP, convertToEnum.KichThuoctoEnum(kichThuoc), convertToEnum.MauSactoEnum(mauSac), donGia, soLuongTonKho, convertToEnum.TinhTrangSPToEnum(tinhTrang), chatLieu, thuongHieu, danhMucSanPham, imgUrl);
             }
             return sanPham;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         } finally {
@@ -326,6 +325,49 @@ public class SanPham_dao implements SanPham_Interface {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    public int laySoLuongTonKhoTheoMaSP(String maSP) {
+        int soLuongHienTai = 0;
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = null;
+            String sql = "SELECT soLuongTonKho FROM SanPham WHERE maSP =?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, maSP);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                soLuongHienTai = rs.getInt("soLuongTonKho");
+            }
+            ps.close();
+            rs.close();
+            ConnectDB.getInstance().disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPham_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return soLuongHienTai;
+    }
+
+    @Override
+    public boolean capNhatSoLuong(String maSP, int soLuongNhap) {
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = null;
+            String sql = "update SanPham set soLuongTonKho=? WHERE maSP =?";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, soLuongNhap);
+            ps.setString(2, maSP);
+            int kq = ps.executeUpdate();
+            ps.close();
+            ConnectDB.getInstance().disconnect();
+            return kq > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPham_dao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 }

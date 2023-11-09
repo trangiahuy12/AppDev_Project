@@ -16,4 +16,5 @@ public interface NhaCungCap_Interface {
     public boolean themNCC(NhaCungCapEntity ncc);
     public ArrayList<NhaCungCapEntity> timKiemNCC(String ma);
     public boolean capNhatNhaCungCap(NhaCungCapEntity maNCC);
+    public ArrayList<NhaCungCapEntity> layDSNCCDangNhap();
 }
