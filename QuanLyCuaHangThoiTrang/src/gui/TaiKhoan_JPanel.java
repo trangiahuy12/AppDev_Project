@@ -20,7 +20,7 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
         ImageIcon img_btnXoa = new ImageIcon("src//pic//buttonXoa.png");
         Image scaled_btnXoa = img_btnXoa.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnXoa = new ImageIcon(scaled_btnXoa);
-        btn_Xoa.setIcon(img_btnXoa);
+        btn_CapNhat.setIcon(img_btnXoa);
         
         tableModel = (DefaultTableModel) table_DanhSachTK.getModel();
         table_DanhSachTK.setModel(tableModel);
@@ -38,7 +38,7 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
         lbl_NhapTenTK = new javax.swing.JLabel();
         txt_NhapTenTK = new javax.swing.JTextField();
         btn_TimKiem = new javax.swing.JButton();
-        btn_Xoa = new javax.swing.JButton();
+        btn_CapNhat = new javax.swing.JButton();
         panel_TableTaiKhoan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_DanhSachTK = new javax.swing.JTable();
@@ -71,16 +71,16 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
         btn_TimKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_TimKiem.setPreferredSize(new java.awt.Dimension(123, 30));
 
-        btn_Xoa.setBackground(new java.awt.Color(0, 51, 51));
-        btn_Xoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        btn_Xoa.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Xoa.setText("Xoá");
-        btn_Xoa.setToolTipText("");
-        btn_Xoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_Xoa.setPreferredSize(new java.awt.Dimension(123, 30));
-        btn_Xoa.addActionListener(new java.awt.event.ActionListener() {
+        btn_CapNhat.setBackground(new java.awt.Color(0, 51, 51));
+        btn_CapNhat.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        btn_CapNhat.setForeground(new java.awt.Color(255, 255, 255));
+        btn_CapNhat.setText("Cập nhật");
+        btn_CapNhat.setToolTipText("");
+        btn_CapNhat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_CapNhat.setPreferredSize(new java.awt.Dimension(123, 30));
+        btn_CapNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_XoaActionPerformed(evt);
+                btn_CapNhatActionPerformed(evt);
             }
         });
 
@@ -96,7 +96,7 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(352, Short.MAX_VALUE))
         );
         panel_ThaoTacTKLayout.setVerticalGroup(
@@ -107,7 +107,7 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
                     .addComponent(lbl_NhapTenTK)
                     .addComponent(txt_NhapTenTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -119,7 +119,7 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Tên tài khoản", "Thời gian đăng nhập gần nhất"
+                "Tên tài khoản", ""
             }
         ));
         jScrollPane1.setViewportView(table_DanhSachTK);
@@ -169,9 +169,9 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_NhapTenTKActionPerformed
 
-    private void btn_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaActionPerformed
+    private void btn_CapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CapNhatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_XoaActionPerformed
+    }//GEN-LAST:event_btn_CapNhatActionPerformed
 
      private void loadData() {
         ArrayList<TaiKhoanEntity> listTK = new ArrayList<>();
@@ -182,8 +182,8 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_CapNhat;
     private javax.swing.JButton btn_TimKiem;
-    private javax.swing.JButton btn_Xoa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_NhapTenTK;
     private javax.swing.JLabel lbl_QuanLyTaiKhoan;
