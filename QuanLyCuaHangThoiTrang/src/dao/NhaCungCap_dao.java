@@ -141,4 +141,31 @@ public class NhaCungCap_dao implements NhaCungCap_Interface {
             return false;
         }
     }
+
+    @Override
+    public ArrayList<NhaCungCapEntity> layDSNCCDangNhap() {
+        ArrayList<NhaCungCapEntity> dsNCC = new ArrayList<NhaCungCapEntity>();
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement ps = null;
+            String sql = "SELECT * FROM NhaCungCap WHERE tinhTrang =N'Đang nhập'";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String maNCC = rs.getString("maNCC");
+                String tenNCC = rs.getString("tenNCC");
+                String soDienThoai = rs.getString("soDienThoai");
+                String diaChi = rs.getString("diaChi");
+                NhaCungCapEntity ncc=new NhaCungCapEntity(maNCC, tenNCC, diaChi, soDienThoai, TinhTrangNCCEnum.DANGNHAP);
+                dsNCC.add(ncc);
+            }
+            ps.close();
+            rs.close();
+            ConnectDB.getInstance().disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(NhaCungCap_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dsNCC;
+    }
 }

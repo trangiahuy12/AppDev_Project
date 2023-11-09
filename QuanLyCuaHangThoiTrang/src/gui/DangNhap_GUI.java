@@ -4,9 +4,11 @@
  */
 package gui;
 
+import bus.NhanVien_bus;
 import connectDB.ConnectDB;
 import dao.NhanVien_dao;
 import dao.TaiKhoan_dao;
+import entity.NhanVienEntity;
 import entity.TaiKhoanEntity;
 import java.awt.Image;
 import java.io.UnsupportedEncodingException;
@@ -28,6 +30,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
 
     private LamMoiMatKhau_GUI lammoiDangNhap_GUI = new LamMoiMatKhau_GUI();
 //    private ThayDoiMatKhau_GUI thaydoimatkhau_gui = new ThayDoiMatKhau_GUI();
+    private NhanVien_bus nvbus;
 
     /**
      * Creates new form DangNhap_GUI
@@ -36,7 +39,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         initComponents();
         String b = "<HTML><u>Quên mật khẩu?</u></HTML>";
         jlb_QuanMatKhau.setText(b);
-        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//stores.png");
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//icon//stores.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         jLabel1.setIcon(img_btnTimKiem);
@@ -243,6 +246,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
             
             dao.NhanVien_dao nv_dao = new NhanVien_dao();
             dao.TaiKhoan_dao tk_dao = new dao.TaiKhoan_dao();
+            nvbus = new NhanVien_bus();
             TaiKhoanEntity tk = new TaiKhoanEntity();
             try {
                 tk = tk_dao.getTaiKhoan(tfTK, encodePass);
@@ -254,11 +258,13 @@ public class DangNhap_GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Tài khoản hoặc mật khẩu không đúng!");
             }else{
                 
-                String name = nv_dao.getTenNV(tfTK);
-                System.out.println(name);
+                NhanVienEntity nv = nvbus.getNV(tfTK);
+                System.out.println(nv);
                 ToanCuc tc = new ToanCuc();
-                tc.setName(name);
-                
+                tc.setName(nv.getHoTen());
+                tc.setMa(nv.getMaNV());
+                tc.setChucvu(nv.getChucVu().toString());
+                tc.setGioitnh(nv.getGioiTinh().toString());
                 this.setVisible(false);
                 gui.TrangChu_GUI trangChu_GUI = new TrangChu_GUI();
                 trangChu_GUI.setVisible(true);

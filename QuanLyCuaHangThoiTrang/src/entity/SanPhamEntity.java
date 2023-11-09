@@ -125,7 +125,9 @@ public class SanPhamEntity {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
-
+    public double tinhGiaBan(){
+        return this.donGia*1.4;
+    }
     @Override
     public String toString() {
         return "SanPhamEntity{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", kichThuoc=" + kichThuoc + ", mauSac=" + mauSac + ", donGia=" + donGia + ", soLuongTonKho=" + soLuongTonKho + ", tinhTrang=" + tinhTrang + ", chatLieu=" + chatLieu + ", thuongHieu=" + thuongHieu + ", danhMucSanPham=" + danhMucSanPham + ", imgUrl=" + imgUrl + '}';

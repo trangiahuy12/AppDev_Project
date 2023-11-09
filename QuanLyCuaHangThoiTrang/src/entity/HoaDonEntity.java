@@ -1,7 +1,6 @@
 package entity;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 public class HoaDonEntity {
@@ -11,6 +10,8 @@ public class HoaDonEntity {
 	private NhanVienEntity nhanVien;
 	private ChuongTrinhKhuyenMaiEntity chuongTrinhKM;
 	private int thueVAT;
+        private double tongTien;
+        
 	public HoaDonEntity(String maHD, Date ngayLapHD, KhachHangEntity khachHang, NhanVienEntity nhanVien,
 			ChuongTrinhKhuyenMaiEntity chuongTrinhKM, int thueVAT) {
 		super();
@@ -21,12 +22,14 @@ public class HoaDonEntity {
 		this.chuongTrinhKM = chuongTrinhKM;
 		this.thueVAT = thueVAT;
 	}
+        
 	public HoaDonEntity(String maHD) {
 		super();
 		this.maHD = maHD;
 	}
 	public HoaDonEntity() {
 		super();
+               
 	}
 	public String getMaHD() {
 		return maHD;
@@ -64,6 +67,15 @@ public class HoaDonEntity {
 	public void setThueVAT(int thueVAT) {
 		this.thueVAT = thueVAT;
 	}
+        
+        public void setTongTien(double tongTien) {
+            this.tongTien = tongTien;
+        }
+        
+        public double getTongTien() {
+            return tongTien;
+        }
+        
 	@Override
 	public String toString() {
 		return "HoaDonEntity [maHD=" + maHD + ", ngayLapHD=" + ngayLapHD + ", khachHang=" + khachHang + ", nhanVien="
@@ -85,8 +97,4 @@ public class HoaDonEntity {
 		return Objects.equals(maHD, other.maHD);
 	}
 	
-//	public double tongTien() {
-//		return thueVAT;
-		
-//	}
 }

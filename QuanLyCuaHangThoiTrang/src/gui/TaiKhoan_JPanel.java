@@ -13,11 +13,11 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
     public TaiKhoan_JPanel() {
         initComponents();
         setBounds(0, 0, 1020, 720);
-        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//icon//buttonTimKiem.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         btn_TimKiem.setIcon(img_btnTimKiem);
-        ImageIcon img_btnXoa = new ImageIcon("src//pic//buttonXoa.png");
+        ImageIcon img_btnXoa = new ImageIcon("src//pic//icon//buttonXoa.png");
         Image scaled_btnXoa = img_btnXoa.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnXoa = new ImageIcon(scaled_btnXoa);
         btn_CapNhat.setIcon(img_btnXoa);
