@@ -31,21 +31,19 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         ToanCuc tc = new ToanCuc();
         jlb_name.setText(tc.getName());
         lbl_ChucVu.setText(tc.getChucvu());
-        if(tc.getGioitnh().equals("Nữ")){
-                    ImageIcon img_User_nu = new ImageIcon("src\\pic\\icon\\user_nu.png");
-                    Image scaled_Users_nu = img_User_nu.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-                    img_User_nu = new ImageIcon(scaled_Users_nu);
-                    
+        if (tc.getGioitnh().equals("Nữ")) {
+            ImageIcon img_User_nu = new ImageIcon("src\\pic\\icon\\user_nu.png");
+            Image scaled_Users_nu = img_User_nu.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+            img_User_nu = new ImageIcon(scaled_Users_nu);
+
             lbl_Users.setIcon(img_User_nu);
-        }
-        else{
-                    ImageIcon img_User = new ImageIcon("src\\pic\\icon\\user_nam.png");
-                    Image scaled_Users = img_User.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-                    img_User = new ImageIcon(scaled_Users);
+        } else {
+            ImageIcon img_User = new ImageIcon("src\\pic\\icon\\user_nam.png");
+            Image scaled_Users = img_User.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+            img_User = new ImageIcon(scaled_Users);
             lbl_Users.setIcon(img_User);
         }
 
-       
         setSize(1200, 720);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -169,7 +167,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Main.add(KhuyenMai_Panel);
         Jpanel_Main.add(TaiKhoan_Panel);
         // Gán panleTrangChu background
-        Jpanel_TrangChu.setBackground(new Color(112,128,144));
+        Jpanel_TrangChu.setBackground(new Color(112, 128, 144));
         // Gán sự kiện click Jpanel
         Jpanel_TrangChu.addMouseListener(new PanelButtonMouseAdapter(Jpanel_TrangChu) {
             @Override
@@ -528,10 +526,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users.add(lbl_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
 
-        lbl_MaNhanVien.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lbl_MaNhanVien.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_MaNhanVien.setText("NV21127891");
-        Jpanel_Users.add(lbl_MaNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, 30));
+        
         lbl_ChucVu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbl_ChucVu.setForeground(new java.awt.Color(255, 255, 255));
         lbl_ChucVu.setText("Quản Lý");
@@ -774,12 +769,12 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private void JMenu_DangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenu_DangXuatActionPerformed
         // TODO add your handling code here:
         DangNhap_GUI dangnhap = new DangNhap_GUI();
-        int hoi = JOptionPane.showConfirmDialog(null, "Bạn có chắn muốn đăng xuất ?","Chú ý !",JOptionPane.YES_NO_OPTION);
-        if(hoi == JOptionPane.YES_OPTION){
-        dangnhap.setVisible(true);
-        dispose(); 
+        int hoi = JOptionPane.showConfirmDialog(null, "Bạn có chắn muốn đăng xuất ?", "Chú ý !", JOptionPane.YES_NO_OPTION);
+        if (hoi == JOptionPane.YES_OPTION) {
+            dangnhap.setVisible(true);
+            dispose();
         }
-        
+
     }//GEN-LAST:event_JMenu_DangXuatActionPerformed
 
     private void JMenu_DangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMenu_DangXuatMouseClicked
