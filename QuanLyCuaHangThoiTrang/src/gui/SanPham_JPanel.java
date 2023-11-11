@@ -36,10 +36,7 @@ import util.GenerateID;
  * @author 84335
  */
 public class SanPham_JPanel extends javax.swing.JPanel {
-
-//    private String fileName = null;
-//    private byte[] imageSP = null;
-    private String duongDanAnhMacDinh = "D:\\HK1-NAM3\\PTUD\\AppDev_Project\\QuanLyCuaHangThoiTrang\\src\\pic\\labelAnh.png";
+    private String duongDanAnhMacDinh = "src//pic//icon//labelAnh.png";
     private String duongDanAnh = null;
     private SanPham_bus sp_bus;
     private DanhMucSanPham_bus danhMucSanPham_bus;
@@ -58,31 +55,31 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         chatLieu_bus = new ChatLieu_bus();
         //----------
         setBounds(0, 0, 1020, 720);
-        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//icon//buttonTimKiem.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         btn_TimKiem.setIcon(img_btnTimKiem);
-        ImageIcon img_btnLamMoi = new ImageIcon("src//pic//buttonLamMoi.png");
+        ImageIcon img_btnLamMoi = new ImageIcon("src//pic//icon//buttonLamMoi.png");
         Image scaled_btnLamMoi = img_btnLamMoi.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnLamMoi = new ImageIcon(scaled_btnLamMoi);
         btn_LamMoi.setIcon(img_btnLamMoi);
-        ImageIcon img_btnThem = new ImageIcon("src//pic//buttonThem.png");
+        ImageIcon img_btnThem = new ImageIcon("src//pic//icon//buttonThem.png");
         Image scaled_btnThem = img_btnThem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnThem = new ImageIcon(scaled_btnThem);
         btn_Them.setIcon(img_btnThem);
-        ImageIcon img_btnCapNhat = new ImageIcon("src//pic//buttonCapNhat.png");
+        ImageIcon img_btnCapNhat = new ImageIcon("src//pic//icon//buttonCapNhat.png");
         Image scaled_btnCapNhat = img_btnCapNhat.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnCapNhat = new ImageIcon(scaled_btnCapNhat);
         btn_CapNhat.setIcon(img_btnCapNhat);
-        ImageIcon img_btnKiemTraTonKho = new ImageIcon("src//pic//buttonKiemTraTonKho.png");
+        ImageIcon img_btnKiemTraTonKho = new ImageIcon("src//pic//icon//buttonKiemTraTonKho.png");
         Image scaled_btnKiemTraTonKho = img_btnKiemTraTonKho.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnKiemTraTonKho = new ImageIcon(scaled_btnKiemTraTonKho);
         btn_KiemTraTonKho.setIcon(img_btnKiemTraTonKho);
-        ImageIcon img_btnChonAnh = new ImageIcon("src//pic//buttonChonAnh.png");
+        ImageIcon img_btnChonAnh = new ImageIcon("src//pic//icon//buttonChonAnh.png");
         Image scaled_btnChonAnh = img_btnChonAnh.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnChonAnh = new ImageIcon(scaled_btnChonAnh);
         btn_ChonAnh.setIcon(img_btnChonAnh);
-        ImageIcon img_lblAnh = new ImageIcon("src//pic//labelAnh.png");
+        ImageIcon img_lblAnh = new ImageIcon("src//pic//icon//labelAnh.png");
         Image scaled_lblAnh = img_lblAnh.getImage().getScaledInstance(150, 140, Image.SCALE_SMOOTH);
         img_lblAnh = new ImageIcon(scaled_lblAnh);
         lbl_AnhSanPham.setIcon(img_lblAnh);
@@ -491,14 +488,14 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         }
     }
     private void btn_ChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ChonAnhActionPerformed
-
-        JFileChooser fileChooser = new JFileChooser("C:\\Users\\MY PC\\OneDrive\\Hình ảnh");
+        JFileChooser fileChooser = new JFileChooser("src//pic//imageProduct");
         fileChooser.setDialogTitle("Mở file");
         int kq = fileChooser.showOpenDialog(null);
         if (kq == JFileChooser.APPROVE_OPTION) {
             File tenAnh = fileChooser.getSelectedFile();
-            duongDanAnh = tenAnh.getAbsolutePath();
-            lbl_AnhSanPham.setIcon(ResizeImageIcon(String.valueOf(duongDanAnh)));
+            String tenTepAnh=tenAnh.getName();
+            duongDanAnh="src//pic//imageProduct//"+tenTepAnh;
+            lbl_AnhSanPham.setIcon(ResizeImageIcon(duongDanAnh));
         } else if (kq == JFileChooser.CANCEL_OPTION) {
 
         } else {
@@ -561,7 +558,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         if (img != null) {
             imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(lbl_AnhSanPham.getWidth(), lbl_AnhSanPham.getHeight(), Image.SCALE_SMOOTH));
         } else {
-            ImageIcon anhMacDinh = new ImageIcon("src//pic//labelAnh.png");
+            ImageIcon anhMacDinh = new ImageIcon("src//pic//icon//labelAnh.png");
             imageIcon = new ImageIcon(anhMacDinh.getImage().getScaledInstance(lbl_AnhSanPham.getWidth(), lbl_AnhSanPham.getHeight(), Image.SCALE_SMOOTH));
         }
         lbl_AnhSanPham.setIcon(imageIcon);
@@ -629,7 +626,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
 
     //Hàm tìm kiếm sản phẩm
     private void timKiemSanPham(String dieuKien) {
-        model.setRowCount(0); // Đặt số hàng của bảng về 0 để xóa kết quả trước
+        model.setRowCount(0);
         ArrayList<SanPhamEntity> dsSP = sp_bus.getAllSanPham();
         for (SanPhamEntity sp : dsSP) {
             if (sp.matchesSearchTerm(dieuKien)) {
@@ -644,7 +641,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
     }
 
     //Hàm làm mới sản phẩm
-    private void lamMoi() {
+    public void lamMoi() {
         txt_MaSanPham.setText("");
         txt_TenSanPham.setText("");
         cbo_ChatLieu.setSelectedIndex(0);
@@ -657,7 +654,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
         cbo_TinhTrang.setSelectedItem("Đang bán");
         txt_MaSanPham_Search.setText("");
         model.setRowCount(0);
-        ImageIcon anhMacDinh = new ImageIcon("src//pic//labelAnh.png");
+        ImageIcon anhMacDinh = new ImageIcon("src//pic//icon//labelAnh.png");
         ImageIcon imageIcon = new ImageIcon(anhMacDinh.getImage().getScaledInstance(lbl_AnhSanPham.getWidth(), lbl_AnhSanPham.getHeight(), Image.SCALE_SMOOTH));
         lbl_AnhSanPham.setIcon(imageIcon);
         loadDuLieuTuDataLenTable();
@@ -695,7 +692,7 @@ public class SanPham_JPanel extends javax.swing.JPanel {
                     } else if (cbo_MauSac.getSelectedItem().equals("Xám")) {
                         mauSac = MauSacEnum.XAM;
                     }
-                    double donGia = Double.parseDouble(txt_DonGia.getText());
+                    double donGia = Double.parseDouble(txt_DonGia.getText().replace(" VNĐ", "").replace(",", ""));
                     TinhTrangSPEnum tinhTrang = null;
                     if (cbo_TinhTrang.getSelectedItem().equals("Đang bán")) {
                         tinhTrang = TinhTrangSPEnum.DANGBAN;

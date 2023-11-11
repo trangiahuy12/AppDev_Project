@@ -43,5 +43,4 @@ public class ToanCuc {
         ToanCuc.chucvu = chucvu;
     }
     
-    
 }

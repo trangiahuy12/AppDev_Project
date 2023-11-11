@@ -8,11 +8,11 @@ public class ThongKe_JPanel extends javax.swing.JPanel {
     public ThongKe_JPanel() {
         initComponents();
         setBounds(0, 0, 1020, 700);
-        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//icon//buttonTimKiem.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         btn_TimKiem.setIcon(img_btnTimKiem);
-        ImageIcon img_btnXemChiTiet = new ImageIcon("src//pic//buttonXemChiTiet.png");
+        ImageIcon img_btnXemChiTiet = new ImageIcon("src//pic//icon//buttonXemChiTiet.png");
         Image scaled_btnXemChiTiet = img_btnXemChiTiet.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnXemChiTiet = new ImageIcon(scaled_btnXemChiTiet);
         btn_XemChiTiet.setIcon(img_btnXemChiTiet);

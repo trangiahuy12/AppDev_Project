@@ -7,14 +7,12 @@ package gui;
 import bus.NhanVien_bus;
 import connectDB.ConnectDB;
 import dao.NhanVien_dao;
-import dao.TaiKhoan_dao;
 import entity.NhanVienEntity;
 import entity.TaiKhoanEntity;
 import java.awt.Image;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -39,7 +37,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         initComponents();
         String b = "<HTML><u>Quên mật khẩu?</u></HTML>";
         jlb_QuanMatKhau.setText(b);
-        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//stores.png");
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//icon//stores.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         jLabel1.setIcon(img_btnTimKiem);
@@ -236,14 +234,13 @@ public class DangNhap_GUI extends javax.swing.JFrame {
 
     private void btn_DangNhap4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DangNhap4MouseClicked
 
-        try {                                           
-            
+        try {
+
             String tfTK = jtf_TenTaiKhoan.getText();
             char[] pass = jpf_MatKhau.getPassword();
-            String stringPass =  new String(pass);
+            String stringPass = new String(pass);
             String encodePass = MD5Encode.md5Encode(stringPass);
-            
-            
+
             dao.NhanVien_dao nv_dao = new NhanVien_dao();
             dao.TaiKhoan_dao tk_dao = new dao.TaiKhoan_dao();
             nvbus = new NhanVien_bus();
@@ -254,10 +251,11 @@ public class DangNhap_GUI extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(DangNhap_GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(tk == null){
+            if (tk == null) {
                 JOptionPane.showMessageDialog(null, "Tài khoản hoặc mật khẩu không đúng!");
-            }else{
-                
+            } else {
+                tk_dao.thoiGianDNGN(tk);
+
                 NhanVienEntity nv = nvbus.getNV(tfTK);
                 System.out.println(nv);
                 ToanCuc tc = new ToanCuc();

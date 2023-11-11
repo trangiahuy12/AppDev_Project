@@ -30,22 +30,22 @@ public class KhachHang_JPanel extends javax.swing.JPanel {
         initComponents();
         setBounds(0, 0, 1020, 700);
         
-        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//icon//buttonTimKiem.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         btn_TimKiem.setIcon(img_btnTimKiem);
         
-        ImageIcon img_btnThem = new ImageIcon("src//pic//buttonThem.png");
+        ImageIcon img_btnThem = new ImageIcon("src//pic//icon//buttonThem.png");
         Image scaled_btnThem = img_btnThem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnThem = new ImageIcon(scaled_btnThem);
         btn_Them.setIcon(img_btnThem);
         
-        ImageIcon img_btnLamMoi = new ImageIcon("src//pic//buttonLamMoi.png");
+        ImageIcon img_btnLamMoi = new ImageIcon("src//pic//icon//buttonLamMoi.png");
         Image scaled_btnLamMoi = img_btnLamMoi.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnLamMoi = new ImageIcon(scaled_btnLamMoi);
         btn_LamMoi.setIcon(img_btnLamMoi);
         
-        ImageIcon img_btnCapNhat = new ImageIcon("src//pic//buttonCapNhat.png");
+        ImageIcon img_btnCapNhat = new ImageIcon("src//pic//icon//buttonCapNhat.png");
         Image scaled_btnCapNhat = img_btnCapNhat.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnCapNhat = new ImageIcon(scaled_btnCapNhat);
         btn_CapNhat.setIcon(img_btnCapNhat);

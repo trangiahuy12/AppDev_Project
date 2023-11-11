@@ -34,7 +34,6 @@ public class MatHangNhap_bus implements MatHangNhap_Interface{
     @Override
     public boolean capNhapMatHangNhap(MatHangNhapEntity mhm) {
         return mhn_dao.capNhapMatHangNhap(mhm);
-    }
-    
+    }  
     
 }

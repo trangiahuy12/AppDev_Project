@@ -32,14 +32,14 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         jlb_name.setText(tc.getName());
         lbl_ChucVu.setText(tc.getChucvu());
         if(tc.getGioitnh().equals("Nữ")){
-                    ImageIcon img_User_nu = new ImageIcon("src\\pic\\user_nu.png");
+                    ImageIcon img_User_nu = new ImageIcon("src\\pic\\icon\\user_nu.png");
                     Image scaled_Users_nu = img_User_nu.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
                     img_User_nu = new ImageIcon(scaled_Users_nu);
                     
             lbl_Users.setIcon(img_User_nu);
         }
         else{
-                    ImageIcon img_User = new ImageIcon("src\\pic\\user_nam.png");
+                    ImageIcon img_User = new ImageIcon("src\\pic\\icon\\user_nam.png");
                     Image scaled_Users = img_User.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
                     img_User = new ImageIcon(scaled_Users);
             lbl_Users.setIcon(img_User);
@@ -66,82 +66,91 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         TaiKhoan_Panel = new TaiKhoan_JPanel();
         NhaCungCap_Panel = new NhaCungCap_JPanel();
 
-        ImageIcon img_home = new ImageIcon("src\\pic\\home.png");
+        ImageIcon img_home = new ImageIcon("src\\pic\\icon\\home.png");
         Image scaled_home = img_home.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_home = new ImageIcon(scaled_home);
         lbl_IconTrangChu.setIcon(img_home);
 
-        ImageIcon img_SanPham = new ImageIcon("src\\pic\\productbox.png");
+        ImageIcon img_SanPham = new ImageIcon("src\\pic\\icon\\productbox.png");
         Image scaled_SanPham = img_SanPham.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_SanPham = new ImageIcon(scaled_SanPham);
         lbl_IconSanPham.setIcon(img_SanPham);
 //    
-        ImageIcon img_BanHang = new ImageIcon("src\\pic\\clothers.png");
+        ImageIcon img_BanHang = new ImageIcon("src\\pic\\icon\\clothers.png");
         Image scaled_BanHang = img_BanHang.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_BanHang = new ImageIcon(scaled_BanHang);
         lbl_IconBanHang.setIcon(img_BanHang);
 
-        ImageIcon img_HoaDon = new ImageIcon("src\\pic\\hoadon.png");
+        ImageIcon img_User = new ImageIcon("src\\pic\\icon\\user_nam.png");
+        Image scaled_Users = img_User.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        img_User = new ImageIcon(scaled_Users);
+        lbl_Users.setIcon(img_User);
+
+//    ImageIcon img_Settings = new ImageIcon("src\\pic\\settings.png");
+//    Image scaled_Settings = img_Settings.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+//    img_Settings = new ImageIcon(scaled_Settings);
+//    lbl_Settings.setIcon(img_Settings);
+        ImageIcon img_HoaDon = new ImageIcon("src\\pic\\icon\\hoadon.png");
         Image scaled_HoaDon = img_HoaDon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_HoaDon = new ImageIcon(scaled_HoaDon);
         lbl_IconHoaDon.setIcon(img_HoaDon);
 
-        ImageIcon img_DoiTra = new ImageIcon("src\\pic\\return.png");
+        ImageIcon img_DoiTra = new ImageIcon("src\\pic\\icon\\return.png");
         Image scaled_DoiTra = img_DoiTra.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_DoiTra = new ImageIcon(scaled_DoiTra);
         lbl_IconDoiTra.setIcon(img_DoiTra);
 
-        ImageIcon img_KhachHang = new ImageIcon("src\\pic\\customer.png");
+        ImageIcon img_KhachHang = new ImageIcon("src\\pic\\icon\\customer.png");
         Image scaled_KhachHang = img_KhachHang.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_KhachHang = new ImageIcon(scaled_KhachHang);
         lbl_IconKhachHang.setIcon(img_KhachHang);
 
-        ImageIcon img_NhanVien = new ImageIcon("src\\pic\\nhanvien.png");
+        ImageIcon img_NhanVien = new ImageIcon("src\\pic\\icon\\nhanvien.png");
         Image scaled_NhanVien = img_NhanVien.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_NhanVien = new ImageIcon(scaled_NhanVien);
         lbl_IconNhanVien.setIcon(img_NhanVien);
 
-        ImageIcon img_ThongKe = new ImageIcon("src\\pic\\thongke.png");
+        ImageIcon img_ThongKe = new ImageIcon("src\\pic\\icon\\thongke.png");
         Image scaled_ThongKe = img_ThongKe.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_ThongKe = new ImageIcon(scaled_ThongKe);
         lbl_IconThongKe.setIcon(img_ThongKe);
 
-        ImageIcon img_NhaCungCap = new ImageIcon("src\\pic\\nhacungcap.png");
+        ImageIcon img_NhaCungCap = new ImageIcon("src\\pic\\icon\\nhacungcap.png");
         Image scaled_NhaCungCap = img_NhaCungCap.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_NhaCungCap = new ImageIcon(scaled_NhaCungCap);
         lbl_IconNhaCungCap.setIcon(img_NhaCungCap);
 
-        ImageIcon img_PhieuNhap = new ImageIcon("src\\pic\\phieunhap.png");
+        ImageIcon img_PhieuNhap = new ImageIcon("src\\pic\\icon\\phieunhap.png");
         Image scaled_PhieuNhap = img_PhieuNhap.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_PhieuNhap = new ImageIcon(scaled_PhieuNhap);
         lbl_IconPhieuNhap.setIcon(img_PhieuNhap);
 
-        ImageIcon img_KhuyenMai = new ImageIcon("src\\pic\\discount.png");
+        ImageIcon img_KhuyenMai = new ImageIcon("src\\pic\\icon\\discount.png");
         Image scaled_KhuyenMai = img_KhuyenMai.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_KhuyenMai = new ImageIcon(scaled_KhuyenMai);
         lbl_IconKhuyenMai.setIcon(img_KhuyenMai);
 
-        ImageIcon img_TaiKhoan = new ImageIcon("src\\pic\\taikhoan.png");
+        ImageIcon img_TaiKhoan = new ImageIcon("src\\pic\\icon\\taikhoan.png");
         Image scaled_TaiKhoan = img_TaiKhoan.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         img_TaiKhoan = new ImageIcon(scaled_TaiKhoan);
         lbl_IconTaiKhoan.setIcon(img_TaiKhoan);
 
-        ImageIcon img_DangXuat = new ImageIcon("src\\pic\\logout.png");
+        ImageIcon img_DangXuat = new ImageIcon("src\\pic\\icon\\logout.png");
         Image scaled_DangXuat = img_DangXuat.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         img_DangXuat = new ImageIcon(scaled_DangXuat);
         JMenu_DangXuat.setIcon(img_DangXuat);
 
-        ImageIcon img_ThayMatKhau = new ImageIcon("src\\pic\\key.png");
+        ImageIcon img_ThayMatKhau = new ImageIcon("src\\pic\\icon\\key.png");
         Image scaled_ThayMatKhau = img_ThayMatKhau.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         img_ThayMatKhau = new ImageIcon(scaled_ThayMatKhau);
         JMenu_ThayMatKhau.setIcon(img_ThayMatKhau);
 
-        ImageIcon img_GioiThieu = new ImageIcon("src\\pic\\gioithieu.png");
+        ImageIcon img_GioiThieu = new ImageIcon("src\\pic\\icon\\gioithieu.png");
         Image scaled_GioiThieu = img_GioiThieu.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         img_GioiThieu = new ImageIcon(scaled_GioiThieu);
         JMenu_GioiThieu.setIcon(img_GioiThieu);
 
-        ImageIcon img_TroGiup = new ImageIcon("src\\pic\\trogiup.png");
+        ImageIcon img_TroGiup = new ImageIcon("src\\pic\\icon\\trogiup.png");
         Image scaled_TroGiup = img_TroGiup.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         img_TroGiup = new ImageIcon(scaled_TroGiup);
         JMenu_TroGiup.setIcon(img_TroGiup);
@@ -447,6 +456,11 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users = new javax.swing.JPanel();
         jlb_name = new javax.swing.JLabel();
         lbl_Users = new javax.swing.JLabel();
+<<<<<<< HEAD
+=======
+
+        lbl_MaNhanVien = new javax.swing.JLabel();
+>>>>>>> 5fb61d900690e547edf390a0a29871e559d2efac
         lbl_ChucVu = new javax.swing.JLabel();
         Jpanel_TaiKhoan = new javax.swing.JPanel();
         lbl_TaiKhoan = new javax.swing.JLabel();
@@ -517,6 +531,13 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users.add(lbl_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
 
+<<<<<<< HEAD
+=======
+        lbl_MaNhanVien.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        lbl_MaNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_MaNhanVien.setText("NV21127891");
+        Jpanel_Users.add(lbl_MaNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, 30));
+>>>>>>> 5fb61d900690e547edf390a0a29871e559d2efac
         lbl_ChucVu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbl_ChucVu.setForeground(new java.awt.Color(255, 255, 255));
         lbl_ChucVu.setText("Quản Lý");

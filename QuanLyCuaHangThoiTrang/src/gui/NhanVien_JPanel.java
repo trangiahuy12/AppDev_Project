@@ -39,22 +39,23 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
      */
     public NhanVien_JPanel() {
         initComponents();
-        setBounds(0, 0, 1020, 700); ImageIcon img_btnTimKiem = new ImageIcon("src//pic//buttonTimKiem.png");
+        setBounds(0, 0, 1020, 700); 
+        ImageIcon img_btnTimKiem = new ImageIcon("src//pic//icon//buttonTimKiem.png");
         Image scaled_btnTimKiem = img_btnTimKiem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnTimKiem = new ImageIcon(scaled_btnTimKiem);
         btn_TimKiem.setIcon(img_btnTimKiem);
         
-        ImageIcon img_btnThem = new ImageIcon("src//pic//buttonThem.png");
+        ImageIcon img_btnThem = new ImageIcon("src//pic//icon//buttonThem.png");
         Image scaled_btnThem = img_btnThem.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnThem = new ImageIcon(scaled_btnThem);
         btn_Them.setIcon(img_btnThem);
         
-        ImageIcon img_btnLamMoi = new ImageIcon("src//pic//buttonLamMoi.png");
+        ImageIcon img_btnLamMoi = new ImageIcon("src//pic//icon//buttonLamMoi.png");
         Image scaled_btnLamMoi = img_btnLamMoi.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnLamMoi = new ImageIcon(scaled_btnLamMoi);
         btn_LamMoi.setIcon(img_btnLamMoi);
         
-        ImageIcon img_btnCapNhat = new ImageIcon("src//pic//buttonCapNhat.png");
+        ImageIcon img_btnCapNhat = new ImageIcon("src//pic//icon//buttonCapNhat.png");
         Image scaled_btnCapNhat = img_btnCapNhat.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnCapNhat = new ImageIcon(scaled_btnCapNhat);
         btn_CapNhat.setIcon(img_btnCapNhat);
@@ -520,8 +521,7 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_NhapSDTActionPerformed
 
     private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
-        NhanVien_dao dao  = new NhanVien_dao();
-        ArrayList<NhanVienEntity> listNV = bus.findAll();
+
         try {
             if (checkInput()) {
                 Date ns = txt_date.getDate();
@@ -550,7 +550,7 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
                 nv.setChucVu(cbo_ChucVu.getSelectedItem().equals("Nhân viên") == true ? ChucVuEnum.NHANVIEN : ChucVuEnum.QUANLY);
                 nv.setTinhTrang(tt);
                 
-                if (!listNV.contains(nv) && bus.insert(nv)) {
+                if (bus.insert(nv)) {
                     tableModel.addRow(new Object[]{nv.getMaNV(), nv.getHoTen(), nv.getGioiTinh().toString(), nv.getNgaySinh().toString(), nv.getEmail(), nv.getSoDienThoai() ,nv.getDiaChi(), nv.getChucVu().name(), nv.getTinhTrang().name(), nv.getCaLamViec()});
                     refresh();
                     JOptionPane.showMessageDialog(this, "Thêm nhân viên thành công!");
@@ -765,11 +765,6 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
         }
         else if (!SDT.matches("^(0|84)[1-9]\\d{8}$")) {
             JOptionPane.showMessageDialog(this, "Số điện thoại phải có 10 ký số và thuộc quốc gia Việt Nam!");
-            return false;
-        }
-        else if (!diaChi.matches("^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ0-9,]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ,][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ,]*)*$") && diaChi.length() <= 50) {
-            JOptionPane.showMessageDialog(this, "Địa chỉ tối đa 50 kí tự"
-                    + "!");
             return false;
         }
         else if (!email.matches("^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$")) {

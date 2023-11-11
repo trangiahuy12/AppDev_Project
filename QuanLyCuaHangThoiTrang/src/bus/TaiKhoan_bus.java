@@ -36,13 +36,20 @@ public class TaiKhoan_bus implements TaiKhoanInterface{
     }
 
     @Override
-    public boolean findOne(String tenTK) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public TaiKhoanEntity findOne(String tenTK) {
+        return dao.findOne(tenTK);
     }
 
     @Override
     public ArrayList<TaiKhoanEntity> findAll() {
         return dao.findAll();
     }
+
+    @Override
+    public boolean thoiGianDNGN(TaiKhoanEntity tk) {
+        return dao.thoiGianDNGN(tk);// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
     
 }
