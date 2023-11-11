@@ -447,11 +447,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users = new javax.swing.JPanel();
         jlb_name = new javax.swing.JLabel();
         lbl_Users = new javax.swing.JLabel();
-<<<<<<< HEAD
-        lbl_MaNhanVien = new javax.swing.JLabel();
-=======
         lbl_ChucVu = new javax.swing.JLabel();
->>>>>>> 0f2a4818e18ce4d6751a7c305e589f8872a6bc7b
         Jpanel_TaiKhoan = new javax.swing.JPanel();
         lbl_TaiKhoan = new javax.swing.JLabel();
         lbl_IconTaiKhoan = new javax.swing.JLabel();
@@ -520,18 +516,12 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users.add(jlb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 30));
         Jpanel_Users.add(lbl_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
-<<<<<<< HEAD
-        lbl_MaNhanVien.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lbl_MaNhanVien.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_MaNhanVien.setText("NV21127891");
-        Jpanel_Users.add(lbl_MaNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, 30));
-=======
+
         lbl_ChucVu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbl_ChucVu.setForeground(new java.awt.Color(255, 255, 255));
         lbl_ChucVu.setText("Quản Lý");
         Jpanel_Users.add(lbl_ChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, 30));
         lbl_ChucVu.getAccessibleContext().setAccessibleName("Quản Lý");
->>>>>>> 0f2a4818e18ce4d6751a7c305e589f8872a6bc7b
 
         Jpanel_Menu.add(Jpanel_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
