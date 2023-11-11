@@ -38,11 +38,11 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
-            String ma = rs.getString("maCTHD");
+//            String ma = rs.getString("maCTHD");
             SanPhamEntity maSP = new SanPhamEntity(rs.getString("maSP"));
             HoaDonEntity maHD = new HoaDonEntity(rs.getString("maHD"));
             int sl = rs.getInt("soLuong");
-            ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity(ma, maSP, maHD, sl);
+            ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity( maSP, maHD, sl);
             dscthd.add(cthd);
         }
     } catch (Exception e) {
@@ -125,7 +125,7 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
     try {
         ConnectDB.getInstance();
         con = ConnectDB.getConnection();
-        String sql = "select * from SanPham where maSP = (select maSP from ChiTietHoaDon where maHD = ?)";
+        String sql = "select * from SanPham where maSP in (select maSP from ChiTietHoaDon where maHD = ?)";
         stmt = con.prepareStatement(sql);
         stmt.setString(1, maHD);
         rs = stmt.executeQuery();
@@ -204,9 +204,9 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
             ConnectDB.getInstance().connect();
             Connection con = ConnectDB.getConnection();
             
-            String sql = "Insert into ChiTietHoaDon(maCTHD, maSP, maHD, soLuong, giaBan, thanhTien) values (?, ?, ?, ?, ?, ?)";
+            String sql = "Insert into ChiTietHoaDon(maSP, maHD, soLuong, giaBan, thanhTien) values (?, ?, ?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
-            statement.setString(1, cthd.getMaCTHD());
+//            statement.setString(1, cthd.getMaCTHD());
             statement.setString(2, cthd.getSanPham().getMaSP());
             statement.setString(3, cthd.getHoaDon().getMaHD());
             statement.setInt(4, cthd.getSoLuong());
@@ -231,6 +231,30 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
                 e.printStackTrace();
             }
         }
+    }
+//chung
+    @Override
+    public int soluongSP(String maHD, String maSP) {
+        int sl = 0;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        try {
+         ConnectDB.getInstance().connect();
+        con = ConnectDB.getConnection();
+        String sql = "select soLuong from ChiTietHoaDon where maHD = ? and maSP = ?";
+        stmt = con.prepareStatement(sql);
+        stmt.setString(1, maHD);
+        stmt.setString(2, maSP);
+        
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()){
+            int soluong =rs.getInt("soLuong");
+            sl = soluong;
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sl;
     }
 
     

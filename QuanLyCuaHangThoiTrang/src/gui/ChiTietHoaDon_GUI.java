@@ -70,15 +70,19 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
 
     private void DocDuLieuSQLvaoTable() {
     ArrayList<ChiTietHoaDonEntity> listCTHD = cthdbus.getallCTHD();
+    int sl = 0;
         try {
+            
             String maHD = lbl_MaHoaDon.getText();
             ArrayList<SanPhamEntity> allSP = new ArrayList<SanPhamEntity>(); // Danh sách tất cả sản phẩm
              allSP = cthdbus.getSanPhamTheoMaHD(maHD);
              System.out.println(allSP);
             for(SanPhamEntity sp: allSP){
-                addRows(new Object[]{sp.getTenSP(),sp.getKichThuoc(),sp.getMauSac(),sp.getSoLuongTonKho(),sp.getDonGia(),sp.getSoLuongTonKho() * sp.getDonGia()});
+                sl = cthdbus.soluongSP(maHD, sp.getMaSP());
+                System.out.println(sl);
+                addRows(new Object[]{sp.getTenSP(),sp.getKichThuoc(),sp.getMauSac(),sl,sp.getDonGia(),sl * sp.getDonGia()});
             }
-           
+           TongTien();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Vui lòng chọn hoá đơn cần xem !");
             e.printStackTrace();
@@ -98,7 +102,18 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         lbl_NgayLapHoaDon.setText(ngayLap);
         return false;
     }
-       
+    public void TongTien(){
+        double tt =0;
+        try {
+            int row = table.getRowCount();
+            for (int i = 0; i < row ; i++) {
+                tt += Double.parseDouble(table.getValueAt(i, 5).toString());
+            }
+            lblTongTien.setText(tt+" đ");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -121,7 +136,7 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblTongTien = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         btn_XacNhan = new javax.swing.JButton();
@@ -167,7 +182,7 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 90, 30));
 
         lbl_MaHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lbl_MaHoaDon.setText("KM1202022303");
+        lbl_MaHoaDon.setText("HD051123122344");
         jPanel2.add(lbl_MaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 110, 30));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -205,23 +220,23 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 80, 30));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel5.setText("10 %");
+        jLabel5.setText("0");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 100, 30));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel7.setText("Thuế VAT");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 80, 30));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel9.setText("1000.000.000");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 100, 30));
+        lblTongTien.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        lblTongTien.setText("1000.000.000");
+        jPanel2.add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 100, 30));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel10.setText("Khuyến Mãi");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 80, 30));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel11.setText("10 %");
+        jLabel11.setText("0");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 100, 30));
 
         btn_XacNhan.setBackground(new java.awt.Color(0, 51, 51));
@@ -283,11 +298,11 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTongTien;
     private javax.swing.JLabel lbl_IConExit;
     private javax.swing.JLabel lbl_MaHoaDon;
     private javax.swing.JLabel lbl_MaKhachHang;

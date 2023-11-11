@@ -454,7 +454,6 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users = new javax.swing.JPanel();
         jlb_name = new javax.swing.JLabel();
         lbl_Users = new javax.swing.JLabel();
-
         lbl_MaNhanVien = new javax.swing.JLabel();
         lbl_ChucVu = new javax.swing.JLabel();
         Jpanel_TaiKhoan = new javax.swing.JPanel();
@@ -525,8 +524,6 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users.add(jlb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 30));
         Jpanel_Users.add(lbl_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
-
-        
         lbl_ChucVu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbl_ChucVu.setForeground(new java.awt.Color(255, 255, 255));
         lbl_ChucVu.setText("Quản Lý");

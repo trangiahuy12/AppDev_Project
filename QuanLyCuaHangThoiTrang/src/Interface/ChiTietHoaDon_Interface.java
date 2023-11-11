@@ -13,6 +13,7 @@ public interface ChiTietHoaDon_Interface {
     public ArrayList<ChiTietHoaDonEntity> getallCTHD();
     public ArrayList<SanPhamEntity> getSanPhamTheoMaSP(String maSP); 
     public ArrayList<SanPhamEntity> getSanPhamTheoMaHD(String maHD);
+    public int soluongSP(String maHD,String maSP);
     
     // Nguyen Huy Hoang
     public boolean themChiTietHoaDon(ChiTietHoaDonEntity cthd);

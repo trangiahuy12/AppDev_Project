@@ -7,11 +7,14 @@ package dao;
 import Interface.TaiKhoanInterface;
 import connectDB.ConnectDB;
 import entity.TaiKhoanEntity;
+import entity.TinhTrangTKEnum;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +26,7 @@ import java.util.logging.Logger;
  */
 public class TaiKhoan_dao implements TaiKhoanInterface{
      ConnectDB connect = new ConnectDB();
+     NhanVien_dao nhanVienDAO = new NhanVien_dao();
 
     public entity.TaiKhoanEntity getTaiKhoan(String taiKhoan, String matKhau) throws SQLException {
 
@@ -40,7 +44,7 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
                 String tk = rs.getString("tenTaiKhoan");
                 String mk = rs.getString("matKhau");
 
-                entity.TaiKhoanEntity taikhoan = new TaiKhoanEntity(tk, mk);
+                entity.TaiKhoanEntity taikhoan = new TaiKhoanEntity(tk, mk, null, null);
                 return taikhoan;
             }
 
@@ -57,7 +61,40 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
         return null;
       
     }
-    
+    public boolean thoiGianDNGN(TaiKhoanEntity tk) {
+        LocalDateTime currentTime = LocalDateTime.now();
+        try {
+            ConnectDB.getInstance().connect();
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiKhoan_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Connection con = ConnectDB.getConnection();
+        PreparedStatement statement = null;
+        int n = 0;
+        try {
+
+            statement = con.prepareStatement("update TaiKhoan set thoiGianDNGN = ? where tenTaiKhoan= ?");
+            statement.setTimestamp(1, Timestamp.valueOf(currentTime));
+            statement.setString(2, tk.getTenTaiKhoan());
+            n = statement.executeUpdate();
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+           
+        
+
+        } finally {
+            try {
+                statement.close();
+            } catch (Exception e2) {
+                // TODO: handle exception
+                e2.printStackTrace();
+            }
+        }
+
+        return n > 0;
+    }
     
      public boolean lamMoiMatKhau(TaiKhoanEntity tk) {
 
@@ -106,7 +143,7 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
         Connection con = ConnectDB.getConnection();
         PreparedStatement statement = null;
         try {
-            statement = con.prepareStatement("INSERT INTO TaiKhoan "
+            statement = con.prepareStatement("INSERT INTO TaiKhoan(tenTaiKhoan, matKhau) "
                     + " values(?,?)");
             statement.setString(1, tk.getTenTaiKhoan());
             statement.setString(2, tk.getMatKhau());
@@ -120,7 +157,24 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
 
     @Override
     public boolean update(TaiKhoanEntity tk) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int n = 0;
+        try {
+                 ConnectDB.getInstance().connect();
+             } catch (SQLException ex) {
+                 Logger.getLogger(TaiKhoan_dao.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         try {
+             Connection connection = ConnectDB.getConnection();
+             PreparedStatement statement = null;
+             statement = connection.prepareStatement("UPDATE TaiKhoan SET tinhTrang = ? WHERE tenTaiKhoan = ?");
+             statement.setString(1, tk.getTinhTrang().toString());
+             statement.setString(2, tk.getTenTaiKhoan());
+             n = statement.executeUpdate();
+         } catch (SQLException ex) {
+             Logger.getLogger(TaiKhoan_dao.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return n > 0;
+        
     }
 
     @Override
@@ -129,8 +183,46 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
     }
 
     @Override
-    public boolean findOne(String tenTK) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public TaiKhoanEntity findOne(String tenTK) {
+        TaiKhoanEntity taiKhoan = null;
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement statement = null;
+            try {
+                
+                String sql = "SELECT * FROM taikhoan WHERE tenTaiKhoan = ?";
+                statement = con.prepareStatement(sql);
+                statement.setString(1, tenTK);
+                ResultSet rs = statement.executeQuery();
+                while (rs.next()) {
+                    String tk = rs.getString("tenTaiKhoan");
+                    String mk = rs.getString("matKhau");
+                    
+                    taiKhoan = new TaiKhoanEntity();
+                    taiKhoan.setMatKhau(mk);
+                    taiKhoan.setTenTaiKhoan(tenTK);
+                    taiKhoan.setThoiGianDNGN(rs.getTimestamp("thoiGianDNGN").toLocalDateTime());
+                    taiKhoan.setTinhTrang(rs.getString("tinhTrang").equals("Đang hoạt động") == true ? TinhTrangTKEnum.DANG_HOAT_DONG : TinhTrangTKEnum.NGUNG_HOAT_DONG);
+                    taiKhoan.setNhanVien(nhanVienDAO.findOne(tk));
+                }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    statement.close();
+                } catch (Exception e2) {
+                    // TODO: handle exception
+                    e2.printStackTrace();
+                }
+            }
+            
+            
+        } catch (SQLException ex) {
+             Logger.getLogger(TaiKhoan_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return taiKhoan;
     }
 
     @Override
@@ -142,7 +234,9 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 TaiKhoanEntity taiKhoan = null;
-                taiKhoan = new TaiKhoanEntity(rs.getString("tenTaiKhoan"), rs.getString("matKhau"));
+                String tenTaiKhoan = rs.getString("tenTaiKhoan");
+                taiKhoan = new TaiKhoanEntity(tenTaiKhoan, rs.getString("matKhau"), rs.getTimestamp("thoiGianDNGN").toLocalDateTime(), rs.getString("tinhTrang").equals("Đang hoạt động") == true ? TinhTrangTKEnum.DANG_HOAT_DONG : TinhTrangTKEnum.NGUNG_HOAT_DONG);
+                taiKhoan.setNhanVien(nhanVienDAO.findOne(tenTaiKhoan));
                 if (!listTK.contains(taiKhoan)) listTK.add(taiKhoan);
             }
             connect.disconnect();

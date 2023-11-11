@@ -37,4 +37,9 @@ public class ChiTietHoaDon_bus implements ChiTietHoaDon_Interface{
     public boolean themChiTietHoaDon(ChiTietHoaDonEntity cthd) {
         return cthd_dao.themChiTietHoaDon(cthd);
     }
+
+    @Override
+    public int soluongSP(String maHD, String maSP) {
+        return cthd_dao.soluongSP(maHD, maSP);
+    }
 }

@@ -2,8 +2,25 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
+<<<<<<< HEAD
             <file>file:/D:/HK1-NAM3/PTUD/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/DangNhap_GUI.java</file>
+=======
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/TaiKhoan_dao.java</file>
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/Interface/TaiKhoanInterface.java</file>
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/entity/TinhTrangTKEnum.java</file>
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/NhanVien_JPanel.java</file>
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/entity/TaiKhoanEntity.java</file>
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/LamMoiMatKhau_GUI.java</file>
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/dao/NhanVien_dao.java</file>
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/bus/TaiKhoan_bus.java</file>
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/TaiKhoan_JPanel.java</file>
+            <file>file:/D:/AppDev_Project/QuanLyCuaHangThoiTrang/src/gui/DangNhap_GUI.java</file>
+>>>>>>> a5d1a590791e8ddce10343e58d7d86925f0e6866
         </group>
+>>>>>>> 5fb61d900690e547edf390a0a29871e559d2efac
     </open-files>
 </project-private>

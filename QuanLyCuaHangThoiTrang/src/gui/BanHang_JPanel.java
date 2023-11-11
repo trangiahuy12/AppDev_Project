@@ -906,14 +906,13 @@ public class BanHang_JPanel extends javax.swing.JPanel {
         
         ArrayList<ChiTietHoaDonEntity> danhSachCTHD = new ArrayList<ChiTietHoaDonEntity>();
         for (int i = 0; i <= table_GioHang.getRowCount()-1; i++) {
-            String maCTHD = generateID.sinhMa("CTHD");
             String maSP = table_GioHang.getValueAt(i, 0).toString();
             SanPhamEntity sanPham = new SanPhamEntity(maSP);
             int soLuong = Integer.parseInt(table_GioHang.getValueAt(i, 4).toString());
             double giaBan = Double.parseDouble(table_GioHang.getValueAt(i, 5).toString());
             double thanhTien = Double.parseDouble(table_GioHang.getValueAt(i, 6).toString());
             
-            ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity(maCTHD, sanPham, hoaDon, soLuong, giaBan, thanhTien);
+            ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity(sanPham, hoaDon, soLuong, giaBan, thanhTien);
             danhSachCTHD.add(cthd);
         }
         

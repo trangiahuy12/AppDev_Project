@@ -521,8 +521,7 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_NhapSDTActionPerformed
 
     private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
-        NhanVien_dao dao  = new NhanVien_dao();
-        ArrayList<NhanVienEntity> listNV = bus.findAll();
+
         try {
             if (checkInput()) {
                 Date ns = txt_date.getDate();
@@ -551,7 +550,7 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
                 nv.setChucVu(cbo_ChucVu.getSelectedItem().equals("Nhân viên") == true ? ChucVuEnum.NHANVIEN : ChucVuEnum.QUANLY);
                 nv.setTinhTrang(tt);
                 
-                if (!listNV.contains(nv) && bus.insert(nv)) {
+                if (bus.insert(nv)) {
                     tableModel.addRow(new Object[]{nv.getMaNV(), nv.getHoTen(), nv.getGioiTinh().toString(), nv.getNgaySinh().toString(), nv.getEmail(), nv.getSoDienThoai() ,nv.getDiaChi(), nv.getChucVu().name(), nv.getTinhTrang().name(), nv.getCaLamViec()});
                     refresh();
                     JOptionPane.showMessageDialog(this, "Thêm nhân viên thành công!");
@@ -766,11 +765,6 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
         }
         else if (!SDT.matches("^(0|84)[1-9]\\d{8}$")) {
             JOptionPane.showMessageDialog(this, "Số điện thoại phải có 10 ký số và thuộc quốc gia Việt Nam!");
-            return false;
-        }
-        else if (!diaChi.matches("^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ0-9,]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ,][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ,]*)*$") && diaChi.length() <= 50) {
-            JOptionPane.showMessageDialog(this, "Địa chỉ tối đa 50 kí tự"
-                    + "!");
             return false;
         }
         else if (!email.matches("^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$")) {
