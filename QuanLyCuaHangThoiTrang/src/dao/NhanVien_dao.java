@@ -8,6 +8,7 @@ import entity.GioiTinhEnum;
 import entity.NhanVienEntity;
 import entity.TaiKhoanEntity;
 import entity.TinhTrangNVEnum;
+import entity.TinhTrangTKEnum;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -88,15 +89,9 @@ public class NhanVien_dao implements NhanVienInterface{
                         tt, 
                         rs.getString("caLamViec").equals(CaLamViecEnum.CA1.toString()) == true ? CaLamViecEnum.CA1 : CaLamViecEnum.CA2);
             }
-            
-              
-               
-            
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        return "";
         return nv;
     }
     @Override
@@ -170,7 +165,7 @@ public class NhanVien_dao implements NhanVienInterface{
     public boolean insert(NhanVienEntity NV ) {
         TaiKhoan_dao tkDao = new TaiKhoan_dao();
         int n = 0;
-        if(tkDao.insert(new TaiKhoanEntity(NV.getSoDienThoai(), "1111"))) {
+        if(tkDao.insert(new TaiKhoanEntity(NV.getSoDienThoai(), "1111", null, TinhTrangTKEnum.DANG_HOAT_DONG))) {
             StringBuilder sql = new StringBuilder("INSERT INTO NhanVien(maNV, hoTen, gioiTinh, ngaySinh, email, soDienThoai, diaChi, chucVu, tinhTrang, caLamViec)");
             sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         try {

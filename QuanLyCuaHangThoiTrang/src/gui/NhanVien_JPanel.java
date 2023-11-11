@@ -767,11 +767,6 @@ public class NhanVien_JPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Số điện thoại phải có 10 ký số và thuộc quốc gia Việt Nam!");
             return false;
         }
-        else if (!diaChi.matches("^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ0-9,.]*(?:[ ][0-9A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ,][A-Za-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ,.]*)*$") && diaChi.length() <= 50) {
-            JOptionPane.showMessageDialog(this, "Địa chỉ tối đa 50 kí tự"
-                    + "!");
-            return false;
-        }
         else if (!email.matches("^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$")) {
             JOptionPane.showMessageDialog(this, "Địa chỉ email không hợp lệ!");
             return false;

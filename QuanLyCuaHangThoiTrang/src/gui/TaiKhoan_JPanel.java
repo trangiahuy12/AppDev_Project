@@ -2,9 +2,11 @@ package gui;
 
 import bus.TaiKhoan_bus;
 import entity.TaiKhoanEntity;
+import entity.TinhTrangTKEnum;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TaiKhoan_JPanel extends javax.swing.JPanel {
@@ -39,11 +41,14 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
         txt_NhapTenTK = new javax.swing.JTextField();
         btn_TimKiem = new javax.swing.JButton();
         btn_CapNhat = new javax.swing.JButton();
+        cbo_TinhTrang = new javax.swing.JComboBox<>();
+        lbl_TinhTrang = new javax.swing.JLabel();
         panel_TableTaiKhoan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_DanhSachTK = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(187, 205, 197));
+        setPreferredSize(new java.awt.Dimension(1020, 700));
 
         panel_QuanLyTaiKhoan.setBackground(new java.awt.Color(187, 205, 197));
 
@@ -70,6 +75,11 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
         btn_TimKiem.setText("Tìm kiếm");
         btn_TimKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_TimKiem.setPreferredSize(new java.awt.Dimension(123, 30));
+        btn_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TimKiemActionPerformed(evt);
+            }
+        });
 
         btn_CapNhat.setBackground(new java.awt.Color(0, 51, 51));
         btn_CapNhat.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -84,20 +94,31 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
             }
         });
 
+        cbo_TinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Đang hoạt động", "Ngưng hoạt động"}));
+        cbo_TinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Đang hoạt động", "Ngưng hoạt động"}));
+        cbo_TinhTrang.setPreferredSize(new java.awt.Dimension(200, 30));
+
+        lbl_TinhTrang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbl_TinhTrang.setText("Tình trạng tài khoản");
+
         javax.swing.GroupLayout panel_ThaoTacTKLayout = new javax.swing.GroupLayout(panel_ThaoTacTK);
         panel_ThaoTacTK.setLayout(panel_ThaoTacTKLayout);
         panel_ThaoTacTKLayout.setHorizontalGroup(
             panel_ThaoTacTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_ThaoTacTKLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(10, 10, 10)
                 .addComponent(lbl_NhapTenTK)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_NhapTenTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txt_NhapTenTK, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
                 .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_TinhTrang)
+                .addGap(18, 18, 18)
+                .addComponent(cbo_TinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         panel_ThaoTacTKLayout.setVerticalGroup(
             panel_ThaoTacTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +128,9 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
                     .addComponent(lbl_NhapTenTK)
                     .addComponent(txt_NhapTenTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_TinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_TinhTrang))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -119,9 +142,14 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Tên tài khoản", ""
+                "Chủ sỡ hữu", "Tên tài khoản", "Thời gian đăng nhập", "Tình trạng"
             }
         ));
+        table_DanhSachTK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_DanhSachTKMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table_DanhSachTK);
 
         javax.swing.GroupLayout panel_TableTaiKhoanLayout = new javax.swing.GroupLayout(panel_TableTaiKhoan);
@@ -130,13 +158,14 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
             panel_TableTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_TableTaiKhoanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         panel_TableTaiKhoanLayout.setVerticalGroup(
             panel_TableTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_TableTaiKhoanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -148,8 +177,11 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel_QuanLyTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel_ThaoTacTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel_TableTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panel_ThaoTacTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel_TableTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -170,27 +202,66 @@ public class TaiKhoan_JPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_NhapTenTKActionPerformed
 
     private void btn_CapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CapNhatActionPerformed
-        // TODO add your handling code here:
+        int rowSelected = table_DanhSachTK.getSelectedRow();
+        String tenTaiKhoan = (String) tableModel.getValueAt(rowSelected, 1);
+        TaiKhoanEntity tk = bus.findOne(tenTaiKhoan);
+        tk.setTinhTrang(cbo_TinhTrang.getSelectedItem().equals("Đang hoạt động") == true ? TinhTrangTKEnum.DANG_HOAT_DONG : TinhTrangTKEnum.NGUNG_HOAT_DONG);
+        if (bus.update(tk)) {
+            JOptionPane.showMessageDialog(this, "Cập nhật tình trạng tài khoản thành công!");
+    }
+        else JOptionPane.showConfirmDialog(this, "Cập nhật nhật tình trạng tài khoản thất bại!");
+        
+        
+        refresh();
     }//GEN-LAST:event_btn_CapNhatActionPerformed
+
+    private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
+        String id = txt_NhapTenTK.getText();
+        if (id.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập tài khoản của nhân viên!");
+            return;
+        }
+        TaiKhoanEntity tk = bus.findOne(id);
+        if (tk == null) {
+            JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại!");
+            return;
+        }
+       tableModel.setRowCount(0);
+       tableModel.addRow(new Object[] {tk.getNhanVien().getHoTen(), tk.getTenTaiKhoan(), tk.getThoiGianDNGN(), tk.getTinhTrang().toString()});
+    }//GEN-LAST:event_btn_TimKiemActionPerformed
+
+    private void table_DanhSachTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_DanhSachTKMouseClicked
+        int selectedRow = table_DanhSachTK.getSelectedRow();
+        cbo_TinhTrang.setSelectedItem(tableModel.getValueAt(selectedRow, 3));
+    }//GEN-LAST:event_table_DanhSachTKMouseClicked
 
      private void loadData() {
         ArrayList<TaiKhoanEntity> listTK = new ArrayList<>();
         listTK = bus.findAll();
         for (TaiKhoanEntity tk : listTK) {
-            tableModel.addRow(new Object[]{tk.getTenTaiKhoan(), tk.getMatKhau()});
+            tableModel.addRow(new Object[]{tk.getNhanVien().getHoTen(), tk.getTenTaiKhoan(), tk.getThoiGianDNGN(), tk.getTinhTrang().toString()});
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_CapNhat;
     private javax.swing.JButton btn_TimKiem;
+    private javax.swing.JComboBox<String> cbo_TinhTrang;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_NhapTenTK;
     private javax.swing.JLabel lbl_QuanLyTaiKhoan;
+    private javax.swing.JLabel lbl_TinhTrang;
     private javax.swing.JPanel panel_QuanLyTaiKhoan;
     private javax.swing.JPanel panel_TableTaiKhoan;
     private javax.swing.JPanel panel_ThaoTacTK;
     private javax.swing.JTable table_DanhSachTK;
     private javax.swing.JTextField txt_NhapTenTK;
     // End of variables declaration//GEN-END:variables
+    
+    public void refresh() {
+        txt_NhapTenTK.setText("");
+        tableModel.setRowCount(0);
+        cbo_TinhTrang.setSelectedIndex(-1);
+        loadData();
+    }
 }

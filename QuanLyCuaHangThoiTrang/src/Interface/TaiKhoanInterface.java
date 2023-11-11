@@ -15,6 +15,7 @@ public interface TaiKhoanInterface {
     public boolean insert(TaiKhoanEntity tk);
     public boolean update(TaiKhoanEntity tk);
     public boolean delete(TaiKhoanEntity tk);
-    public boolean findOne(String tenTK);
+    public TaiKhoanEntity findOne(String tenTK);
     public ArrayList<TaiKhoanEntity> findAll();
+    public boolean thoiGianDNGN(TaiKhoanEntity tk);
 }

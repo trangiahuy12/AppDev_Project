@@ -1,40 +1,86 @@
 package entity;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class TaiKhoanEntity {
 	private String tenTaiKhoan, matKhau;
+        private LocalDateTime thoiGianDNGN;
+        private TinhTrangTKEnum tinhTrang;
+        private NhanVienEntity nhanVien;
 
-	public TaiKhoanEntity(String tenTaiKhoan, String matKhau) {
-		super();
-		this.tenTaiKhoan = tenTaiKhoan;
-		this.matKhau = matKhau;
-	}
+    public LocalDateTime getThoiGianDNGN() {
+        return thoiGianDNGN;
+    }
 
-	public TaiKhoanEntity() {
-		super();
-	}
+    public void setThoiGianDNGN(LocalDateTime thoiGianDNGN) {
+        this.thoiGianDNGN = thoiGianDNGN;
+    }
 
-	public String getTenTaiKhoan() {
-		return tenTaiKhoan;
-	}
+    public TinhTrangTKEnum getTinhTrang() {
+        return tinhTrang;
+    }
 
-	public void setTenTaiKhoan(String tenTaiKhoan) {
-		this.tenTaiKhoan = tenTaiKhoan;
-	}
+    public void setTinhTrang(TinhTrangTKEnum tinhTrang) {
+        this.tinhTrang = tinhTrang;
+    }
 
-	public String getMatKhau() {
-		return matKhau;
-	}
+    public TaiKhoanEntity(String tenTaiKhoan, String matKhau, LocalDateTime thoiGianDNGN, TinhTrangTKEnum tinhTrang) {
+        this.tenTaiKhoan = tenTaiKhoan;
+        this.matKhau = matKhau;
+        this.thoiGianDNGN = thoiGianDNGN;
+        this.tinhTrang = tinhTrang;
+    }
 
-	public void setMatKhau(String matKhau) {
-		this.matKhau = matKhau;
-	}
+    public TaiKhoanEntity(String tenTaiKhoan, String matKhau) {
+        this.tenTaiKhoan = tenTaiKhoan;
+        this.matKhau = matKhau;
+    }
+    
+    
 
-	@Override
-	public String toString() {
-		return "TaiKhoanEntity [tenTaiKhoan=" + tenTaiKhoan + ", matKhau=" + matKhau + "]";
-	}
+	
+
+    public TaiKhoanEntity() {
+            super();
+    }
+
+    public TaiKhoanEntity(String tenTaiKhoan, String matKhau, LocalDateTime thoiGianDNGN, TinhTrangTKEnum tinhTrang, NhanVienEntity nhanVien) {
+        this.tenTaiKhoan = tenTaiKhoan;
+        this.matKhau = matKhau;
+        this.thoiGianDNGN = thoiGianDNGN;
+        this.tinhTrang = tinhTrang;
+        this.nhanVien = nhanVien;
+    }
+
+    public NhanVienEntity getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVienEntity nhanVien) {
+        this.nhanVien = nhanVien;
+    }
+    
+    public String getTenTaiKhoan() {
+            return tenTaiKhoan;
+    }
+
+    public void setTenTaiKhoan(String tenTaiKhoan) {
+            this.tenTaiKhoan = tenTaiKhoan;
+    }
+
+    public String getMatKhau() {
+            return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+            this.matKhau = matKhau;
+    }
+
+    @Override
+    public String toString() {
+            return "TaiKhoanEntity [tenTaiKhoan=" + tenTaiKhoan + ", matKhau=" + matKhau + "]";
+    }
 
     @Override
     public int hashCode() {
