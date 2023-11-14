@@ -728,11 +728,10 @@
                 <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Object[][] data={};&#xa;String[] columnNames={&quot;M&#xe3;&quot;,&quot;T&#xea;n s&#x1ea3;n ph&#x1ea9;m&quot;, &quot;K&#xed;ch th&#x1b0;&#x1edb;c&quot;, &quot;M&#xe0;u s&#x1eaf;c&quot;, &quot;&#x110;&#x1a1;n gi&#xe1;&quot;, &quot;T&#xec;nh tr&#x1ea1;ng&quot;, &quot;S&#x1ed1; l&#x1b0;&#x1ee3;ng&quot;, &quot;Ch&#x1ea5;t li&#x1ec7;u&quot;, &quot;Th&#x1b0;&#x1a1;ng hi&#x1ec7;u&quot;, &quot;Danh m&#x1ee5;c&quot;};&#xa;model=new DefaultTableModel(data, columnNames){&#xa;@Override&#xa;public boolean isCellEditable(int row, int column){&#xa;    return false;&#xa;}&#xa;};"/>
                 <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private DefaultTableModel model;"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="table_DanhSachSanPham.getColumnModel().getColumn(0).setPreferredWidth(100);&#xa;table_DanhSachSanPham.getColumnModel().getColumn(1).setPreferredWidth(200);&#xa;table_DanhSachSanPham.getColumnModel().getColumn(2).setCellRenderer(new CenterRenderer());&#xa;table_DanhSachSanPham.getColumnModel().getColumn(3).setCellRenderer(new CenterRenderer());"/>
-<<<<<<< HEAD
-                <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="SanPham_JPanel_table_DanhSachSanPham"/>
-=======
+
+
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JTableHeader tableHeader=table_DanhSachSanPham.getTableHeader();&#xa;tableHeader.setFont(new Font(&quot;Times New Roman&quot;, Font.BOLD, 13));"/>
->>>>>>> 4d3ac8a20cfe10d3596dc8695dc28a69a58654bd
+
               </AuxValues>
             </Component>
           </SubComponents>

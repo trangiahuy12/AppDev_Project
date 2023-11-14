@@ -8,6 +8,7 @@ import entity.ChiTietHoaDonEntity;
 import entity.ChuongTrinhKhuyenMaiEntity;
 import entity.KhachHangEntity;
 import entity.NhanVienEntity;
+import gui.KhuyenMai_JPanel;
 import java.sql.Date;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -34,14 +35,19 @@ public class HoaDon_dao implements  Interface.HoaDon_Interface{
              Statement statement = con.createStatement();
              ResultSet rs = statement.executeQuery(sql);
              while(rs.next()){
-                 String ma = rs.getString("maHD");
-                 Date ngayLap = rs.getDate("ngaylapHD");
-                 KhachHangEntity kh = new KhachHangEntity(rs.getString("maKH"));
-                 NhanVienEntity nv = new NhanVienEntity(rs.getString("maNV"));
-                 ChuongTrinhKhuyenMaiEntity ctkm = new ChuongTrinhKhuyenMaiEntity(rs.getNString("maCTKM"));
-                 int thue = rs.getInt("thueVAT");
-                 
-                 HoaDonEntity hd = new HoaDonEntity(ma, ngayLap, kh, nv, ctkm, thue);
+                  String mahd = rs.getString("maHD");
+                String makh = rs.getString("maKH");
+                KhachHangEntity kh = new KhachHangEntity(makh);
+                String manv = rs.getString("maNV");
+                NhanVienEntity nv = new NhanVienEntity(manv);
+                String mactkm = rs.getString("maCTKM");
+                ChuongTrinhKhuyenMaiEntity km = new ChuongTrinhKhuyenMaiEntity(mactkm);
+                Date nglap = rs.getDate("ngayLapHD");
+                int vat = rs.getInt("thueVAT");
+                double tonngtien = rs.getDouble("tongTien");
+                double tienKM = rs.getDouble("tienKhuyenMai");
+                double tienTT = rs.getDouble("tienThanhToan");
+                HoaDonEntity hd = new HoaDonEntity(mahd, nglap, kh, nv, km, vat, tonngtien, tienKM, tienTT);
                  dshd.add(hd);
              }
 
@@ -117,4 +123,70 @@ public class HoaDon_dao implements  Interface.HoaDon_Interface{
             }
         }
     }
+
+    @Override
+    public HoaDonEntity getHoaDonTheoMaHD(String maHD) {
+            HoaDonEntity hd = new HoaDonEntity();
+            try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement stmt = con.prepareCall("select * from HoaDon where maHD = ?");
+            stmt.setString(1, maHD);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                String mahd = rs.getString("maHD");
+                String makh = rs.getString("maKH");
+                KhachHangEntity kh = new KhachHangEntity(makh);
+                String manv = rs.getString("maNV");
+                NhanVienEntity nv = new NhanVienEntity(manv);
+                String mactkm = rs.getString("maCTKM");
+                ChuongTrinhKhuyenMaiEntity km = new ChuongTrinhKhuyenMaiEntity(mactkm);
+                Date nglap = rs.getDate("ngayLapHD");
+                int vat = rs.getInt("thueVAT");
+                double tonngtien = rs.getDouble("tongTien");
+                double tienKM = rs.getDouble("tienKhuyenMai");
+                double tienTT = rs.getDouble("tienThanhToan");
+                hd = new HoaDonEntity(mahd, nglap, kh, nv, km, vat, tonngtien, tienKM, tienTT);
+                
+            }
+                    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return hd;
+    }
+
+    @Override
+    public ArrayList<HoaDonEntity> getHoaDonTheoNgayLap(Date ngayLap) {
+         ArrayList<HoaDonEntity> dshd = new ArrayList<HoaDonEntity>();
+            try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            PreparedStatement stmt = con.prepareCall("select * from HoaDon where ngayLapHD = ?");
+            stmt.setDate(1,ngayLap);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                String mahd = rs.getString("maHD");
+                String makh = rs.getString("maKH");
+                KhachHangEntity kh = new KhachHangEntity(makh);
+                String manv = rs.getString("maNV");
+                NhanVienEntity nv = new NhanVienEntity(manv);
+                String mactkm = rs.getString("maCTKM");
+                ChuongTrinhKhuyenMaiEntity km = new ChuongTrinhKhuyenMaiEntity(mactkm);
+                Date nglap = rs.getDate("ngayLapHD");
+                int vat = rs.getInt("thueVAT");
+                double tonngtien = rs.getDouble("tongTien");
+                double tienKM = rs.getDouble("tienKhuyenMai");
+                double tienTT = rs.getDouble("tienThanhToan");
+                HoaDonEntity hd = new HoaDonEntity(mahd, nglap, kh, nv, km, vat, tonngtien, tienKM, tienTT);
+                dshd.add(hd);
+            }
+                    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return dshd;
+    }
+
+
 }

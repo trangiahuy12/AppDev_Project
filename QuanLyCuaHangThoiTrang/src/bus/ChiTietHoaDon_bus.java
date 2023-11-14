@@ -42,4 +42,9 @@ public class ChiTietHoaDon_bus implements ChiTietHoaDon_Interface{
     public int soluongSP(String maHD, String maSP) {
         return cthd_dao.soluongSP(maHD, maSP);
     }
+
+    @Override
+    public ArrayList<ChiTietHoaDonEntity> getCTHDTheoMaHDvaMaSP(String maHD, String maSP) {
+        return cthd_dao.getCTHDTheoMaHDvaMaSP(maHD, maSP);
+    }
 }

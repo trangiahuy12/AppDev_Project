@@ -29,6 +29,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
 
         initComponents();
         ToanCuc tc = new ToanCuc();
+        System.out.println(tc);
         jlb_name.setText(tc.getName());
         lbl_ChucVu.setText(tc.getChucvu());
         if(tc.getGioitnh().equals("Nữ")){
@@ -456,11 +457,6 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users = new javax.swing.JPanel();
         jlb_name = new javax.swing.JLabel();
         lbl_Users = new javax.swing.JLabel();
-<<<<<<< HEAD
-=======
-
-        lbl_MaNhanVien = new javax.swing.JLabel();
->>>>>>> 5fb61d900690e547edf390a0a29871e559d2efac
         lbl_ChucVu = new javax.swing.JLabel();
         Jpanel_TaiKhoan = new javax.swing.JPanel();
         lbl_TaiKhoan = new javax.swing.JLabel();
@@ -530,14 +526,6 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users.add(jlb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 30));
         Jpanel_Users.add(lbl_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
-
-<<<<<<< HEAD
-=======
-        lbl_MaNhanVien.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lbl_MaNhanVien.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_MaNhanVien.setText("NV21127891");
-        Jpanel_Users.add(lbl_MaNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, 30));
->>>>>>> 5fb61d900690e547edf390a0a29871e559d2efac
         lbl_ChucVu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbl_ChucVu.setForeground(new java.awt.Color(255, 255, 255));
         lbl_ChucVu.setText("Quản Lý");

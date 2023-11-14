@@ -1,9 +1,13 @@
 package gui;
 
 import java.awt.Image;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 
 public class ThongKe_JPanel extends javax.swing.JPanel {
+
+    private final DoanhThu_JPanel panel_doanhthu;
+    private final DoanhSo_JPanel panel_doanhso;
 
     public ThongKe_JPanel() {
         initComponents();
@@ -16,7 +20,15 @@ public class ThongKe_JPanel extends javax.swing.JPanel {
         Image scaled_btnXemChiTiet = img_btnXemChiTiet.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnXemChiTiet = new ImageIcon(scaled_btnXemChiTiet);
         btn_XemChiTiet.setIcon(img_btnXemChiTiet);
-
+        
+        ButtonGroup btnGR = new ButtonGroup();
+        btnGR.add(rdo_XemDoanhSo);
+        btnGR.add(rdo_XemDoanhThu);
+        rdo_XemDoanhThu.setSelected(true);
+        panel_doanhthu = new DoanhThu_JPanel();
+        panel_doanhso = new DoanhSo_JPanel();
+        Jpanel_TK.add(panel_doanhthu);
+        Jpanel_TK.add(panel_doanhso);
     }
 
     /**
@@ -31,21 +43,15 @@ public class ThongKe_JPanel extends javax.swing.JPanel {
         Jpanel_TieuDeHoaDon = new javax.swing.JPanel();
         lbl_TieuDeHoaDon = new javax.swing.JLabel();
         Jpanel_ThaoTac = new javax.swing.JPanel();
-        lbl_MaHoaDon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btn_TimKiem = new javax.swing.JButton();
-        btn_XemChiTiet = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jSpinner2 = new javax.swing.JSpinner();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        panel_1 = new javax.swing.JPanel();
-        panel_2 = new javax.swing.JPanel();
+        rdo_XemDoanhThu = new javax.swing.JRadioButton();
+        rdo_XemDoanhSo = new javax.swing.JRadioButton();
+        Jpanel_TK = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(187, 205, 197));
         setMinimumSize(new java.awt.Dimension(1020, 700));
@@ -64,12 +70,11 @@ public class ThongKe_JPanel extends javax.swing.JPanel {
 
         Jpanel_ThaoTac.setBackground(new java.awt.Color(187, 205, 197));
         Jpanel_ThaoTac.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Các thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
-
-        lbl_MaHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        lbl_MaHoaDon.setText("Thời gian");
+        Jpanel_ThaoTac.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel1.setText("Thống kê theo");
+        jLabel1.setText("Thống kê theo :");
+        Jpanel_ThaoTac.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         btn_TimKiem.setBackground(new java.awt.Color(0, 51, 51));
         btn_TimKiem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -81,177 +86,105 @@ public class ThongKe_JPanel extends javax.swing.JPanel {
                 btn_TimKiemActionPerformed(evt);
             }
         });
-
-        btn_XemChiTiet.setBackground(new java.awt.Color(0, 51, 51));
-        btn_XemChiTiet.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btn_XemChiTiet.setForeground(java.awt.Color.white);
-        btn_XemChiTiet.setText("Xem bảng thống kê");
-        btn_XemChiTiet.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btn_XemChiTiet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_XemChiTietActionPerformed(evt);
-            }
-        });
-
-        jComboBox1.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Jpanel_ThaoTac.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 120, 30));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel2.setText("Tháng");
+        Jpanel_ThaoTac.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 49, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel3.setText("Năm");
+        Jpanel_ThaoTac.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
 
         jSpinner1.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        Jpanel_ThaoTac.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 70, 30));
 
         jSpinner2.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        Jpanel_ThaoTac.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 70, 30));
 
-        jComboBox2.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        rdo_XemDoanhThu.setBackground(new java.awt.Color(187, 205, 197));
+        rdo_XemDoanhThu.setText("Xem doanh thu");
+        rdo_XemDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdo_XemDoanhThuMouseClicked(evt);
+            }
+        });
+        rdo_XemDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdo_XemDoanhThuActionPerformed(evt);
+            }
+        });
+        Jpanel_ThaoTac.add(rdo_XemDoanhThu, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 65, -1, -1));
 
-        javax.swing.GroupLayout Jpanel_ThaoTacLayout = new javax.swing.GroupLayout(Jpanel_ThaoTac);
-        Jpanel_ThaoTac.setLayout(Jpanel_ThaoTacLayout);
-        Jpanel_ThaoTacLayout.setHorizontalGroup(
-            Jpanel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Jpanel_ThaoTacLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(Jpanel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(lbl_MaHoaDon))
-                .addGap(47, 47, 47)
-                .addGroup(Jpanel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Jpanel_ThaoTacLayout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Jpanel_ThaoTacLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(Jpanel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Jpanel_ThaoTacLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Jpanel_ThaoTacLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_XemChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(285, Short.MAX_VALUE))
-        );
-        Jpanel_ThaoTacLayout.setVerticalGroup(
-            Jpanel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Jpanel_ThaoTacLayout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addGroup(Jpanel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_MaHoaDon)
-                    .addComponent(jLabel2)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(Jpanel_ThaoTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btn_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_XemChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        rdo_XemDoanhSo.setBackground(new java.awt.Color(187, 205, 197));
+        rdo_XemDoanhSo.setText("Xem doanh số");
+        rdo_XemDoanhSo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdo_XemDoanhSoMouseClicked(evt);
+            }
+        });
+        rdo_XemDoanhSo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdo_XemDoanhSoActionPerformed(evt);
+            }
+        });
+        Jpanel_ThaoTac.add(rdo_XemDoanhSo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 65, -1, -1));
 
         add(Jpanel_ThaoTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1000, 100));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout Jpanel_TKLayout = new javax.swing.GroupLayout(Jpanel_TK);
+        Jpanel_TK.setLayout(Jpanel_TKLayout);
+        Jpanel_TKLayout.setHorizontalGroup(
+            Jpanel_TKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1000, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
+        Jpanel_TKLayout.setVerticalGroup(
+            Jpanel_TKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Bảng", jPanel1);
-
-        jPanel2.setBackground(new java.awt.Color(187, 245, 197));
-
-        javax.swing.GroupLayout panel_1Layout = new javax.swing.GroupLayout(panel_1);
-        panel_1.setLayout(panel_1Layout);
-        panel_1Layout.setHorizontalGroup(
-            panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 988, Short.MAX_VALUE)
-        );
-        panel_1Layout.setVerticalGroup(
-            panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 257, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout panel_2Layout = new javax.swing.GroupLayout(panel_2);
-        panel_2.setLayout(panel_2Layout);
-        panel_2Layout.setHorizontalGroup(
-            panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 988, Short.MAX_VALUE)
-        );
-        panel_2Layout.setVerticalGroup(
-            panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 245, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panel_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Sơ đồ", jPanel2);
-
-        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 1000, 550));
+        add(Jpanel_TK, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 1000, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_TimKiemActionPerformed
 
-    private void btn_XemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XemChiTietActionPerformed
+    private void rdo_XemDoanhThuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdo_XemDoanhThuMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_XemChiTietActionPerformed
+        
+    }//GEN-LAST:event_rdo_XemDoanhThuMouseClicked
+
+    private void rdo_XemDoanhSoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdo_XemDoanhSoMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_rdo_XemDoanhSoMouseClicked
+
+    private void rdo_XemDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_XemDoanhThuActionPerformed
+       Jpanel_TK.add(panel_doanhthu);
+       panel_doanhso.setVisible(false);
+       panel_doanhthu.setVisible(true);
+    }//GEN-LAST:event_rdo_XemDoanhThuActionPerformed
+
+    private void rdo_XemDoanhSoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_XemDoanhSoActionPerformed
+        Jpanel_TK.add(panel_doanhso);
+        panel_doanhthu.setVisible(false);
+        panel_doanhso.setVisible(true);
+    }//GEN-LAST:event_rdo_XemDoanhSoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Jpanel_TK;
     private javax.swing.JPanel Jpanel_ThaoTac;
     private javax.swing.JPanel Jpanel_TieuDeHoaDon;
     private javax.swing.JButton btn_TimKiem;
-    private javax.swing.JButton btn_XemChiTiet;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lbl_MaHoaDon;
     private javax.swing.JLabel lbl_TieuDeHoaDon;
-    private javax.swing.JPanel panel_1;
-    private javax.swing.JPanel panel_2;
+    private javax.swing.JRadioButton rdo_XemDoanhSo;
+    private javax.swing.JRadioButton rdo_XemDoanhThu;
     // End of variables declaration//GEN-END:variables
 }

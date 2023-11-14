@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import util.HoaDon_toancuc;
 
 /**
  *
@@ -44,6 +45,7 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
     private SanPham_bus spbus;
     private HoaDon_JPanel HDPanel;
 
+
     /**
      * Creates new form ChiTietHoaDon_GUI
      */
@@ -56,7 +58,15 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         cthdbus = new ChiTietHoaDon_bus();
-
+        HoaDon_toancuc hdtc = new HoaDon_toancuc();
+       if(hdtc == null) JOptionPane.showMessageDialog(null, "HoaDon ToanCuc rỗng !");
+       else {
+           System.out.println(" MÃ hoá đơn" + hdtc.getMaHD());
+        lbl_MaHoaDon.setText(hdtc.getMaHD());
+        lbl_MaKhachHang.setText(hdtc.getMaKH());
+        lbl_MaNhanVien.setText(hdtc.getMaNV());
+        lbl_NgayLapHoaDon.setText(hdtc.getNgayLap());
+       }
         lbl_IConExit.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -78,9 +88,11 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
              allSP = cthdbus.getSanPhamTheoMaHD(maHD);
              System.out.println(allSP);
             for(SanPhamEntity sp: allSP){
-                sl = cthdbus.soluongSP(maHD, sp.getMaSP());
-                System.out.println(sl);
-                addRows(new Object[]{sp.getTenSP(),sp.getKichThuoc(),sp.getMauSac(),sl,sp.getDonGia(),sl * sp.getDonGia()});
+                listCTHD = cthdbus.getCTHDTheoMaHDvaMaSP(maHD, sp.getMaSP());
+                for(ChiTietHoaDonEntity ct: listCTHD){
+                    System.out.println(sl);
+                addRows(new Object[]{sp.getTenSP(),sp.getKichThuoc(),sp.getMauSac(),ct.getSoLuong(),ct.getGiaBan(),ct.getThanhTien()});
+                }
             }
            TongTien();
         } catch (Exception e) {
@@ -96,10 +108,10 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         model.addRow(row);
    } 
     public boolean getHD(String maHD,String maKH,String maNV,String ngayLap ){
-        lbl_MaHoaDon.setText(maHD);
-        lbl_MaKhachHang.setText(maKH);
-        lbl_MaNhanVien.setText(maNV);
-        lbl_NgayLapHoaDon.setText(ngayLap);
+//        lbl_MaHoaDon.setText(maHD);
+//        lbl_MaKhachHang.setText(maKH);
+//        lbl_MaNhanVien.setText(maNV);
+//        lbl_NgayLapHoaDon.setText(ngayLap);
         return false;
     }
     public void TongTien(){
@@ -182,7 +194,7 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 90, 30));
 
         lbl_MaHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lbl_MaHoaDon.setText("HD051123122344");
+        lbl_MaHoaDon.setText("HD120923091230");
         jPanel2.add(lbl_MaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 110, 30));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -277,7 +289,6 @@ public class ChiTietHoaDon_GUI extends javax.swing.JFrame {
 
     private void btn_XacNhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_XacNhanMouseClicked
         // TODO add your handling code here:
-//        System.exit(0);
         this.setVisible(false);
     }//GEN-LAST:event_btn_XacNhanMouseClicked
 

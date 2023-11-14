@@ -7,13 +7,14 @@ import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import util.HoaDon_toancuc;
 
 public class HoaDon_JPanel extends javax.swing.JPanel {
 
-    private ChiTietHoaDon_GUI chitiethoadon;
     private final HoaDon_bus hdbus;
 
     /**
@@ -22,6 +23,7 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
     public HoaDon_JPanel() {
             
         initComponents();
+        dateNgayLap.setLocale(new Locale("vi","VN"));
         setBounds(0, 0, 1020, 700);
 //          Jpanel_ThaoTac.setBorder(BorderFactory.createTitledBorder("Thao tác"));
 //        Jpanel_Table.setBorder(BorderFactory.createTitledBorder("Bảng danh sách"));
@@ -36,7 +38,7 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         ImageIcon img_btnXoa = new ImageIcon("src//pic//icon//buttonXoa.png");
         Image scaled_btnXoa = img_btnXoa.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         img_btnXoa = new ImageIcon(scaled_btnXoa);
-        btn_Xoa.setIcon(img_btnXoa);
+        btn_LamMoi.setIcon(img_btnXoa);
         
         // KHởi tạo kết nối database
 //        try {
@@ -53,7 +55,7 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
    private void DocDuLieuTuSQLvaoTable(){
        ArrayList<HoaDonEntity> listHD = hdbus.getallHoaDon();
        for (HoaDonEntity hd : listHD){
-           addRows(new Object[]{hd.getMaHD(),hd.getKhachHang().getMaKH(),hd.getNhanVien().getMaNV(),hd.getChuongTrinhKM().getMaCTKM(),hd.getThueVAT(),hdbus.getTotalMoney(hd.getMaHD()),hd.getNgayLapHD()});
+           addRows(new Object[]{hd.getMaHD(),hd.getKhachHang().getMaKH(),hd.getNhanVien().getMaNV(),hd.getChuongTrinhKM().getMaCTKM(),hd.getThueVAT(),hd.getTienTT(),hd.getNgayLapHD()});
        }
    }
    public void addRows (Object[] row){
@@ -66,6 +68,10 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
        String ma = jTable1.getValueAt(row, 0).toString();
        return ma;
    }
+       private void XoahetDuLieuTrenTable() {
+        DefaultTableModel md = (DefaultTableModel) jTable1.getModel();
+        md.getDataVector().removeAllElements();
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,9 +82,9 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         lbl_MaHoaDon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txt_MaHoaDon = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        dateNgayLap = new com.toedter.calendar.JDateChooser();
         btn_TimKiem = new javax.swing.JButton();
-        btn_Xoa = new javax.swing.JButton();
+        btn_LamMoi = new javax.swing.JButton();
         btn_XemChiTiet = new javax.swing.JButton();
         Jpanel_Table = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -117,7 +123,7 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
             }
         });
         Jpanel_ThaoTac.add(txt_MaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 200, 25));
-        Jpanel_ThaoTac.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 200, 25));
+        Jpanel_ThaoTac.add(dateNgayLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 200, 25));
 
         btn_TimKiem.setBackground(new java.awt.Color(0, 51, 51));
         btn_TimKiem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -131,16 +137,16 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         });
         Jpanel_ThaoTac.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 120, 30));
 
-        btn_Xoa.setBackground(new java.awt.Color(204, 0, 0));
-        btn_Xoa.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btn_Xoa.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Xoa.setText("Xóa");
-        btn_Xoa.addActionListener(new java.awt.event.ActionListener() {
+        btn_LamMoi.setBackground(new java.awt.Color(0, 51, 51));
+        btn_LamMoi.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_LamMoi.setForeground(new java.awt.Color(255, 255, 255));
+        btn_LamMoi.setText("Làm mới");
+        btn_LamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_XoaActionPerformed(evt);
+                btn_LamMoiActionPerformed(evt);
             }
         });
-        Jpanel_ThaoTac.add(btn_Xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 120, 30));
+        Jpanel_ThaoTac.add(btn_LamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 120, 30));
 
         btn_XemChiTiet.setBackground(new java.awt.Color(0, 51, 51));
         btn_XemChiTiet.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -180,29 +186,93 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_MaHoaDonActionPerformed
 
-    private void btn_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaActionPerformed
+    private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_XoaActionPerformed
+        XoahetDuLieuTrenTable();
+        DocDuLieuTuSQLvaoTable();
+        txt_MaHoaDon.setText("");
+        dateNgayLap.setDate(null);
+    }//GEN-LAST:event_btn_LamMoiActionPerformed
 
     private void btn_XemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XemChiTietActionPerformed
-        // TODO add your handling code here:
-        
-        chitiethoadon = new ChiTietHoaDon_GUI();
         try {
              int row = jTable1.getSelectedRow();
             String maHD = jTable1.getValueAt(row, 0).toString();
             String maKH = jTable1.getValueAt(row, 1).toString();
             String maNV = jTable1.getValueAt(row, 2).toString();
             String ngayLap = jTable1.getValueAt(row, 6).toString();
-            chitiethoadon.getHD(maHD,maKH,maNV,ngayLap);
-            chitiethoadon.setVisible(true);
+            System.out.println(maHD + " "+ maKH + " " + maNV+ " " + ngayLap);
+            HoaDon_toancuc hdtc = new HoaDon_toancuc();
+            hdtc.setMaHD(maHD);
+            hdtc.setMaKH(maKH);
+            hdtc.setMaNV(maNV);
+            hdtc.setNgayLap(ngayLap);
+            ChiTietHoaDon_GUI cthd = new ChiTietHoaDon_GUI();
+            cthd.setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Vui lòng chọn hoá đơn cần xem !");
         }
     }//GEN-LAST:event_btn_XemChiTietActionPerformed
 
     private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
-        // TODO add your handling code here:
+//        if(!txt_MaHoaDon.getText().equals("") && dateNgayLap.getDate() ==null){
+//  
+//            HoaDonEntity hd = new HoaDonEntity();
+//            try {
+//                 hd = hdbus.getHoaDonTheoMaHD(txt_MaHoaDon.getText());
+//                XoahetDuLieuTrenTable();
+//                addRows(new Object[]{hd.getMaHD(),hd.getKhachHang().getMaKH(),hd.getNhanVien().getMaNV(),hd.getChuongTrinhKM().getMaCTKM(),hd.getThueVAT(),hd.getTienTT(),hd.getNgayLapHD()});
+//            
+//            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(null, "Không tìm thấy hoá đơn này !");
+//            }
+//        
+//        }
+//        else if(txt_MaHoaDon.equals("") && dateNgayLap.getDate() !=null){
+//            ArrayList<HoaDonEntity> ds = new ArrayList<HoaDonEntity>();
+//            try {
+//                ds = hdbus.getHoaDonTheoNgayLap((Date)dateNgayLap.getDate());
+//                XoahetDuLieuTrenTable();
+//                for (HoaDonEntity hd: ds){
+//                    
+//                    addRows(new Object[]{hd.getMaHD(),hd.getKhachHang().getMaKH(),hd.getNhanVien().getMaNV(),hd.getChuongTrinhKM().getMaCTKM(),hd.getThueVAT(),hd.getTienTT(),hd.getNgayLapHD()});
+//                }
+//            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(null, "Không tìm thấy hoá đơn này !");
+//            }
+//        }
+//        else if(txt_MaHoaDon.getText().equals("") && dateNgayLap.getDate() == null){
+//            JOptionPane.showMessageDialog(null, "Vui lòng nhập dữ liệu Hoá đơn cần tìm !");
+//        }
+        XoahetDuLieuTrenTable();
+        DocDuLieuTuSQLvaoTable();
+        if (!txt_MaHoaDon.getText().isEmpty() && dateNgayLap.getDate() == null) {
+            HoaDonEntity hd = new HoaDonEntity();
+            try {
+                hd = hdbus.getHoaDonTheoMaHD(txt_MaHoaDon.getText());
+                XoahetDuLieuTrenTable();
+                addRows(new Object[]{hd.getMaHD(), hd.getKhachHang().getMaKH(), hd.getNhanVien().getMaNV(), hd.getChuongTrinhKM().getMaCTKM(), hd.getThueVAT(), hd.getTienTT(), hd.getNgayLapHD()});
+            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(null, "Không tìm thấy hoá đơn này !");
+            }
+        } else if (txt_MaHoaDon.getText().isEmpty() && dateNgayLap.getDate() != null) {
+            ArrayList<HoaDonEntity> ds = new ArrayList<HoaDonEntity>();
+            try {
+                java.sql.Date ngaylap = new java.sql.Date(dateNgayLap.getDate().getTime());
+                System.out.println("ngay lập " +ngaylap);
+                ds = hdbus.getHoaDonTheoNgayLap(ngaylap);
+                XoahetDuLieuTrenTable();
+                for (HoaDonEntity hd : ds) {
+                    addRows(new Object[]{hd.getMaHD(), hd.getKhachHang().getMaKH(), hd.getNhanVien().getMaNV(), hd.getChuongTrinhKM().getMaCTKM(), hd.getThueVAT(), hd.getTienTT(), hd.getNgayLapHD()});
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Không tìm thấy hoá đơn này !");
+                e.printStackTrace();
+            }
+        } else if (txt_MaHoaDon.getText().isEmpty() && dateNgayLap.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập dữ liệu Hoá đơn cần tìm !");
+        }
+
     }//GEN-LAST:event_btn_TimKiemActionPerformed
 
 
@@ -210,10 +280,10 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
     private javax.swing.JPanel Jpanel_Table;
     private javax.swing.JPanel Jpanel_ThaoTac;
     private javax.swing.JPanel Jpanel_TieuDeHoaDon;
+    private javax.swing.JButton btn_LamMoi;
     private javax.swing.JButton btn_TimKiem;
     private javax.swing.JButton btn_XemChiTiet;
-    private javax.swing.JButton btn_Xoa;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser dateNgayLap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

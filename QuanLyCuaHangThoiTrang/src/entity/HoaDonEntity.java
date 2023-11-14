@@ -11,6 +11,37 @@ public class HoaDonEntity {
 	private ChuongTrinhKhuyenMaiEntity chuongTrinhKM;
 	private int thueVAT;
         private double tongTien;
+        private double tienKM;
+        private double tienTT;
+
+    public double getTienKM() {
+        return tienKM;
+    }
+
+    public void setTienKM(double tienKM) {
+        this.tienKM = tienKM;
+    }
+
+    public double getTienTT() {
+        return tienTT;
+    }
+
+    public void setTienTT(double tienTT) {
+        this.tienTT = tienTT;
+    }
+
+    public HoaDonEntity(String maHD, Date ngayLapHD, KhachHangEntity khachHang, NhanVienEntity nhanVien, ChuongTrinhKhuyenMaiEntity chuongTrinhKM, int thueVAT, double tongTien, double tienKM, double tienTT) {
+        this.maHD = maHD;
+        this.ngayLapHD = ngayLapHD;
+        this.khachHang = khachHang;
+        this.nhanVien = nhanVien;
+        this.chuongTrinhKM = chuongTrinhKM;
+        this.thueVAT = thueVAT;
+        this.tongTien = tongTien;
+        this.tienKM = tienKM;
+        this.tienTT = tienTT;
+    }
+    
         
 	public HoaDonEntity(String maHD, Date ngayLapHD, KhachHangEntity khachHang, NhanVienEntity nhanVien,
 			ChuongTrinhKhuyenMaiEntity chuongTrinhKM, int thueVAT) {
