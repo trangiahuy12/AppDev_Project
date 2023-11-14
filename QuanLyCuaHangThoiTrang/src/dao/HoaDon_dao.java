@@ -38,14 +38,14 @@ public class HoaDon_dao implements  Interface.HoaDon_Interface{
                  Date ngayLap = rs.getDate("ngaylapHD");
                  KhachHangEntity kh = new KhachHangEntity(rs.getString("maKH"));
                  NhanVienEntity nv = new NhanVienEntity(rs.getString("maNV"));
-                 ChuongTrinhKhuyenMaiEntity ctkm = new ChuongTrinhKhuyenMaiEntity(rs.getNString("maCTKM"));
-                 int thue = rs.getInt("thueVAT");
+                 ChuongTrinhKhuyenMaiEntity ctkm = new ChuongTrinhKhuyenMaiEntity(rs.getString("maCTKM"));
+                 double tienKhuyenMai = rs.getDouble("tienKhuyenMai");
+                 double tongTien = rs.getDouble("tongTien");
+                 double tienThanhToan = rs.getDouble("tienThanhToan");
                  
-                 HoaDonEntity hd = new HoaDonEntity(ma, ngayLap, kh, nv, ctkm, thue);
+                 HoaDonEntity hd = new HoaDonEntity(ma, ngayLap, kh, nv, ctkm, tienKhuyenMai, tongTien, tienThanhToan);
                  dshd.add(hd);
              }
-
-//            ResultSet rs = statement.executeQuery(sql);
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,7 +82,7 @@ public class HoaDon_dao implements  Interface.HoaDon_Interface{
             ConnectDB.getInstance().connect();
             Connection con = ConnectDB.getConnection();
             
-            String sql = "Insert into HoaDon(maHD, maKH, maNV, maCTKM, ngayLapHD, thueVAT, tongTien) values (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "Insert into HoaDon(maHD, maKH, maNV, maCTKM, ngayLapHD, tienKhuyenMai, tongTien, tienThanhToan) values (?, ?, ?, ?, ?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
             
             statement.setString(1, hoaDon.getMaHD());
@@ -90,8 +90,9 @@ public class HoaDon_dao implements  Interface.HoaDon_Interface{
             statement.setString(3, hoaDon.getNhanVien().getMaNV());
             statement.setString(4, hoaDon.getChuongTrinhKM().getMaCTKM());
             statement.setDate(5, hoaDon.getNgayLapHD());
-            statement.setInt(6, hoaDon.getThueVAT());
+            statement.setDouble(6, hoaDon.getTienKhuyenMai());
             statement.setDouble(7, hoaDon.getTongTien());
+            statement.setDouble(8, hoaDon.getTienThanhToan());
             
             int ketQua = statement.executeUpdate();
             if(ketQua < 1) {

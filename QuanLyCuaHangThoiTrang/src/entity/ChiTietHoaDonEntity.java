@@ -11,25 +11,13 @@ public class ChiTietHoaDonEntity {
         private double thanhTien;
         
         public ChiTietHoaDonEntity( SanPhamEntity sanPham, HoaDonEntity hoaDon, int soLuong) {
-		super();
 		
 		this.sanPham = sanPham;
 		this.hoaDon = hoaDon;
 		this.soLuong = soLuong;
-	}
-        
-	public ChiTietHoaDonEntity( SanPhamEntity sanPham, HoaDonEntity hoaDon, int soLuong, double giaBan, double thanhTien) {
-		super();
-		
-		this.sanPham = sanPham;
-		this.hoaDon = hoaDon;
-		this.soLuong = soLuong;
-                this.giaBan = giaBan;
-                this.thanhTien = thanhTien;
 	}
 
 	public ChiTietHoaDonEntity() {
-		super();
 	}
 
 	public SanPhamEntity getSanPham() {
@@ -55,21 +43,21 @@ public class ChiTietHoaDonEntity {
             return giaBan;
         }
 
-        public void setGiaBan(double giaBan) {
-            this.giaBan = giaBan;
+        public void setGiaBan() {
+            this.giaBan = sanPham.getDonGia() * 1.4;
         }
 
         public double getThanhTien() {
             return thanhTien;
         }
 
-        public void setThanhTien(double thanhTien) {
-            this.thanhTien = thanhTien;
+        public void setThanhTien() {
+            this.thanhTien = giaBan * soLuong;
         }
-    
-	@Override
-	public String toString() {
-		return "ChiTietHoaDonEntity [maCTHD=" + ", hoaDon=" + hoaDon + ", soLuong=" + soLuong + "]";
-	}
 
+        @Override
+        public String toString() {
+            return "ChiTietHoaDonEntity{" + "sanPham=" + sanPham + ", hoaDon=" + hoaDon + ", soLuong=" + soLuong + ", giaBan=" + giaBan + ", thanhTien=" + thanhTien + '}';
+        }
+        
 }

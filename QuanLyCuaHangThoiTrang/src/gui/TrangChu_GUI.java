@@ -49,7 +49,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         getContentPane().setLayout(null);
-        setVisible(true);
+//        setVisible(true);
 
         TrangChu_Panel = new TrangChu_JPanel();
         BanHang_Panel = new BanHang_JPanel();

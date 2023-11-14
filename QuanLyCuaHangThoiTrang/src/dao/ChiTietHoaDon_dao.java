@@ -204,17 +204,16 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
             ConnectDB.getInstance().connect();
             Connection con = ConnectDB.getConnection();
             
-            String sql = "Insert into ChiTietHoaDon(maSP, maHD, soLuong, giaBan, thanhTien) values (?, ?, ?, ?, ?, ?)";
+            String sql = "Insert into ChiTietHoaDon(maSP, maHD, soLuong, giaBan, thanhTien) values (?, ?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
-//            statement.setString(1, cthd.getMaCTHD());
-            statement.setString(2, cthd.getSanPham().getMaSP());
-            statement.setString(3, cthd.getHoaDon().getMaHD());
-            statement.setInt(4, cthd.getSoLuong());
-            statement.setDouble(5, cthd.getGiaBan());
-            statement.setDouble(6, cthd.getThanhTien());
+            statement.setString(1, cthd.getSanPham().getMaSP());
+            statement.setString(2, cthd.getHoaDon().getMaHD());
+            statement.setInt(3, cthd.getSoLuong());
+            statement.setDouble(4, cthd.getGiaBan());
+            statement.setDouble(5, cthd.getThanhTien());
             
             int ketQua = statement.executeUpdate();
-            System.out.println(ketQua);
+
             if(ketQua < 1) {
                 return false;
             }
