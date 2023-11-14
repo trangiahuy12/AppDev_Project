@@ -165,4 +165,47 @@ public class ChuongTrinhKhuyenMai_dao implements ChuongTrinhKhuyenMai_Interface 
         }
         return n >0;
     }
+    
+    // Nguyen Huy Hoang
+    public ChuongTrinhKhuyenMaiEntity kiemTraKhuyenMai(double tongTien) {
+        try {
+            ConnectDB.getInstance().connect();
+        } catch (SQLException ex) {
+            Logger.getLogger(ChuongTrinhKhuyenMai_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Connection con = ConnectDB.getConnection();
+        PreparedStatement statement = null;
+        
+        try {
+            String sql = "Select top 1 * from ChuongTrinhKhuyenMai where getdate() between ngayBatDau and ngayKetThuc and soTienToiThieu <= ? order by giamGia desc";
+            statement = con.prepareStatement(sql);
+            statement.setDouble(1, tongTien);
+            
+            ResultSet rs = statement.executeQuery();
+            ChuongTrinhKhuyenMaiEntity ctkm = null;
+            if(rs.next()) {
+                String maCTKM = rs.getString("maCTKM");
+                String tenCTKM = rs.getString("tenCTKM");
+                double soTienToiThieu = rs.getDouble("soTienToiThieu");
+                int giamGia = rs.getInt("giamGia");
+                Date ngayBatDau = rs.getDate("ngayBatDau");
+                Date ngayKetThuc = rs.getDate("ngayKetThuc");
+                
+                ctkm = new ChuongTrinhKhuyenMaiEntity(maCTKM, tenCTKM, soTienToiThieu, giamGia, ngayBatDau, ngayKetThuc);
+            }
+            
+            return ctkm;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if(con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ChuongTrinhKhuyenMai_dao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 }

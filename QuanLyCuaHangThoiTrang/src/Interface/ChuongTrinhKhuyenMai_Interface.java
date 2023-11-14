@@ -15,5 +15,6 @@ public interface ChuongTrinhKhuyenMai_Interface {
     public boolean delete (ChuongTrinhKhuyenMaiEntity ctkm);
     public boolean update (ChuongTrinhKhuyenMaiEntity ctkm);
     
-    
+    // Nguyen Huy Hoang
+    public ChuongTrinhKhuyenMaiEntity kiemTraKhuyenMai(double tongTien);
 }

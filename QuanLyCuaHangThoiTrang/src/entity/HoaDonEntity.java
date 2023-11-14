@@ -9,8 +9,9 @@ public class HoaDonEntity {
 	private KhachHangEntity khachHang;
 	private NhanVienEntity nhanVien;
 	private ChuongTrinhKhuyenMaiEntity chuongTrinhKM;
-	private int thueVAT;
+	private double tienKhuyenMai;
         private double tongTien;
+<<<<<<< HEAD
         private double tienKM;
         private double tienTT;
 
@@ -53,11 +54,25 @@ public class HoaDonEntity {
 		this.chuongTrinhKM = chuongTrinhKM;
 		this.thueVAT = thueVAT;
 	}
+=======
+        private double tienThanhToan;
+>>>>>>> 451ca90c62f4208417236484cdc553a0e9c159cc
         
 	public HoaDonEntity(String maHD) {
-		super();
 		this.maHD = maHD;
 	}
+
+        public HoaDonEntity(String maHD, Date ngayLapHD, KhachHangEntity khachHang, NhanVienEntity nhanVien, ChuongTrinhKhuyenMaiEntity chuongTrinhKM, double tienKhuyenMai, double tongTien, double tienThanhToan) {
+            this.maHD = maHD;
+            this.ngayLapHD = ngayLapHD;
+            this.khachHang = khachHang;
+            this.nhanVien = nhanVien;
+            this.chuongTrinhKM = chuongTrinhKM;
+            this.tienKhuyenMai = tienKhuyenMai;
+            this.tongTien = tongTien;
+            this.tienThanhToan = tienThanhToan;
+        }
+
 	public HoaDonEntity() {
 		super();
                
@@ -92,12 +107,6 @@ public class HoaDonEntity {
 	public void setChuongTrinhKM(ChuongTrinhKhuyenMaiEntity chuongTrinhKM) {
 		this.chuongTrinhKM = chuongTrinhKM;
 	}
-	public int getThueVAT() {
-		return thueVAT;
-	}
-	public void setThueVAT(int thueVAT) {
-		this.thueVAT = thueVAT;
-	}
         
         public void setTongTien(double tongTien) {
             this.tongTien = tongTien;
@@ -106,12 +115,29 @@ public class HoaDonEntity {
         public double getTongTien() {
             return tongTien;
         }
+
+        public void setTienKhuyenMai() {
+            this.tienKhuyenMai = tongTien * (chuongTrinhKM.getGiamGia()*0.01);
+        }
+
+        public void setTienThanhToan() {
+            this.tienThanhToan = tongTien - tienKhuyenMai;
+        }
         
-	@Override
-	public String toString() {
-		return "HoaDonEntity [maHD=" + maHD + ", ngayLapHD=" + ngayLapHD + ", khachHang=" + khachHang + ", nhanVien="
-				+ nhanVien + ", chuongTrinhKM=" + chuongTrinhKM + ", thueVAT=" + thueVAT + "]";
-	}
+        public double getTienKhuyenMai() {
+            return tienKhuyenMai;
+        }
+
+        public double getTienThanhToan() {
+            return tienThanhToan;
+        }
+
+        @Override
+        public String toString() {
+            return "HoaDonEntity{" + "maHD=" + maHD + ", ngayLapHD=" + ngayLapHD + ", khachHang=" + khachHang + ", nhanVien=" + nhanVien + ", chuongTrinhKM=" + chuongTrinhKM + ", tienKhuyenMai=" + tienKhuyenMai + ", tienThanhToan=" + tienThanhToan + ", tongTien=" + tongTien + '}';
+        }
+
+        
 	@Override
 	public int hashCode() {
 		return Objects.hash(maHD);

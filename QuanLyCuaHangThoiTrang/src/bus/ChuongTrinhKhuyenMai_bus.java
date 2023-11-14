@@ -40,6 +40,11 @@ public class ChuongTrinhKhuyenMai_bus implements ChuongTrinhKhuyenMai_Interface{
        return ctkm_dao.update(ctkm);
     }
 
+    @Override
+    public ChuongTrinhKhuyenMaiEntity kiemTraKhuyenMai(double tongTien) {
+       return ctkm_dao.kiemTraKhuyenMai(tongTien);
+    }
+
  
     
 }

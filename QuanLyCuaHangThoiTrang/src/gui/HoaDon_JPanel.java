@@ -55,7 +55,11 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
    private void DocDuLieuTuSQLvaoTable(){
        ArrayList<HoaDonEntity> listHD = hdbus.getallHoaDon();
        for (HoaDonEntity hd : listHD){
+<<<<<<< HEAD
            addRows(new Object[]{hd.getMaHD(),hd.getKhachHang().getMaKH(),hd.getNhanVien().getMaNV(),hd.getChuongTrinhKM().getMaCTKM(),hd.getThueVAT(),hd.getTienTT(),hd.getNgayLapHD()});
+=======
+           addRows(new Object[]{hd.getMaHD(),hd.getKhachHang().getMaKH(),hd.getNhanVien().getMaNV(),hd.getChuongTrinhKM().getMaCTKM(),hd.getNgayLapHD(),hd.getTienKhuyenMai(),hdbus.getTotalMoney(hd.getMaHD()), hd.getTienThanhToan()});
+>>>>>>> 451ca90c62f4208417236484cdc553a0e9c159cc
        }
    }
    public void addRows (Object[] row){
@@ -172,9 +176,17 @@ public class HoaDon_JPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã Hóa Đơn", "Mã Khách Hàng", "Mã Nhân Viên", "Mã CTKM", "Thuế VAT", "Tổng tiền", "Ngày Lập Hóa Đơn"
+                "Mã Hóa Đơn", "Mã Khách Hàng", "Mã Nhân Viên", "Mã CTKM", "Ngày Lập Hóa Đơn", "Tiền Khuyến Mãi", "Tổng Tiền", "Tiền Thanh Toán"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         Jpanel_Table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 980, 510));
