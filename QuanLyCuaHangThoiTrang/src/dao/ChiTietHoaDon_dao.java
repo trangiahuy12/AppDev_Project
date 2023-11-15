@@ -38,11 +38,14 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
-//            String ma = rs.getString("maCTHD");
-            SanPhamEntity maSP = new SanPhamEntity(rs.getString("maSP"));
-            HoaDonEntity maHD = new HoaDonEntity(rs.getString("maHD"));
-            int sl = rs.getInt("soLuong");
-            ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity( maSP, maHD, sl);
+            String masp = rs.getString("maSP");
+           SanPhamEntity sp = new SanPhamEntity(masp);
+           String mahd = rs.getString("maHD");
+           HoaDonEntity hd = new HoaDonEntity(mahd);
+           int sl = rs.getInt("soLuong");
+           double giaban = rs.getDouble("giaBan");
+           double thanhtien = rs.getDouble("thanhTien");
+           ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity(sp, hd, sl, giaban, thanhtien);
             dscthd.add(cthd);
         }
     } catch (Exception e) {
@@ -254,6 +257,34 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
             e.printStackTrace();
         }
         return sl;
+    }
+
+    @Override
+    public ArrayList<ChiTietHoaDonEntity> getCTHDTheoMaHDvaMaSP(String maHD,String maSP) {
+       ArrayList<ChiTietHoaDonEntity> dscthd = new ArrayList<ChiTietHoaDonEntity>();
+        try {
+            ConnectDB.getInstance().connect();
+       Connection con = ConnectDB.getConnection();
+       PreparedStatement stmt = con.prepareStatement("select * from [dbo].[ChiTietHoaDon] where maHD = ? and maSP = ?");
+       stmt.setString(1, maHD);
+       stmt.setString(2, maSP);
+       ResultSet rs = stmt.executeQuery();
+       while (rs.next()){
+           String masp = rs.getString("maSP");
+           SanPhamEntity sp = new SanPhamEntity(masp);
+           String mahd = rs.getString("maHD");
+           HoaDonEntity hd = new HoaDonEntity(mahd);
+           int sl = rs.getInt("soLuong");
+           double giaban = rs.getDouble("giaBan");
+           double thanhtien = rs.getDouble("thanhTien");
+           ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity(sp, hd, sl, giaban, thanhtien);
+           dscthd.add(cthd);
+           
+       }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dscthd;
     }
 
     

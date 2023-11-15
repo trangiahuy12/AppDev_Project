@@ -13,6 +13,16 @@ public class HoaDonEntity {
         private double tongTien;
         private double tienThanhToan;
         
+	public HoaDonEntity(String maHD, Date ngayLapHD, KhachHangEntity khachHang, NhanVienEntity nhanVien,
+			ChuongTrinhKhuyenMaiEntity chuongTrinhKM) {
+		super();
+		this.maHD = maHD;
+		this.ngayLapHD = ngayLapHD;
+		this.khachHang = khachHang;
+		this.nhanVien = nhanVien;
+		this.chuongTrinhKM = chuongTrinhKM;
+	}
+        
 	public HoaDonEntity(String maHD) {
 		this.maHD = maHD;
 	}

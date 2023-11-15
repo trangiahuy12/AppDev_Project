@@ -10,11 +10,13 @@ public class ChiTietHoaDonEntity {
         private double giaBan;
         private double thanhTien;
         
-        public ChiTietHoaDonEntity( SanPhamEntity sanPham, HoaDonEntity hoaDon, int soLuong) {
+        public ChiTietHoaDonEntity( SanPhamEntity sanPham, HoaDonEntity hoaDon, int soLuong, double giaBan, double thanhTien) {
 		
 		this.sanPham = sanPham;
 		this.hoaDon = hoaDon;
 		this.soLuong = soLuong;
+                this.giaBan = giaBan;
+                this.thanhTien = thanhTien;
 	}
 
 	public ChiTietHoaDonEntity() {

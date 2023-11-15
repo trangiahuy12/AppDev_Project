@@ -29,6 +29,7 @@ public class TrangChu_GUI extends javax.swing.JFrame {
 
         initComponents();
         ToanCuc tc = new ToanCuc();
+        System.out.println(tc);
         jlb_name.setText(tc.getName());
         lbl_ChucVu.setText(tc.getChucvu());
         if (tc.getGioitnh().equals("Nữ")) {
@@ -454,7 +455,6 @@ public class TrangChu_GUI extends javax.swing.JFrame {
         Jpanel_Users = new javax.swing.JPanel();
         jlb_name = new javax.swing.JLabel();
         lbl_Users = new javax.swing.JLabel();
-        lbl_MaNhanVien = new javax.swing.JLabel();
         lbl_ChucVu = new javax.swing.JLabel();
         Jpanel_TaiKhoan = new javax.swing.JPanel();
         lbl_TaiKhoan = new javax.swing.JLabel();
@@ -908,7 +908,6 @@ public class TrangChu_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_IconTrangChu;
     private javax.swing.JLabel lbl_KhachHang;
     private javax.swing.JLabel lbl_KhuyenMai;
-    private javax.swing.JLabel lbl_MaNhanVien;
     private javax.swing.JLabel lbl_NhaCungCap;
     private javax.swing.JLabel lbl_NhanVien;
     private javax.swing.JLabel lbl_PhieuNhap;
