@@ -4,7 +4,9 @@ import connectDB.ConnectDB;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Desktop;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -44,8 +46,20 @@ public class TrangChu_GUI extends javax.swing.JFrame {
             img_User = new ImageIcon(scaled_Users);
             lbl_Users.setIcon(img_User);
         }
+        
+        if(tc.getChucvu().equals("Nhân viên")) {
+            Jpanel_NhanVien.setVisible(false);
+            Jpanel_NhaCungCap.setVisible(false);
+            Jpanel_KhuyenMai.setVisible(false);
+            Jpanel_TaiKhoan.setVisible(false);
+            Jpanel_PhieuNhap.setVisible(false);
+        }
 
         setSize(1200, 720);
+        GraphicsEnvironment env=GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds=env.getMaximumWindowBounds();
+        setSize(bounds.width, bounds.height);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 

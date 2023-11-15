@@ -3,6 +3,7 @@ package util;
 import entity.CaLamViecEnum;
 import entity.ChucVuEnum;
 import entity.GioiTinhEnum;
+import entity.HinhThucDoiTraEnum;
 import entity.KichThuocEnum;
 import entity.MauSacEnum;
 import entity.TinhTrangNCCEnum;
@@ -118,5 +119,15 @@ public class ConvertStringToEnum {
             return TinhTrangSPEnum.NGUNGBAN;
         }
         return TinhTrangSPEnum.DANGBAN;
+    }
+    
+    public HinhThucDoiTraEnum HinhThucDTToEnum(String hinhThuc) {
+        if(hinhThuc.equals("Hoàn trả")) {
+            return HinhThucDoiTraEnum.HOANTRA;
+        }
+        if(hinhThuc.equals("Đổi sản phẩm khác")) {
+            return HinhThucDoiTraEnum.DOISANPHAMKHAC;
+        }
+        return HinhThucDoiTraEnum.HOANTRA;
     }
 }

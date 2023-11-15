@@ -17,6 +17,10 @@ import java.sql.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import util.ConvertStringToEnum;
+import util.GenerateID;
 
 /**
  *
@@ -234,6 +238,59 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
             }
         }
     }
+    
+    @Override
+    public ArrayList<ChiTietHoaDonEntity> getAllCTHDTheoMaHD(String maHD) {
+        try {
+            ConnectDB.getInstance().connect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HoaDon_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Connection con = ConnectDB.getConnection();
+        PreparedStatement statement = null;
+        
+        try {
+            String sql = "Select cthd.*, sp.tenSP, sp.kichThuoc, sp.mauSac from ChiTietHoaDon as cthd inner join SanPham as sp on cthd.maSP=sp.maSP where maHD=?";
+            statement = con.prepareStatement(sql);
+            statement.setString(1, maHD);
+            
+            ResultSet rs = statement.executeQuery();
+            ArrayList<ChiTietHoaDonEntity> cthdList = new ArrayList<ChiTietHoaDonEntity>();
+            while(rs.next()) {
+                String mahd = rs.getString("maHD");
+                HoaDonEntity hd = new HoaDonEntity(mahd);
+                String masp = rs.getString("maSP");
+                String tensp = rs.getString("tenSP");
+                String kichThuoc = rs.getString("kichThuoc");
+                String mauSac = rs.getString("mauSac");
+                SanPhamEntity sp = new SanPhamEntity(masp);
+                sp.setTenSP(tensp);
+                ConvertStringToEnum toEnum = new ConvertStringToEnum();
+                sp.setKichThuoc(toEnum.KichThuoctoEnum(kichThuoc));
+                sp.setMauSac(toEnum.MauSactoEnum(mauSac));
+                int soLuong = rs.getInt("soLuong");
+                double giaBan = rs.getDouble("giaBan");
+                double thanhTien = rs.getDouble("thanhTien");
+                
+                ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity(sp, hd, soLuong, giaBan, thanhTien);
+                
+                cthdList.add(cthd);
+            }
+            return cthdList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if(con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(HoaDon_dao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
 //chung
     @Override
     public int soluongSP(String maHD, String maSP) {
@@ -286,6 +343,5 @@ public class ChiTietHoaDon_dao implements ChiTietHoaDon_Interface{
         }
         return dscthd;
     }
-
-    
+   
 }

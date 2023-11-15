@@ -367,57 +367,57 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel1.setText("Tên Chương Trình");
-        JPanel_ThongTinCTKM.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 55, 120, 30));
+        JPanel_ThongTinCTKM.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 120, 30));
 
         txtTenCTKM.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtTenCTKM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTenCTKM.setBorder(null);
-        JPanel_ThongTinCTKM.add(txtTenCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 55, 170, 30));
+        JPanel_ThongTinCTKM.add(txtTenCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 170, 30));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel3.setText("Ngày Kết Thúc");
         jLabel3.setPreferredSize(new java.awt.Dimension(109, 30));
-        JPanel_ThongTinCTKM.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 55, 100, 30));
+        JPanel_ThongTinCTKM.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 100, 30));
 
         txtGiamGia.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtGiamGia.setBorder(null);
-        JPanel_ThongTinCTKM.add(txtGiamGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 55, 170, 30));
+        JPanel_ThongTinCTKM.add(txtGiamGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 170, 30));
 
         txtMaCTKM.setEditable(false);
         txtMaCTKM.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtMaCTKM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMaCTKM.setBorder(null);
-        JPanel_ThongTinCTKM.add(txtMaCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 15, 170, 30));
+        JPanel_ThongTinCTKM.add(txtMaCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 170, 30));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel5.setText("Giảm Giá");
         jLabel5.setPreferredSize(new java.awt.Dimension(109, 30));
-        JPanel_ThongTinCTKM.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 55, 160, 30));
+        JPanel_ThongTinCTKM.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 160, 30));
 
         dateNgayKetThuc.setDateFormatString("dd-MM-yyyy");
-        JPanel_ThongTinCTKM.add(dateNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 55, 180, 30));
+        JPanel_ThongTinCTKM.add(dateNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, 180, 30));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel6.setText("Số Tiền Giảm Tối Thiểu");
         jLabel6.setPreferredSize(new java.awt.Dimension(109, 30));
-        JPanel_ThongTinCTKM.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 15, 160, 30));
+        JPanel_ThongTinCTKM.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 160, 30));
 
         txtSoTienGiam.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtSoTienGiam.setBorder(null);
-        JPanel_ThongTinCTKM.add(txtSoTienGiam, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 15, 170, 30));
+        JPanel_ThongTinCTKM.add(txtSoTienGiam, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 170, 30));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel7.setText("Ngày Bắt Đầu");
         jLabel7.setPreferredSize(new java.awt.Dimension(109, 30));
-        JPanel_ThongTinCTKM.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 15, 100, 30));
+        JPanel_ThongTinCTKM.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 100, 30));
 
         dateNgayBatDau.setDateFormatString("dd-MM-yyyy");
-        JPanel_ThongTinCTKM.add(dateNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 15, 180, 30));
+        JPanel_ThongTinCTKM.add(dateNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 180, 30));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel8.setText("Mã Chương Trình");
         jLabel8.setPreferredSize(new java.awt.Dimension(109, 30));
-        JPanel_ThongTinCTKM.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 15, 120, 30));
+        JPanel_ThongTinCTKM.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 30));
 
         add(JPanel_ThongTinCTKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 55, 1000, 100));
 
@@ -428,7 +428,7 @@ public class KhuyenMai_JPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel4.setText("Mã Chương Trình");
         jLabel4.setPreferredSize(new java.awt.Dimension(109, 30));
-        JPanel_ThaoTac.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 20, 120, 30));
+        JPanel_ThaoTac.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 30));
 
         txtTimMaCTKM.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtTimMaCTKM.setBorder(null);

@@ -1,10 +1,17 @@
 package gui;
 
+import bus.DoiTra_bus;
+import entity.DoiTraEntity;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 public class QuanLyDoiTra_JPanel extends javax.swing.JPanel {
-
+    
+    private DefaultTableModel tableModel;
+    private DoiTra_bus dt_bus = new DoiTra_bus();
+    
     public QuanLyDoiTra_JPanel() {
         initComponents();
         setBounds(0, 0, 1020, 700);
@@ -19,10 +26,16 @@ public class QuanLyDoiTra_JPanel extends javax.swing.JPanel {
         img_btnXemChiTiet = new ImageIcon(scaled_btnXemChiTiet);
         btn_XemChiTiet.setIcon(img_btnXemChiTiet);
         
-        ImageIcon img_btnXoa = new ImageIcon("src//pic//icon//buttonXoa.png");
-        Image scaled_btnXoa = img_btnXoa.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
-        img_btnXoa = new ImageIcon(scaled_btnXoa);
-        btn_Xoa.setIcon(img_btnXoa);
+        ImageIcon img_btnLamMoi = new ImageIcon("src//pic//icon//buttonLamMoi.png");
+        Image scaled_btnLamMoi = img_btnLamMoi.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        img_btnLamMoi = new ImageIcon(scaled_btnLamMoi);
+        btn_LamMoi.setIcon(img_btnLamMoi);
+        
+        // Table
+        String[] cols = {"Mã đơn đổi trả", "Mã hoá đơn", "Mã nhân viên", "Thời gian đổi trả", "Hình thức đổi trả"};
+        tableModel = new DefaultTableModel(cols, 0);
+        table_DanhSachDoiTra.setModel(tableModel);
+        importDoiTra();
     }
 
     /**
@@ -42,7 +55,7 @@ public class QuanLyDoiTra_JPanel extends javax.swing.JPanel {
         txt_MaDonDoiTra = new javax.swing.JTextField();
         jdc_NgaySinh = new com.toedter.calendar.JDateChooser();
         btn_TimKiem = new javax.swing.JButton();
-        btn_Xoa = new javax.swing.JButton();
+        btn_LamMoi = new javax.swing.JButton();
         btn_XemChiTiet = new javax.swing.JButton();
         Jpanel_Table = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -95,17 +108,17 @@ public class QuanLyDoiTra_JPanel extends javax.swing.JPanel {
         });
         Jpanel_ThaoTac.add(btn_TimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 120, 30));
 
-        btn_Xoa.setBackground(new java.awt.Color(204, 0, 0));
-        btn_Xoa.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btn_Xoa.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Xoa.setText("Xóa");
-        btn_Xoa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btn_Xoa.addActionListener(new java.awt.event.ActionListener() {
+        btn_LamMoi.setBackground(new java.awt.Color(0, 51, 51));
+        btn_LamMoi.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btn_LamMoi.setForeground(new java.awt.Color(255, 255, 255));
+        btn_LamMoi.setText("Làm mới");
+        btn_LamMoi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_LamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_XoaActionPerformed(evt);
+                btn_LamMoiActionPerformed(evt);
             }
         });
-        Jpanel_ThaoTac.add(btn_Xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 120, 30));
+        Jpanel_ThaoTac.add(btn_LamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 120, 30));
 
         btn_XemChiTiet.setBackground(new java.awt.Color(0, 51, 51));
         btn_XemChiTiet.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -126,22 +139,6 @@ public class QuanLyDoiTra_JPanel extends javax.swing.JPanel {
         Jpanel_Table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Jpanel_Table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        table_DanhSachDoiTra.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Mã đơn đổi trả", "Mã nhân viên", "Mã chi tiết hoá đơn", "Hình thức đổi trả", "Ngày lập"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
         jScrollPane1.setViewportView(table_DanhSachDoiTra);
 
         Jpanel_Table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 980, 470));
@@ -153,9 +150,11 @@ public class QuanLyDoiTra_JPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_MaDonDoiTraActionPerformed
 
-    private void btn_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_XoaActionPerformed
+    private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
+        txt_MaDonDoiTra.setText("");
+        jdc_NgaySinh.setDate(null);
+        importDoiTra();
+    }//GEN-LAST:event_btn_LamMoiActionPerformed
 
     private void btn_XemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XemChiTietActionPerformed
         // TODO add your handling code here:
@@ -171,9 +170,9 @@ public class QuanLyDoiTra_JPanel extends javax.swing.JPanel {
     private javax.swing.JPanel Jpanel_Table;
     private javax.swing.JPanel Jpanel_ThaoTac;
     private javax.swing.JPanel Jpanel_TieuDeHoaDon;
+    private javax.swing.JButton btn_LamMoi;
     private javax.swing.JButton btn_TimKiem;
     private javax.swing.JButton btn_XemChiTiet;
-    private javax.swing.JButton btn_Xoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jdc_NgaySinh;
@@ -182,4 +181,15 @@ public class QuanLyDoiTra_JPanel extends javax.swing.JPanel {
     private javax.swing.JTable table_DanhSachDoiTra;
     private javax.swing.JTextField txt_MaDonDoiTra;
     // End of variables declaration//GEN-END:variables
+    
+    public void importDoiTra() {
+        tableModel.setRowCount(0);
+        ArrayList<DoiTraEntity> dtList = dt_bus.getAllDoiTra();
+        if(dtList != null) {
+            for (DoiTraEntity dt : dtList) {
+                String[] data = {dt.getMaDYCDT(), dt.getHoaDon().getMaHD(), dt.getNhanVien().getMaNV(), dt.getThoiGianDoiTra().toString(), dt.getHinhThucDoiTra().toString()};
+                tableModel.addRow(data);
+            }
+        }
+    }
 }

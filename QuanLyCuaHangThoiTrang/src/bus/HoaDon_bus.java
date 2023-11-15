@@ -38,5 +38,10 @@ public class HoaDon_bus implements HoaDon_Interface{
     public ArrayList<HoaDonEntity> getHoaDonTheoNgayLap(java.sql.Date ngayLap) {
        return hd_dao.getHoaDonTheoNgayLap(ngayLap);
     }
+
+    @Override
+    public HoaDonEntity timKiemHoaDonTheoMa(String maHD) {
+        return hd_dao.timKiemHoaDonTheoMa(maHD);
+    }
     
 }

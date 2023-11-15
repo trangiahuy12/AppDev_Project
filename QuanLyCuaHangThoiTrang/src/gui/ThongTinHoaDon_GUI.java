@@ -4,6 +4,9 @@
  */
 package gui;
 
+import entity.ChiTietHoaDonEntity;
+import entity.HoaDonEntity;
+
 /**
  *
  * @author Admin
@@ -13,9 +16,10 @@ public class ThongTinHoaDon_GUI extends javax.swing.JFrame {
     /**
      * Creates new form ThongTinHoaDon_GUI
      */
-    public ThongTinHoaDon_GUI() {
-        initComponents();
-    }
+//    private HoaDonEntity hoaDOn
+//    public ThongTinHoaDon_GUI(HoaDonEntity hoaDon, ArrayList<ChiTietHoaDonEntity>) {
+//        initComponents();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,8 +45,6 @@ public class ThongTinHoaDon_GUI extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -120,12 +122,6 @@ public class ThongTinHoaDon_GUI extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
         jLabel13.setText("10%");
 
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel14.setText("Thuế VAT");
-
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        jLabel15.setText("1%");
-
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel16.setText("Tiền phải thanh toán");
 
@@ -181,12 +177,10 @@ public class ThongTinHoaDon_GUI extends javax.swing.JFrame {
                                     .addGap(1, 1, 1))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                                         .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel13))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -245,10 +239,7 @@ public class ThongTinHoaDon_GUI extends javax.swing.JFrame {
                                     .addComponent(jLabel13)
                                     .addComponent(jLabel19))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel21)))
+                                .addComponent(jLabel21))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -312,8 +303,6 @@ public class ThongTinHoaDon_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;

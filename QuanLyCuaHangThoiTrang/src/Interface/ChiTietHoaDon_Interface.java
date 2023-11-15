@@ -18,4 +18,5 @@ public interface ChiTietHoaDon_Interface {
     
     // Nguyen Huy Hoang
     public boolean themChiTietHoaDon(ChiTietHoaDonEntity cthd);
+    public ArrayList<ChiTietHoaDonEntity> getAllCTHDTheoMaHD(String maHD);
 }
