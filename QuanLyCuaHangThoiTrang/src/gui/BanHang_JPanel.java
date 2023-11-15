@@ -8,7 +8,6 @@ import entity.ChiTietHoaDonEntity;
 import entity.ChuongTrinhKhuyenMaiEntity;
 import entity.HoaDonEntity;
 import entity.KhachHangEntity;
-import entity.KichThuocEnum;
 import entity.NhanVienEntity;
 import entity.SanPhamEntity;
 import java.awt.Image;
@@ -17,6 +16,7 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import util.ConvertStringToEnum;
 import util.GenerateID;
 import util.ToanCuc;
 
@@ -30,6 +30,7 @@ public class BanHang_JPanel extends javax.swing.JPanel {
     private HoaDonEntity hoaDon = new HoaDonEntity();
     private ArrayList<ChiTietHoaDonEntity> cthdList = new ArrayList<ChiTietHoaDonEntity>();
     private ToanCuc tc = new ToanCuc();
+    private ConvertStringToEnum toEnum = new ConvertStringToEnum();
 
     public BanHang_JPanel() {
         initComponents();
@@ -790,21 +791,35 @@ public class BanHang_JPanel extends javax.swing.JPanel {
         if(soLuong <= 0) {
             JOptionPane.showMessageDialog(this, "Số lượng phải lớn hơn 0 !");
             return;
+        
+        }    
+            
+        boolean flag = false;
+        for (ChiTietHoaDonEntity chiTietHD : cthdList) {
+            if(chiTietHD.getSanPham().getMaSP().equals(maSP)) {
+                  chiTietHD.setSoLuong(chiTietHD.getSoLuong() + soLuong);
+                  chiTietHD.setThanhTien();
+                  flag = true;
+                  break;
+            }
         }
-        SanPhamEntity sanPham = new SanPhamEntity();
-        sanPham.setMaSP(maSP);
-        sanPham.setDonGia(Double.parseDouble(donGia));
+        if(!flag) {
+            SanPhamEntity sanPham = new SanPhamEntity();
+            sanPham.setMaSP(maSP);
+            sanPham.setTenSP(tenSP);
+            sanPham.setKichThuoc(toEnum.KichThuoctoEnum(kichThuoc));
+            sanPham.setMauSac(toEnum.MauSactoEnum(mauSac));
+            sanPham.setDonGia(Double.parseDouble(donGia));
+
+            ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity();
+            cthd.setSanPham(sanPham);
+            cthd.setGiaBan();
+            cthd.setSoLuong(soLuong);
+            cthd.setThanhTien();
+            cthdList.add(cthd);   
+        }
         
-        ChiTietHoaDonEntity cthd = new ChiTietHoaDonEntity();
-        cthd.setSanPham(sanPham);
-        cthd.setGiaBan();
-        cthd.setSoLuong(soLuong);
-        cthd.setThanhTien();
-        
-        cthdList.add(cthd);
-        
-        String[] data = {maSP, tenSP, kichThuoc, mauSac, soLuong+"", cthd.getGiaBan()+"", cthd.getThanhTien()+""};
-        tableModel.addRow(data);
+        importGioHang();
         txt_MaSanPham.setText("");
         spinner_SoLuong.setValue(0);
         
@@ -820,8 +835,26 @@ public class BanHang_JPanel extends javax.swing.JPanel {
         lbl_DonGia.setText("");
     }
     
+    private void importGioHang() {
+        tableModel.setRowCount(0);
+        for (ChiTietHoaDonEntity cthd : cthdList) {
+            String[] data = {cthd.getSanPham().getMaSP(), cthd.getSanPham().getTenSP(), cthd.getSanPham().getKichThuoc().toString(), cthd.getSanPham().getMauSac().toString(), cthd.getSoLuong()+"", cthd.getGiaBan()+"", cthd.getThanhTien()+""};
+            tableModel.addRow(data);
+        }
+    }
+    
     public void xoaKhoiGioHang() {
         int row = table_GioHang.getSelectedRow();
+        String maSP = table_GioHang.getValueAt(row, 0).toString();
+        ChiTietHoaDonEntity chiTietHoaDon = new ChiTietHoaDonEntity();
+        for (ChiTietHoaDonEntity cthd : cthdList) {
+            if(cthd.getSanPham().getMaSP().equals(maSP)) {
+                chiTietHoaDon = cthd;
+                break;
+            }
+        }
+        cthdList.remove(chiTietHoaDon);
+        
         if(row < 0) {
             JOptionPane.showMessageDialog(this, "Sản phẩm chưa được chọn !");
             return;
@@ -907,7 +940,9 @@ public class BanHang_JPanel extends javax.swing.JPanel {
         lbl_DonGia.setText("");
         
         table_GioHang.clearSelection();
-        tableModel.setRowCount(0);
+        hoaDon = new HoaDonEntity();
+        cthdList = new ArrayList<ChiTietHoaDonEntity>();
+        importGioHang();
         
         lbl_MaKhachHang.setText("");
         lbl_TenKhachHang.setText("");
